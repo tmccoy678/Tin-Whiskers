@@ -35,6 +35,9 @@
 - `cherenkov-recurrent-development.png` and
   `cherenkov-recurrent-development.mp4` preserve the seed-319 developmental
   topology and its cut-and-regrow sequence.
+- `recurrent-development-long-horizon.mp4` samples the extended deterministic
+  recurrent-transection run; `recurrent-development-long-horizon-final.png` is
+  its final numerical frame.
 - `LIV_IRIDIUM_NIOBIUM_JUPITER.png`,
   `LIV_IRIDIUM_NIOBIUM_SATURN.png`, and
   `LIV_IRIDIUM_NIOBIUM_TITAN.png` are fully labeled dual-lineage topology

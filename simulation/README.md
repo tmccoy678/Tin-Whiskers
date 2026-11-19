@@ -35,6 +35,11 @@ Within this reduced model, accumulated topology materially accelerates later
 reconnection. The voltage-routing MOOSE benchmark independently establishes
 that the same developed topology remains poor at absolute DC current capacity.
 
+At longer deterministic horizons, repair settles at a median 14 steps per
+epoch and material approaches a bounded regime near 2,945 cells through 6,000
+full transections. The compact horizon summary is retained in
+[`results/recurrent-horizon-summary.md`](results/recurrent-horizon-summary.md).
+
 ## Documented failure boundary
 
 [`whisker-ramp/`](whisker-ramp/) anchors the solid-path model to documented 10

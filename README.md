@@ -197,6 +197,12 @@ repeated complete loss produces a present topology that reconnects the same
 terminals substantially faster without receiving a replacement route. No
 separate history variable or meaning label enters the model.
 
+Under the same rules over an extended deterministic horizon, median repair cost
+settles at 14 steps per epoch and material approaches a bounded regime near
+2,945 cells without a repair failure. The [long-horizon numerical
+movie](figures/recurrent-development-long-horizon.mp4) samples that evolution
+from the initial bridge through the maintained regime.
+
 ### Adaptation remains task-specific under unseen damage
 
 ![Progressive shortest-path ablation](figures/progressive-targeted-ablation.png)
