@@ -89,6 +89,7 @@ struct RunArgs {
     earth_manifest: PathBuf,
     space_manifest: PathBuf,
     sampling_policy: PathBuf,
+    visual_samples: usize,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -313,6 +314,28 @@ struct ChoiceRecord {
     pulse_global_outstanding: u64,
     pulse_global_remaining: u64,
     pulse_conserved: bool,
+}
+
+#[derive(Clone, Debug, Serialize)]
+struct VisualFrame {
+    schema: &'static str,
+    evidence_class: &'static str,
+    run_id: String,
+    trajectory_index: usize,
+    environment_index: usize,
+    substrate_index: usize,
+    regime: Regime,
+    contingency_kind: ContingencyKind,
+    state_index: usize,
+    action: Option<ActionId>,
+    selection_mode: Option<SelectionMode>,
+    contingency_active: bool,
+    conductance: Vec<f64>,
+    delivery: f64,
+    service: f64,
+    current_concentration_proxy: f64,
+    heat_proxy: f64,
+    material_used: f64,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -765,6 +788,7 @@ fn parse_cli() -> Result<Cli, String> {
                 earth_manifest: PathBuf::from("../material-manifests/earth-pedot.json"),
                 space_manifest: PathBuf::from("../material-manifests/space-cbram.json"),
                 sampling_policy: PathBuf::from("../material-sampler/policy.json"),
+                visual_samples: 0,
             };
             let mut i = 2;
             while i < args.len() {
@@ -795,6 +819,9 @@ fn parse_cli() -> Result<Cli, String> {
                             "--earth-manifest" => run.earth_manifest = PathBuf::from(value),
                             "--space-manifest" => run.space_manifest = PathBuf::from(value),
                             "--sampling-policy" => run.sampling_policy = PathBuf::from(value),
+                            "--visual-samples" => {
+                                run.visual_samples = value.parse().map_err(|_| usage())?
+                            }
                             _ => return Err(format!("unknown argument {name}\n{}", usage())),
                         }
                         i += 2;
@@ -810,6 +837,9 @@ fn parse_cli() -> Result<Cli, String> {
                 return Err(
                     "--pulse-credits-per-trajectory must be between 1 and --actions".into(),
                 );
+            }
+            if run.visual_samples > run.environment_count {
+                return Err("--visual-samples cannot exceed --environments".into());
             }
             Ok(Cli {
                 command: Command::Run(run),
@@ -845,12 +875,15 @@ fn parse_positive(value: &str, name: &str) -> Result<usize, String> {
 }
 
 fn usage() -> String {
-    "usage:\n  long-run-adaptive-screen run [--output PATH] [--runtime PATH] [--actions N] [--substrates N] [--environments N] [--seed N] [--checkpoint-every N] [--pulse-credits-per-trajectory N] [--nice 0..20] [--resume]\n  long-run-adaptive-screen status [--runtime PATH]".into()
+    "usage:\n  long-run-adaptive-screen run [--output PATH] [--runtime PATH] [--actions N] [--substrates N] [--environments N] [--seed N] [--checkpoint-every N] [--pulse-credits-per-trajectory N] [--visual-samples N] [--nice 0..20] [--resume]\n  long-run-adaptive-screen status [--runtime PATH]".into()
 }
 
 fn run(args: RunArgs) -> Result<(), String> {
     if args.output == args.runtime {
         return Err("--output and --runtime must be different directories".into());
+    }
+    if args.resume && args.visual_samples > 0 {
+        return Err("visual sampling is available only for a fresh deterministic replay".into());
     }
     fs::create_dir_all(&args.output).map_err(io_error)?;
     fs::create_dir_all(&args.runtime).map_err(io_error)?;
@@ -879,6 +912,7 @@ fn run(args: RunArgs) -> Result<(), String> {
     let draws = generate_draws(&sources, args.environment_count, args.master_seed)?;
     let checkpoint_path = args.runtime.join("checkpoint.json");
     let audit_path = args.output.join("choices.jsonl");
+    let visual_path = args.output.join("visual-states.jsonl");
     let mut checkpoint = if args.resume {
         load_checkpoint(&checkpoint_path, &config)?
     } else {
@@ -908,6 +942,13 @@ fn run(args: RunArgs) -> Result<(), String> {
         .map_err(io_error)?;
     audit_file.seek(SeekFrom::End(0)).map_err(io_error)?;
     let mut audit = BufWriter::new(audit_file);
+    let mut visual = if args.visual_samples > 0 {
+        Some(BufWriter::new(
+            File::create(&visual_path).map_err(io_error)?,
+        ))
+    } else {
+        None
+    };
     let started = Instant::now();
     let previous_elapsed = Duration::from_nanos(
         checkpoint
@@ -934,6 +975,12 @@ fn run(args: RunArgs) -> Result<(), String> {
             environment_index as u64,
             substrate_index as u64,
         );
+        let mut visual_frames = Vec::new();
+        let capture = if substrate_index == 0 && environment_index < args.visual_samples {
+            Some(&mut visual_frames)
+        } else {
+            None
+        };
         let (records, result, next_pulse) = run_trajectory(
             &config,
             &draws[environment_index],
@@ -943,10 +990,17 @@ fn run(args: RunArgs) -> Result<(), String> {
             substrate_seed,
             checkpoint.choices_completed,
             checkpoint.pulse,
+            capture,
         )?;
         for record in &records {
             serde_json::to_writer(&mut audit, record).map_err(json_error)?;
             audit.write_all(b"\n").map_err(io_error)?;
+        }
+        if let Some(writer) = visual.as_mut() {
+            for frame in &visual_frames {
+                serde_json::to_writer(&mut *writer, frame).map_err(json_error)?;
+                writer.write_all(b"\n").map_err(io_error)?;
+            }
         }
         checkpoint.pulse = next_pulse;
         checkpoint.choices_completed += config.actions as u64;
@@ -959,6 +1013,10 @@ fn run(args: RunArgs) -> Result<(), String> {
         if periodic || terminating {
             audit.flush().map_err(io_error)?;
             audit.get_ref().sync_all().map_err(io_error)?;
+            if let Some(writer) = visual.as_mut() {
+                writer.flush().map_err(io_error)?;
+                writer.get_ref().sync_all().map_err(io_error)?;
+            }
             checkpoint.audit_bytes = audit.get_ref().metadata().map_err(io_error)?.len();
             checkpoint.elapsed_ns = (previous_elapsed + started.elapsed()).as_nanos();
             atomic_json(&checkpoint_path, &checkpoint)?;
@@ -983,6 +1041,10 @@ fn run(args: RunArgs) -> Result<(), String> {
 
     audit.flush().map_err(io_error)?;
     audit.get_ref().sync_all().map_err(io_error)?;
+    if let Some(writer) = visual.as_mut() {
+        writer.flush().map_err(io_error)?;
+        writer.get_ref().sync_all().map_err(io_error)?;
+    }
     checkpoint.audit_bytes = audit.get_ref().metadata().map_err(io_error)?.len();
     checkpoint.elapsed_ns = (previous_elapsed + started.elapsed()).as_nanos();
     if !checkpoint.pulse.conserved() {
@@ -1019,6 +1081,7 @@ fn run_trajectory(
     substrate_seed: u64,
     choice_start: u64,
     mut pulse: PulseLedger,
+    mut visual_frames: Option<&mut Vec<VisualFrame>>,
 ) -> Result<(Vec<ChoiceRecord>, TrajectoryResult, PulseLedger), String> {
     let run_id = format!("screen-e{environment_index:03}-s{substrate_index:03}");
     let mut substrate = Substrate::new(substrate_seed, environment);
@@ -1027,7 +1090,8 @@ fn run_trajectory(
         Controller::new(controller_config(&run_id, substrate_seed, config.actions))
             .map_err(|error| format!("invalid controller config: {error:?}"))?;
     let mut previous_hash = None;
-    let mut previous_service = substrate.metrics(environment).service;
+    let initial_metrics = substrate.metrics(environment);
+    let mut previous_service = initial_metrics.service;
     let mut credit_account = 0_u64;
     let mut records = Vec::with_capacity(config.actions);
     let mut upper_actions = 0;
@@ -1037,6 +1101,20 @@ fn run_trajectory(
     let mut earned_local = 0;
     let mut spent_local = 0;
     let mut safe_choices = 0;
+
+    push_visual_frame(
+        &mut visual_frames,
+        &run_id,
+        trajectory_index,
+        environment_index,
+        substrate_index,
+        environment,
+        0,
+        None,
+        None,
+        &substrate,
+        initial_metrics,
+    );
 
     for epoch in 0..config.actions {
         let before = substrate.metrics(environment);
@@ -1062,6 +1140,19 @@ fn run_trajectory(
         spent_local += spent;
         substrate.apply_action(audit.action.id, spent, epoch, environment);
         let after = substrate.metrics(environment);
+        push_visual_frame(
+            &mut visual_frames,
+            &run_id,
+            trajectory_index,
+            environment_index,
+            substrate_index,
+            environment,
+            epoch + 1,
+            Some(audit.action.id),
+            Some(audit.action.selection_mode),
+            &substrate,
+            after,
+        );
         let delta_service = after.service - previous_service;
         let earned = if after.safe
             && delta_service > 1.0e-12
@@ -1163,6 +1254,44 @@ fn run_trajectory(
         },
         pulse,
     ))
+}
+
+#[allow(clippy::too_many_arguments)]
+fn push_visual_frame(
+    frames: &mut Option<&mut Vec<VisualFrame>>,
+    run_id: &str,
+    trajectory_index: usize,
+    environment_index: usize,
+    substrate_index: usize,
+    environment: &EnvironmentDraw,
+    state_index: usize,
+    action: Option<ActionId>,
+    selection_mode: Option<SelectionMode>,
+    substrate: &Substrate,
+    metrics: Metrics,
+) {
+    if let Some(target) = frames.as_mut() {
+        target.push(VisualFrame {
+            schema: "long-run-adaptive-screen-visual/v1",
+            evidence_class: EVIDENCE_CLASS,
+            run_id: run_id.into(),
+            trajectory_index,
+            environment_index,
+            substrate_index,
+            regime: environment.regime.clone(),
+            contingency_kind: environment.contingency_kind.clone(),
+            state_index,
+            action,
+            selection_mode,
+            contingency_active: state_index > environment.contingency_epoch,
+            conductance: substrate.conductance.clone(),
+            delivery: metrics.delivery,
+            service: metrics.service,
+            current_concentration_proxy: metrics.concentration_proxy,
+            heat_proxy: metrics.heat_proxy,
+            material_used: metrics.material_used,
+        });
+    }
 }
 
 fn controller_config(run_id: &str, seed: u64, actions: usize) -> ControllerConfig {
@@ -2113,7 +2242,7 @@ mod tests {
             sampling_policy_sha256: sources.policy.sha256.clone(),
         };
         let (records, result, pulse) =
-            run_trajectory(&config, &draw, 0, 0, 0, 571, 0, PulseLedger::new(4)).unwrap();
+            run_trajectory(&config, &draw, 0, 0, 0, 571, 0, PulseLedger::new(4), None).unwrap();
         assert_eq!(records.len(), 8);
         assert_eq!(result.upper_actions + result.lower_actions, 8);
         assert!(records.iter().all(|record| record.pulse_conserved));

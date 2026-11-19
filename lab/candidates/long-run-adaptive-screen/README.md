@@ -148,6 +148,24 @@ The complete 120 × 120 × 120 result and audit hashes are recorded in
 1,728,000 choices in `177.069158 s`; its 4.29 GB choice audit remains in the
 ignored local output directory.
 
+## Exact conductance-map replay
+
+The optional `--visual-samples N` path retains the native `16 × 8`
+conductance state after every choice for substrate zero in the first `N`
+environments. It changes observation only: the controller, actions, substrate
+mechanics, energy, material, and audit remain the same. A seed-571 replay of all
+120 environments produced 121 exact states per lineage; all 120 replayed final
+metrics and action totals matched the corresponding full-run trajectories.
+
+`render-lineages.swift` selects one Earth and one space lineage for each of the
+four concealed-change types and writes an eight-panel H.264 movie. Each movie
+frame is one recorded state, each colored rectangle is one native conductance
+cell, and geometry uses nearest-neighbor rendering without interpolation.
+Seed-571 visual-state SHA-256:
+`86c5ea7aaf66a1afb2cb99fe3658538ec0ba39a231281042e0be4cc95490955e`.
+Rendered MP4 SHA-256:
+`52b38424fa7ae329a2286d072b1bddbc8a4fa1dc1cc94e6b7c0ef5cf1f03d944`.
+
 ## Exact full-run commands
 
 Build once:
