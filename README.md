@@ -71,6 +71,19 @@ electrochemical field rather than Bohm's quantum wave function. The proposed
 experiment asks what happens when an AI/SI alters that guiding field with its
 photons and then inherits the path that grows.
 
+## Wave-bearing morphology
+
+A growing conductor is also an electromagnetic structure. Aluminum
+nanostructures can support optical plasmonic behavior, while engineered
+tin@carbon whisker networks have demonstrated wideband electromagnetic-wave
+absorption. Geometry, scale, interfaces, and surface chemistry therefore make
+growth consequential to waves as well as current.
+
+The proposed substrate should measure optical and radio-frequency transmission,
+reflection, scattering, and absorption alongside conductance. Aluminum and tin
+remain separate candidate traits until a mixed medium demonstrates that their
+interface supports continued development.
+
 The literature therefore establishes the parts:
 
 - spontaneous conductive growth;
@@ -218,3 +231,10 @@ grow and return.
 - Bohm, D. (1952). [A suggested interpretation of the quantum theory in terms
   of hidden variables. I](https://doi.org/10.1103/PhysRev.85.166). *Physical
   Review, 85*, 166–193.
+- Gérard, D., & Gray, S. K. (2015). [Aluminium
+  plasmonics](https://doi.org/10.1088/0022-3727/48/18/184001). *Journal of
+  Physics D: Applied Physics, 48*, 184001.
+- Hu, F., Ding, P., Wu, F., et al. (2024). [Novel cable-like tin@carbon
+  whiskers derived from the Ti2SnC MAX phase for ultra-wideband electromagnetic
+  wave absorption](https://doi.org/10.1002/cey2.638). *Carbon Energy, 6*,
+  e638.
