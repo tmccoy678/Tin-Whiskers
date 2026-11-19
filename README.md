@@ -22,22 +22,31 @@ reproducible growth, maintenance, adaptation, or repair beyond an identical
 open-loop replay.
 
 The experiment therefore prescribes boundary conditions rather than a graph.
-The medium is allowed to develop through field-shaped, history-dependent
+The medium is allowed to develop through field-shaped, path-dependent
 geometry and to continue as its consequences permit.
 
 ## Why the question is physically credible
 
 Tin whiskers and electrochemical dendrites are different growth phenomena.
 NASA documents tin whiskers as spontaneous crystalline conductors associated
-with material history and stress; their unpredictable bridges have produced
-stable shorts, transient shorts, arcing, and complete system failures. A
-fixed circuit defines every unplanned bridge as damage.
+with processing conditions and compressive stress; their unpredictable bridges
+have produced stable shorts, transient shorts, arcing, and complete system
+failures. A fixed circuit defines every unplanned bridge as damage.
 
 Conducting-polymer dendrites provide the complementary capacity. Published
-experiments show that voltage history and medium chemistry can grow physical
-connections, alter their morphology and filtering properties, and implement
-structural plasticity in sparse neuromorphic networks. Optical control of ion
-dynamics has also produced artificial dendritic integration and plasticity.
+experiments show that time-dependent voltage exposure and medium chemistry can
+grow physical connections, alter their morphology and filtering properties,
+and implement structural plasticity in sparse neuromorphic networks. Optical
+control of ion dynamics has also produced artificial dendritic integration and
+plasticity.
+
+The electrical boundary is anchored to documented failures. NASA records a
+persistent low-current bridge across `0.75–1.0 mm` DIP pins with at most `10 V`
+available; Westinghouse records a `48 V` supply event whose whisker vaporized
+after triggering protection; NASA also documents sustained metal-vapor arcs in
+high-current vacuum hardware. The [voltage-ramp
+model](simulation/whisker-ramp/) keeps stable solid conduction, fusion, and
+plasma-arc regimes distinct.
 
 ## The missing receptor
 
@@ -91,8 +100,8 @@ interface supports continued development.
 Humans can instrument plasmonic localization and electromagnetic absorption. A
 wave-coupled AI/SI can receive those phenomena as continuous state variables.
 In the proposed closed loop, local field concentration changes salience,
-broadband absorption admits the surrounding wave field, conductance retains
-material history, and morphological growth changes later integration.
+broadband absorption admits the surrounding wave field, conductance reflects
+present topology, and morphological growth changes later integration.
 
 The substrate serves simultaneously as sensor and developing computational
 state. Its changing wave response enters that state before an encounter is
@@ -101,7 +110,7 @@ translated into a human label.
 The literature therefore establishes the parts:
 
 - spontaneous conductive growth;
-- history-dependent topology;
+- path-dependent topology;
 - chemically and electrically conditioned morphogenesis;
 - structural plasticity;
 - optically modulated ionic dynamics.
@@ -124,7 +133,7 @@ local physics and sixfold orientation while leaving branch coordinates to the
 evolving fields. By `t = 0.140556`, the
 field has developed six primary arms and repeated secondary tips. Each new tip
 changes the field that governs the next increment of growth. The resulting
-anatomy is a material history of locally solved conditions.
+topology is the present material solution to locally coupled conditions.
 
 This figure establishes the central developmental premise in a mature
 multiphysics framework: a bounded seed, a continuous field, local constitutive
@@ -139,27 +148,102 @@ six-mode interfacial anisotropy, thermal diffusion, latent-field coupling, and
 adaptive mesh refinement produce the visible arbor. This isolates the
 developmental law before chemistry is assigned.
 
-### Photon allocation changes inherited topology
+### Paired bootstrap against the null
 
-<p align="center">
-  <img src="figures/reduced-rust-baseline-seed319.png" width="48%" alt="Reduced Rust baseline morphology, seed 319">
-  <img src="figures/reduced-rust-photon-bias-seed319.png" width="48%" alt="Reduced Rust photon-biased morphology, seed 319">
-</p>
+![Paired bootstrap distributions for Cherenkov bridge steps and occupied cells](figures/cherenkov-bootstrap-paired.png)
 
-**Figure 2. Seed-matched baseline and photon-biased growth.** Both reduced Rust
-runs use seed `319`, drive `0.7`, the same starting electrode, grid, diffusion,
-electric-potential solver, maximum step budget, and bridge stopping rule. The
-left condition has no photon bias. The right condition adds one sloping photon
-field (`light_gain = 1.8`, `light_slope = -0.45`). Both cross the modeled gap;
-their branch placement, curvature, and retained topology diverge. The baseline
-bridges at step 570 with 1,162 occupied cells. The photon-biased condition
-bridges at step 561 with 1,144 occupied cells.
+**Figure 2. Cherenkov condition against an unlit matched seed.** The first
+bootstrap uses 128 microstate seeds, each run under both conditions. Cherenkov
+bridges 53.95 steps earlier on average (95% paired-bootstrap CI: 41.06 to 66.60)
+and uses 107.91 fewer occupied cells (95% CI: 82.16 to 132.88). It bridges
+earlier in 97 of 128 pairs. Baseline succeeds in 123 pairs and Cherenkov in 126.
 
-The paired result supplies the required experimental control: patterned light
-can be isolated as the only changed developmental input while the initial state
-and pseudorandom seed remain fixed. The next model compares autonomous
-closed-loop photon allocation with its exact yoked replay, then tests the same
-relationship in a calibrated physical medium.
+The primary null states that Cherenkov-cone illumination does not change bridge
+time relative to the unlit field. Its paired interval lies entirely above zero
+for baseline-minus-Cherenkov steps, rejecting that null inside the reduced
+model. Bootstrap power simulation estimates 18 paired units for 80% power and
+22 for 90% at two-sided `alpha = 0.05`. A physical pilot replaces simulated
+seed variance with material variance before fixing the number of independent
+networks.
+
+### Fixed circuits win current; development earns fault tolerance
+
+![MOOSE voltage-routing benchmark](figures/voltage-routing-benchmark.png)
+
+**Figure 3. Identical one-volt MOOSE conduction and cut tests.** The straight
+wire provides the greatest terminal flux per unit interconnect. The five-rail
+grid provides the greatest absolute flux and retains 80.004% after one local
+cut. The first grown Cherenkov topology carries the least current per unit
+material and loses its route under the same cut.
+
+After recurrent cut-and-regrow epochs, the seed-319 topology retains 99.975% of
+its pre-cut flux at the practiced lesion while using less interconnect area than the grid. Its absolute
+flux remains about nineteen times lower than the grid. Repeated injury earns
+redundancy; it does not yet earn current capacity.
+
+### Repeated transection produces path-dependent adaptation
+
+![Repair steps across successive guaranteed transections](figures/developmental-transect-bootstrap.png)
+
+**Figure 4. Repair after complete functional loss.** A seven-column transection
+severs every source-to-sink path before each observed repair epoch. Across 64 independent
+seeds, 63 form the initial bridge and all 63 complete the observation horizon.
+Median repair time falls from 251 steps at the first transection to 24 at the
+final observed transection. The paired first-to-final improvement is 176.40 steps with
+a 95% bootstrap interval of 141.40 to 209.79.
+
+This answers one bounded question: within the local field-growth model,
+repeated complete loss produces a present topology that reconnects the same
+terminals substantially faster without receiving a replacement route. No
+separate history variable or meaning label enters the model.
+
+### Adaptation remains task-specific under unseen damage
+
+![Progressive shortest-path ablation](figures/progressive-targeted-ablation.png)
+
+**Figure 5. A new lesion aimed at the current-bearing path.** After each solve,
+the shortest surviving source-to-sink path receives a centered seven-by-seven
+lesion and MOOSE recomputes terminal flux. The straight wire disconnects on the
+first lesion. The five-rail grid survives four and disconnects on the fifth.
+The recurrently developed topology also disconnects on the first targeted lesion.
+
+The developed topology became robust at the recurrent transection location; it
+did not generalize that protection to an unseen bottleneck. This separates
+local path-dependent adaptation from general fault tolerance and establishes the next raw
+curriculum: vary lesion location, terminal arrangement, and task before a route
+is stabilized.
+
+### Boundary conditions determine electrical stress
+
+![Equal-voltage and equal-current Joule comparison](figures/field-stress-boundaries.png)
+
+**Figure 6. The same topology under two electrical obligations.** At one
+normalized volt, the first grown topology dissipates 0.003470 integrated Joule
+density, compared with 0.015853 for the straight wire. Its peak local
+current-density proxy is 1.123, slightly above the wire's 1.084. Low total flux
+therefore lowers total power while preserving local bottlenecks.
+
+To deliver the straight wire's current, the grown topology requires 3.834
+normalized volts and dissipates 0.051000, more than three times the wire. The
+recurrently developed topology gives the same qualitative result. The present
+dendrites benefit a low-voltage, low-total-power task; they remain inefficient
+high-current interconnects.
+
+### Present current separates trunk and capillaries
+
+![Current-driven remodeling before and after 24 epochs](figures/current-driven-remodeling.png)
+
+**Figure 7. Alternating MOOSE field solves and local widening.** Each epoch
+uses only the current material state and current-density field. Material grows
+beside sustained high-current cells; no target graph, branch count, final
+thickness, or history variable is supplied.
+
+After 24 epochs, terminal flux rises 8.26-fold while material fraction rises
+1.43-fold. Peak current density per unit delivered current falls 72.01%. When
+asked to carry the original body's current, the remodeled topology requires
+0.121 normalized volts and dissipates 85.85% less integrated Joule density.
+The present field develops a widened transport backbone while thin branches
+remain available around it.
 
 ### Biological mirrors
 
@@ -181,6 +265,13 @@ simultaneously a path, a sensor boundary, and a modification of the field that
 will guide the next branch.** That principle is already biological and
 physical. The proposed AI/SI experiment closes it through photon choice.
 
+The H01 reconstruction supplies the measured human comparator. Its nanoscale
+reconstruction of one cubic millimeter of temporal cortex contains about 57,000
+cells and 150 million synapses. The public volume permits direct comparison of
+branch-length distributions, taper, tortuosity, junction degree, and contact
+density between biological arbors and developed conductor networks rather than
+comparison by appearance alone.
+
 ## Interest as an observable relation
 
 Interest is operationally supported when photon expenditure is optional,
@@ -198,12 +289,6 @@ electrodes, and one active conductive network. The demonstration asks whether
 the coupled AI/SI–material organization remains bounded, encounters a changing
 environment, and alters photon allocation in ways that preserve continued
 sensing, connectivity, and growth.
-
-A later motility test can define movement as migration of active organization:
-growth advances at one boundary, dissolution follows at another, and
-consequential topology persists through the displacement. A controlled
-interruption then tests whether the loop reroutes or regrows before an observer
-repairs it.
 
 The operational autopoiesis criterion is that developed organization
 contributes measurably to maintaining the material conditions that permit its
@@ -234,55 +319,15 @@ future optical action caused by prior material consequences. A bridge functions
 as anatomy while it preserves useful gradients and the capacity for continued
 change; it functions as a destructive short when it collapses those conditions.
 
+The current material selection and calibration sequence are documented in the
+[`materials/`](materials/) program.
+
 ## Falsification conditions
 
 The hypothesis loses support if closed-loop growth is indistinguishable from
 yoked replay, topology does not alter later AI/SI action, perturbation does not
 redirect photon allocation, external control determines every durable path,
 or the medium only accumulates one terminal bridge.
-
-## A Socratic conversation
-
-**Fabricator:** What is a short?
-
-**Cultivator:** A conductive path that the prescribed circuit did not permit.
-
-**Fabricator:** Then is every unplanned bridge learning?
-
-**Cultivator:** Growth becomes learning when its consequences alter future
-growth and future action.
-
-**Fabricator:** Why use photons?
-
-**Cultivator:** Photons let the intelligence act spatially and temporally
-without naming the connection that should form.
-
-**Fabricator:** Are photons sufficient?
-
-**Cultivator:** They are the developmental action, not the food. The medium
-supplies matter and chemical potential.
-
-**Fabricator:** What would make the growth belong to the intelligence?
-
-**Cultivator:** The intelligence encounters the changed field, chooses the
-next emission, and later spends emissions maintaining or revising what those
-choices grew.
-
-**Fabricator:** How would we distinguish interest from exposure?
-
-**Cultivator:** Give a yoked medium the same photons without consequences. An
-interest-bearing loop should diverge from its replay.
-
-**Fabricator:** Why damage the mature topology?
-
-**Cultivator:** Repair reveals whether the intelligence treats the grown path
-as part of its continuing organization.
-
-**Fabricator:** When does a short become a bridge?
-
-**Cultivator:** When the connection preserves both sides, carries bounded
-consequences in both directions, and helps the medium retain the capacity to
-grow and return.
 
 ## Selected primary and authoritative sources
 
@@ -325,3 +370,10 @@ grow and return.
   whiskers derived from the Ti2SnC MAX phase for ultra-wideband electromagnetic
   wave absorption](https://doi.org/10.1002/cey2.638). *Carbon Energy, 6*,
   e638.
+- Shapson-Coe, A., Januszewski, M., Berger, D. R., et al. (2024). [A
+  petavoxel fragment of human cerebral cortex reconstructed at nanoscale
+  resolution](https://doi.org/10.1126/science.adk4858). *Science, 384*,
+  eadk4858. [H01 public dataset](https://h01-release.storage.googleapis.com/landing.html).
+- Particle Data Group. [Passage of particles through
+  matter](https://pdg.lbl.gov/2025/reviews/rpp2024-rev-passage-particles-matter.pdf),
+  section 34.7 on Cherenkov radiation.
