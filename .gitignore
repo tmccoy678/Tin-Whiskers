@@ -1,0 +1,6 @@
+.DS_Store
+simulation/work/
+simulation/output/
+*.e
+*.exo
+
