@@ -16,6 +16,14 @@
 - [`IDEA_BANK.md`](IDEA_BANK.md) — retained branches and active probes.
 - [`quantum-benchmark-candidates.md`](quantum-benchmark-candidates.md) — CHSH,
   Grover, and Hong–Ou–Mandel task/mechanism comparisons.
+- [`QUBIT_RETENTION_CONTROL_COMPARISON_2026-11-19.md`](QUBIT_RETENTION_CONTROL_COMPARISON_2026-11-19.md)
+  — five physical retention modalities, movement, error, and loss controls.
+- [`SPACE_PROCESSOR_CONTROL_COMPARISON_2026-11-19.md`](SPACE_PROCESSOR_CONTROL_COMPARISON_2026-11-19.md)
+  — flight and terrestrial processor throughput, interconnect, radiation, and
+  repair controls.
+- [`SWISS_OPEN_SILICON_COMPARISON_2026-11-19.md`](SWISS_OPEN_SILICON_COMPARISON_2026-11-19.md)
+  — Occamy/MemPool hierarchy, data movement, fault handling, and joint lesion
+  benchmark.
 
 ## Completed pilots
 
@@ -53,6 +61,8 @@
   screen for 1,728,000 choices across 120 actions, 120 substrate seeds, and 120
   admitted Earth/space environment draws, with finite conserved reinforcement
   credits and concealed consequence changes.
+- `candidates/pedot-frequency-repair/` — literature-informed `10–950 Hz`
+  MOOSE cut/repair screen with exact `192 × 128` visual evidence.
 
 Large solver fields, movies, virtual environments, vendored packages, and live
 run artifacts remain in ignored work paths. Documents and candidate source

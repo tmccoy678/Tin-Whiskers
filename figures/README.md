@@ -47,6 +47,11 @@
   `lab/candidates/volumetric-physics/`. It contains 7,019 occupied voxels and
   highlights 214 recorded out-of-plane growth choices. Local SHA-256:
   `8a8763cf09b600b619517980f692861f82ce13cfe4aaa4538d2a0176bf6f6e03`.
+- `pedot-frequency-cut-repair-10-80-320-950Hz.mp4` presents the exact
+  `192 × 128` occupied-cell states from the literature-informed PEDOT
+  frequency cut/repair screen. It shows `10/80 Hz` and `320/950 Hz` as two
+  readable chapters and holds the first reconnection epochs. Local SHA-256:
+  `5112e36e62e61700d950c1f05648f003674f98b793918af2d7f9b77ca45fbf72`.
 
 ## Reused research figure
 
