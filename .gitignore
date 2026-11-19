@@ -1,6 +1,7 @@
 .DS_Store
 simulation/work/
 simulation/output/
+simulation/reduced-rust/target/
 *.e
 *.exo
 

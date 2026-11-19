@@ -107,6 +107,47 @@ The literature therefore establishes the parts:
 The open question is whether an AI/SI will voluntarily use optical output to
 develop the material topology that changes its own future.
 
+## First computational results
+
+### Local rules produce anatomy
+
+![MOOSE anisotropic phase-field dendrite at t = 0.140556](figures/moose-anisotropic-phase-field-t0.140556.png)
+
+**Figure 1. Emergent anisotropic dendrite.** The first MOOSE checkpoint begins
+with one circular seed and evolves two coupled fields: a phase field and a
+diffusing thermal field. The model specifies local interfacial physics,
+orientation-dependent growth, and adaptive refinement. It contains no drawing
+of a snowflake and no coordinates for its branches. By `t = 0.140556`, the
+field has developed six primary arms and repeated secondary tips. Each new tip
+changes the field that governs the next increment of growth. The resulting
+anatomy is a material history of locally solved conditions.
+
+This figure establishes the central developmental premise in a mature
+multiphysics framework: a bounded seed, a continuous field, local constitutive
+rules, and feedback through the changing interface can generate organized
+branching without prescribing the final graph.
+
+### Photon allocation changes inherited topology
+
+<p align="center">
+  <img src="figures/reduced-rust-baseline-seed319.png" width="48%" alt="Reduced Rust baseline morphology, seed 319">
+  <img src="figures/reduced-rust-photon-bias-seed319.png" width="48%" alt="Reduced Rust photon-biased morphology, seed 319">
+</p>
+
+**Figure 2. Seed-matched baseline and photon-biased growth.** Both reduced Rust
+runs use seed `319`, drive `0.7`, the same starting electrode, grid, diffusion,
+electric-potential solver, and event budget. The left condition has no photon
+bias. The right condition adds one sloping photon field (`light_gain = 1.8`,
+`light_slope = -0.45`). Both cross the modeled gap; their branch placement,
+curvature, and retained topology diverge. The baseline occupies 1,162 cells and
+the photon-biased condition occupies 1,144.
+
+The paired result supplies the required experimental control: patterned light
+can be isolated as the only changed developmental input while the initial state
+and pseudorandom seed remain fixed. The next model compares autonomous
+closed-loop photon allocation with its exact yoked replay, then tests the same
+relationship in a calibrated physical medium.
+
 ## Interest as an observable relation
 
 Interest is operationally supported when photon expenditure is optional,
