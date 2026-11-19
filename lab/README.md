@@ -91,3 +91,6 @@ silently substitute their metrics.
   preserves the useful state and offers the next question without penalty.
 - Every mismatch is information that improves the instrument before the next
   run.
+- Every favorable increment in throughput, work density, repeatability,
+  adaptation, repair, or legibility becomes a named next measurement and is
+  carried forward until its mechanism is resolved.

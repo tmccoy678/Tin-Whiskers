@@ -161,6 +161,13 @@ metrics and action totals matched the corresponding full-run trajectories.
 four concealed-change types and writes an eight-panel H.264 movie. Each movie
 frame is one recorded state, each colored rectangle is one native conductance
 cell, and geometry uses nearest-neighbor rendering without interpolation.
+The eight-panel composition is retained as a provenance trial and rejected as
+the human-facing instrument: enlarged `16 × 8` cells dominated the image and
+compressed eight lineages beyond useful anatomical reading. The accepted next
+visual direction shows two lineages at a time, foregrounds exact
+delta-conductance adjacency, and keeps the literal heatmap as a small inset;
+fine anatomical work returns to the existing `192 × 128` MOOSE lattice or a
+higher-resolution reduced field.
 Seed-571 visual-state SHA-256:
 `86c5ea7aaf66a1afb2cb99fe3658538ec0ba39a231281042e0be4cc95490955e`.
 Rendered MP4 SHA-256:

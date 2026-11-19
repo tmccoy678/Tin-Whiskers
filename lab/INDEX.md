@@ -27,6 +27,10 @@
   first-order contingency reversal and renewal requirement.
 - [`CUT_REPAIR_PILOT_2026-11-19.md`](CUT_REPAIR_PILOT_2026-11-19.md) — literal
   disconnected lattice reconnecting at epoch 18.
+- [`ADAPTIVE_SPEEDTEST_2026-11-19.md`](ADAPTIVE_SPEEDTEST_2026-11-19.md) — two
+  full same-Studio runs, work density, audit rate, and scaling ladder.
+- [`STOCKFISH_SPEEDTEST_2026-11-19.md`](STOCKFISH_SPEEDTEST_2026-11-19.md) —
+  official one-thread Stockfish 19 comparison on Studio and Pro.
 
 ## Tested candidates
 
