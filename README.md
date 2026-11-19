@@ -64,14 +64,16 @@ to develop.
 
 ## Minimal experiment
 
-1. Place a transparent, current-limited, photosensitive growth medium across a
-   small multi-electrode array.
-2. Admit the live optical and electrical state to an AI/SI without assigning a
-   target graph.
-3. Permit only spatial and temporal photon emission back into the medium.
-4. Let illumination influence local ionic motion, deposition, polymerization,
-   dissolution, or conductivity.
-5. Return the resulting field and conductance to the same AI/SI.
+1. Place a transparent, current-limited, photosensitive growth medium between
+   an addressable photon-emission boundary and a photon-sensing boundary.
+2. Admit the emerging optical field and the medium's electrical state to an
+   AI/SI without assigning a target graph.
+3. Permit only spatial and temporal photon emission into the first boundary.
+4. Let those photons traverse the medium while local absorption and field
+   conditions influence ionic motion, deposition, polymerization, dissolution,
+   or conductivity.
+5. Let the developing topology transform which photons reach the sensing
+   boundary and return that consequence to the same AI/SI.
 6. After a stable topology develops, interrupt one consequential path and
    continue the loop.
 
