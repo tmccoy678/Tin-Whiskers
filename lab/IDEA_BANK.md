@@ -19,10 +19,11 @@ probe, fixed control, reciprocal yoke, and a result that would reject learning.
 Phenomenal-consciousness claims begin with a separately defined test beyond
 behavioral resemblance.
 
-**Status:** first-order reversal pilot active: the established upper preference
-loses 85% of actuator efficacy at concealed epoch 60 in a 120-action
-adaptive/fixed/reciprocal-yoke comparison. Second-order transfer remains a
-later branch.
+**Status:** the first-order reversal pilot is complete. The established policy
+did not renew exploration after upper efficacy fell at concealed epoch 60,
+which directly motivated consequence-change detection and a separately tested
+renewal stream in the Rust controller. Second-order transfer remains a later
+branch.
 
 ## Quantum comparison
 
@@ -72,4 +73,7 @@ deception or changed vulnerabilities.
 no real hosts, credentials, scanning, payloads, or network targets. Classical
 Q-values remain distinct from quantum state or quantum advantage.
 
-**Status:** dedicated benchmark worker active in an isolated local candidate.
+**Status:** completed isolated candidate. The neural learner solved all 16
+training and all 16 held-out synthetic scenarios; zero-shot reversal solved
+none, while online renewal recovered 5 of 16. That boundary makes renewal,
+rather than static fit, the useful connection to the substrate controller.

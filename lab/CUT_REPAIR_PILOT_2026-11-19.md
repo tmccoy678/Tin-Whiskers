@@ -23,6 +23,7 @@ Frozen metrics:
 `aec47241921e391fac6937b751862203f89920ca4494b5dbe1f0bc5ac4b2b85a`
 
 Raw fields and topology states remain in ignored
-`simulation/work/live_moose/current_fiber_cut_repair/`; literal presentation
-frames remain in the Studio Results folder pending the visual bench's
-pixel-identity master.
+`simulation/work/live_moose/current_fiber_cut_repair/`. The visual bench's
+lossless presentation reports zero anatomy-pixel mismatches, and the native
+ParaView timeline verifies 37 hashed source states with the first connection
+at epoch 18 and no interpolated anatomy.

@@ -15,8 +15,10 @@ neural policy: a successful result must come from consequence-sensitive action,
 not from hidden geometric supervision or model capacity.
 
 Everything under **Implemented now** is present in the repository or the
-private ignored work directory. Everything under **Proposed controller** is a
-design for the next experiment and has not produced a result.
+private ignored work directory. The controller specification below became the
+locked boundary for the reciprocal 12- and 120-action pilots. Their results
+live in the dated pilot records; the scale-aware Rust controller and renewal
+tests live under `candidates/adaptive-controller/`.
 
 ## Implemented now
 
@@ -80,7 +82,7 @@ This is the current fixed deterministic control reported in `lab/README.md` as
 committed 24-epoch control reports `8.26 x`, `1.43 x`, and `72.01%`; the two
 records describe different fixed runs and must not be merged.
 
-## Proposed controller
+## Controller specification
 
 ### Causal unit and timing
 

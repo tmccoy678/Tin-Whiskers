@@ -70,8 +70,9 @@ Keep the two controls separate:
   current density per delivered current.
 - The experimental 36-epoch alternating two-fiber fixed-rule run delivered
   8.43 times the initial terminal flux with 1.44 times the material and 75.29%
-  lower peak current density per delivered current. Its artifacts remain in the
-  ignored work area until provenance and promotion are adjudicated.
+  lower peak current density per delivered current. Raw solver fields remain in
+  the ignored work area; its frozen metrics, exact cut–repair timeline, and
+  pixel-identity visual evidence are promoted with provenance.
 
 Both are fixed deterministic controls, not adaptive-AI results. Never pool or
 silently substitute their metrics.
