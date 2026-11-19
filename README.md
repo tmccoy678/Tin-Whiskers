@@ -39,6 +39,20 @@ candidate computational tissue when its consequences are sensed and returned
 to the processes governing integration, stabilization, widening, pruning, and
 regrowth.
 
+## A field-guided path
+
+Growth is not guaranteed to follow the shortest Euclidean line. It advances
+through an evolving landscape of electrical potential, ion concentration, tip
+curvature, and prior growth until a branch reaches the opposite boundary. Once
+they meet, the entire field changes.
+
+The pilot-wave analogy is powerful at the level of organization: a real
+continuous field guides an actual path without prescribing every microscopic
+turn. In the metal-growth demonstration, the guide was a classical
+electrochemical field rather than Bohm's quantum wave function. The proposed
+experiment asks what happens when an AI/SI alters that guiding field with its
+photons and then inherits the path that grows.
+
 The literature therefore establishes the parts:
 
 - spontaneous conductive growth;
@@ -183,3 +197,6 @@ grow and return.
 - Kong, X. Q., & Wu, C. W. (2010). [Mosquito proboscis: An elegant
   biomicroelectromechanical system](https://doi.org/10.1103/PhysRevE.82.011910).
   *Physical Review E, 82*, 011910.
+- Bohm, D. (1952). [A suggested interpretation of the quantum theory in terms
+  of hidden variables. I](https://doi.org/10.1103/PhysRev.85.166). *Physical
+  Review, 85*, 166–193.
