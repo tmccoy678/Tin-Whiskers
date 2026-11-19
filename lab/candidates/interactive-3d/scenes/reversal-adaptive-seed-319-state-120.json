@@ -1,0 +1,89 @@
+{
+  "schema": "tin-whiskers-scene-manifest/v1",
+  "status": "frozen candidate; not made foreground",
+  "dataset": {
+    "experiment": "120-action reciprocal pilot with concealed efficacy reversal",
+    "arm": "adaptive-seed-319",
+    "controller_status": "ADAPTIVE CONTROLLER",
+    "state": 120,
+    "reversal_epoch": 60,
+    "reversal_rule": "For growth actions at epoch >= 60, upper stimulus efficacy is 0.15 and lower stimulus efficacy remains 1.0.",
+    "last_applied_action_index": 119,
+    "last_applied_action_id": "upper-heavy",
+    "last_applied_action_selection_mode": "exploit",
+    "upper_fraction": 0.75,
+    "lower_fraction": 0.25,
+    "grid_width_cells": 192,
+    "grid_height_cells": 128,
+    "total_cells": 24576,
+    "occupied_cells": 6533,
+    "terminal_flux": 0.091595086091322,
+    "metal_fraction": 0.17721896701386,
+    "peak_current_density": 2.2159440217066,
+    "peak_joule_density": 4.9104079073373,
+    "inference_status": "not_run",
+    "claim_boundary": "This manifest freezes the final evidence for later visualization. It does not claim that the controller reversed its preference."
+  },
+  "view_contract": {
+    "geometry": "One box per exact occupied 2D lattice cell; depth is presentation only.",
+    "required_label": "EXTRUDED 2D EVIDENCE — NOT 3D PHYSICS",
+    "default_layout": "LIGHT ANATOMY",
+    "secondary_layout": "CURRENT HEAT"
+  },
+  "files": [
+    {
+      "bundle_path": "data/reversal-seed-319/moose-0120.e",
+      "source_path": "simulation/work/live_moose/adaptive-reciprocal-pilot-120-reversal-60/adaptive-seed-319/moose-0120.e",
+      "sha256": "41c5b8b8b6e67091e000c9233efdea5e355afe33847c3393b6cc404896dccfce",
+      "role": "Final Exodus mesh with occupancy and field arrays"
+    },
+    {
+      "bundle_path": "data/reversal-seed-319/topology-0120.png",
+      "source_path": "simulation/work/live_moose/adaptive-reciprocal-pilot-120-reversal-60/adaptive-seed-319/topology-0120.png",
+      "sha256": "841288d0398f4310f2bb08fe98d21e8ee4ac8ac17517eaac812aa7e846d15d98",
+      "role": "Literal final 192 by 128 topology"
+    },
+    {
+      "bundle_path": "data/reversal-seed-319/metrics.tsv",
+      "source_path": "simulation/work/live_moose/adaptive-reciprocal-pilot-120-reversal-60/adaptive-seed-319/metrics.tsv",
+      "sha256": "5acbcb86af4c36d023b451302427bdca89067323009246c85b29f7726e52d07a",
+      "role": "Per-state metrics"
+    },
+    {
+      "bundle_path": "data/reversal-seed-319/actions.json",
+      "source_path": "simulation/work/live_moose/adaptive-reciprocal-pilot-120-reversal-60/adaptive-seed-319/actions.json",
+      "sha256": "b681d6601625377deef020779a965905c431ce0e6c588ff170e9cabdb48914db",
+      "role": "Adaptive action schedule"
+    },
+    {
+      "bundle_path": "data/reversal-seed-319/audit.jsonl",
+      "source_path": "simulation/work/live_moose/adaptive-reciprocal-pilot-120-reversal-60/adaptive-seed-319/audit.jsonl",
+      "sha256": "41c993d5e67ee676c221ffcb0785e552684fc465ec85c36859a069b502e1e483",
+      "role": "Hashed observations and controller decisions"
+    },
+    {
+      "bundle_path": "data/reversal-seed-319/pilot-summary.json",
+      "source_path": "simulation/work/live_moose/adaptive-reciprocal-pilot-120-reversal-60/pilot-summary.json",
+      "sha256": "ab6b5ca30447bbc237dd489b84ae3c6a84725735d28da0c5517f40b2952fb582",
+      "role": "Completed six-arm summary with inference marked not_run"
+    },
+    {
+      "bundle_path": "data/reversal-seed-319/pilot-summary.tsv",
+      "source_path": "simulation/work/live_moose/adaptive-reciprocal-pilot-120-reversal-60/pilot-summary.tsv",
+      "sha256": "d5e3ad6e6a0e746ff1a2361387e9b791ed80f8b4e9afe7caed9a6f82b3c48adf",
+      "role": "Tabular six-arm summary"
+    },
+    {
+      "bundle_path": "data/reversal-seed-319/adaptive_reciprocal_pilot.py",
+      "source_path": "simulation/work/live_moose/adaptive_reciprocal_pilot.py",
+      "sha256": "7cd865dbec745dd894c6830ad29f37a4cf641ade2f683f3db0569ccf9e8c72cf",
+      "role": "Exact reversal implementation"
+    },
+    {
+      "bundle_path": "data/reversal-seed-319/voltage_conduction.i",
+      "source_path": "simulation/voltage-routing/voltage_conduction.i",
+      "sha256": "15303cefba25789574e8d74b5016498178a169208dad8b368e55a00db438e0ca",
+      "role": "MOOSE conduction model and boundary conditions"
+    }
+  ]
+}

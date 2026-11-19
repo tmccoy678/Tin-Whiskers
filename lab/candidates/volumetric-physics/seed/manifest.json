@@ -1,0 +1,11 @@
+{
+  "cells_path": "seed/seed_cells.tsv",
+  "cells_sha256": "fcc2e86d3a93d673611e07daac9126e51be663c2256ad2d3752af0a1416ebf5c",
+  "height": 128,
+  "mapping": "Exact occupied PNG cells; x unchanged; physical y = height - 1 - image row; all cells enter at z=nz//2.",
+  "occupied_cells": 6539,
+  "schema": "volumetric-seed/v1",
+  "source_path": "../interactive-3d/data/topology-0120.png",
+  "source_sha256": "b71b8fe617fb9e4ef7cce76aae7fc34a63a5546a08a7df840c09878db727e846",
+  "width": 192
+}

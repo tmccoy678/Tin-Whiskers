@@ -1,0 +1,9 @@
+# Generated presentation binaries and frame sequences are reproducible from
+# the checked scripts/manifests and remain outside canonical evidence.
+generated-adaptive/**/*.mov
+generated-adaptive/**/states/
+generated-adaptive/intel/current.ansi
+generated-adaptive/cut-repair/**/*.mov
+generated-adaptive/cut-repair/**/states/
+generated-cut-repair/**/*.mov
+generated-cut-repair/**/states/

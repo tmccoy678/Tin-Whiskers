@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "title": "SYNTHETIC LATTICE EVIDENCE",
+  "mode": "FIXED-RULE CONTROL",
+  "state_count": 3,
+  "fps": 4,
+  "source_value": "1 V",
+  "sink_value": "0 V",
+  "source_frames": "source-states",
+  "actions_file": "fixed-actions.json",
+  "lattice_roi": {
+    "x": 64,
+    "y": 54,
+    "width": 576,
+    "height": 288,
+    "cell_scale": 6
+  }
+}

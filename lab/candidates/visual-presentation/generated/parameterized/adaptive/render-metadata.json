@@ -1,0 +1,38 @@
+{
+  "actions_manifest_sha256" : "7487dd38029e54e1f7be88787258f2aff679e0184a85d125e7474fba240c7db2",
+  "fps" : 4,
+  "lattice_roi_output" : {
+    "height" : 288,
+    "width" : 576,
+    "x" : 144,
+    "y" : 124
+  },
+  "lattice_roi_source" : {
+    "cell_scale" : 6,
+    "display_scale" : 1,
+    "height" : 288,
+    "width" : 576,
+    "x" : 64,
+    "y" : 54
+  },
+  "mode" : "ADAPTIVE CONTROLLER",
+  "movie_duration_seconds" : 2.25,
+  "movie_frame_count" : 9,
+  "output_resolution" : [
+    864,
+    480
+  ],
+  "palette" : "DARK_LITERAL",
+  "presentation_manifest_sha256" : "9b1606e029ce713d5d4627ce327ad06935bd7fd135265bb929f6346e2a4e191a",
+  "schema_version" : 1,
+  "sink_value" : "0 V",
+  "source_frame_sha256" : {
+    "frame.0000.png" : "50213607dece3ddb912295ec0ddf3e7badad8608baf50917e1274da10283fe0f",
+    "frame.0001.png" : "d5c1c578b1701f29b156b4e35c711817f179090fbf2416ea599afb5b7d54861e",
+    "frame.0002.png" : "92685ca8a26290765b6c052a9ceb281374d903647c452e1313c453b3f7fae609"
+  },
+  "source_value" : "1 V",
+  "state_count" : 3,
+  "title" : "SYNTHETIC LATTICE EVIDENCE",
+  "write_movie" : true
+}

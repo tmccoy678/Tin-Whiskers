@@ -1,0 +1,70 @@
+{
+  "schema": "tin-whiskers-interactive-3d/v1",
+  "viewer": {
+    "application": "ParaView",
+    "version": "6.2.1",
+    "rendering": "local desktop process; no pvserver"
+  },
+  "dataset": {
+    "experiment": "120-action reciprocal pilot",
+    "arm": "adaptive-seed-319",
+    "controller_status": "ADAPTIVE CONTROLLER",
+    "state": 120,
+    "last_applied_action_index": 119,
+    "last_applied_action_id": "upper-heavy",
+    "last_applied_action_selection_mode": "exploit",
+    "upper_fraction": 0.75,
+    "lower_fraction": 0.25,
+    "grid_width_cells": 192,
+    "grid_height_cells": 128,
+    "total_cells": 24576,
+    "occupied_cells": 6539,
+    "source_boundary": "x=0, model value 1",
+    "sink_boundary": "x=1, model value 0",
+    "units_boundary": "The controller record marks voltage, current density, and optical energy as pending SI calibration."
+  },
+  "files": [
+    {
+      "bundle_path": "data/moose-0120.e",
+      "source_path": "simulation/work/live_moose/adaptive-reciprocal-pilot-120/adaptive-seed-319/moose-0120.e",
+      "sha256": "a5f4398811551e1fb7ee13666d37440bd78cc50d642d7e156db6dd6886e94544",
+      "role": "Final Exodus mesh with exact occupancy and field arrays"
+    },
+    {
+      "bundle_path": "data/topology-0120.png",
+      "source_path": "simulation/work/live_moose/adaptive-reciprocal-pilot-120/adaptive-seed-319/topology-0120.png",
+      "sha256": "b71b8fe617fb9e4ef7cce76aae7fc34a63a5546a08a7df840c09878db727e846",
+      "role": "Literal 192 by 128 occupancy image supplied to MOOSE"
+    },
+    {
+      "bundle_path": "data/metrics.tsv",
+      "source_path": "simulation/work/live_moose/adaptive-reciprocal-pilot-120/adaptive-seed-319/metrics.tsv",
+      "sha256": "983f4403078cd806992c9362b73bc5a044ed11ebf1ea96954be1b77a6d660698",
+      "role": "Per-state measured metrics"
+    },
+    {
+      "bundle_path": "data/actions.json",
+      "source_path": "simulation/work/live_moose/adaptive-reciprocal-pilot-120/adaptive-seed-319/actions.json",
+      "sha256": "00053f968ae52d5223ca5b8b7914b1012a56428ad75b55e31ee80209457e54a2",
+      "role": "Controller actions 0 through 119"
+    },
+    {
+      "bundle_path": "data/audit.jsonl",
+      "source_path": "simulation/work/live_moose/adaptive-reciprocal-pilot-120/adaptive-seed-319/audit.jsonl",
+      "sha256": "355155319518a2ab7c0aa492cd9523e5477a1a9e1567472de97c961cb2e085d3",
+      "role": "Hashed controller observations and decisions"
+    },
+    {
+      "bundle_path": "data/adaptive_reciprocal_pilot.py",
+      "source_path": "simulation/work/live_moose/adaptive_reciprocal_pilot.py",
+      "sha256": "7a2e0e32c59aa5fd45d7200aa371d356ad09c839ce0dbbec8338f5b4dd6a616c",
+      "role": "Exact pilot implementation used to produce the run"
+    },
+    {
+      "bundle_path": "data/voltage_conduction.i",
+      "source_path": "simulation/voltage-routing/voltage_conduction.i",
+      "sha256": "15303cefba25789574e8d74b5016498178a169208dad8b368e55a00db438e0ca",
+      "role": "MOOSE field model and source/sink boundary definitions"
+    }
+  ]
+}

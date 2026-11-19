@@ -42,6 +42,11 @@
   `LIV_IRIDIUM_NIOBIUM_SATURN.png`, and
   `LIV_IRIDIUM_NIOBIUM_TITAN.png` are fully labeled dual-lineage topology
   probes. `LIV_IRIDIUM_NIOBIUM_PLANETS.mp4` shows their actual formation.
+- `simulated-3d-physics-light.png` is the light-anatomy ParaView rendering of
+  the genuine `192 × 128 × 9` finite-volume candidate in
+  `lab/candidates/volumetric-physics/`. It contains 7,019 occupied voxels and
+  highlights 214 recorded out-of-plane growth choices. Local SHA-256:
+  `8a8763cf09b600b619517980f692861f82ce13cfe4aaa4538d2a0176bf6f6e03`.
 
 ## Reused research figure
 
@@ -66,3 +71,14 @@ domain and were retrieved from Wikimedia Commons:
   <https://commons.wikimedia.org/wiki/File:CajalHippocampus.jpeg>
 - `biological-cajal-retzius-1891.gif`: Cajal–Retzius cells, 1891.
   <https://commons.wikimedia.org/wiki/File:Cajal-Retzius_cell_drawing_by_Cajal_1891.gif>
+
+## Human connectomics comparator
+
+- `biological-human-H01-neuron-2024.jpg`: rendering associated with the H01
+  nanoscale reconstruction of human temporal cortex, retrieved from the NIH
+  Research Matters page on the published H01 study. Scientific source:
+  Shapson-Coe et al. (2024), *Science*, 384, eadk4858,
+  <https://doi.org/10.1126/science.adk4858>. Dataset and CC BY 4.0 terms:
+  <https://h01-release.storage.googleapis.com/data.html>. Image credit in the
+  source context: Google Research and the Lichtman Laboratory. Local SHA-256:
+  `9354d05612e763635078b90f951e128e9391e93da7346762af33ae51759b2468`.

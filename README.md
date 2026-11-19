@@ -85,6 +85,30 @@ per unit of delivered current, not electrical dominance.
 Full fields and the MOOSE-to-morphology loop are in
 [`simulation/voltage-routing/REMODEL_RESULTS.md`](simulation/voltage-routing/REMODEL_RESULTS.md).
 
+## Adaptive and volumetric extensions
+
+The first reciprocal adaptive pilots now establish an executable controller
+boundary. In two 120-action seed runs, the consequence-sensitive controller
+delivered `21.141×` and `20.744×` the initial flux while using approximately
+twice the initial material. Those mechanism tests modestly exceeded their
+matched yoked replays by `1.028%` and `0.498%`; fixed schedules remained strong
+comparators and used slightly less material. The reversal pilot exposed the
+next design requirement: renew exploration when observed consequences change
+rather than preserving an action after its efficacy changes.
+
+A separate `192 × 128 × 9` finite-volume candidate solves
+`div(sigma grad(V)) = 0` throughout a true volume and permits six-face material
+growth. Starting from the exact two-dimensional adaptive skeleton on the middle
+layer, three epochs produced 7,019 occupied voxels, including 214 recorded
+out-of-plane growth choices. The saved solve reached a normalized residual of
+`4.998e-8`. This is simulated three-dimensional physics with dimensionless
+conductivity; material calibration is the next admission boundary.
+
+The exact recorded cut–repair sequence is also available as a native ParaView
+timeline: epochs 0–17 are disconnected, epoch 18 is the first connected state,
+and connection persists through epoch 36. ParaView snaps between hashed source
+states without interpolating anatomy.
+
 ## Evidence after harder tests
 
 | Test | Result | Consequence | Record |
@@ -164,6 +188,8 @@ development and service.
 - [`materials/`](materials/) — candidate roles, planetary priors, and
   material-screening coordinates.
 - [`figures/`](figures/) — generated-result and third-party provenance.
+- [`manuscript/`](manuscript/) — anonymous two-page extended abstract, figures,
+  editable source, and final DOCX/PDF.
 - [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) — pinned environment and core
   rerun.
 

@@ -1,0 +1,45 @@
+{
+  "schema": "pro-recorded-timeline-receipt/v1",
+  "recorded_date": "2026-11-19",
+  "scene": {
+    "pro_pid": 94297,
+    "pro_bundle": "/private/tmp/cut-repair-timeline.fw5wAy",
+    "scene_path": "/private/tmp/cut-repair-timeline.fw5wAy/open_timeline_scene.py",
+    "paraview_app": "/Users/taylor/Applications/ParaView-6.2.1-Kitware-arm64.app",
+    "scene_sha256": "3a48ffaef14d9a77ca445d35b71ac3a5b6bc69637f90fa39addb3d2538317e54",
+    "pvd_sha256": "f643e0b74fb401387a4acda5c258543fb4bd979841297aaf59449bfd70d96944",
+    "manifest_sha256": "03c0965981cd8e2e353de8123fd086a399cdba60cc111330ec061672a409072c"
+  },
+  "timeline": {
+    "states": 37,
+    "time_values": "0 through 36 inclusive",
+    "play_mode": "Snap To TimeSteps",
+    "interpolation": "none",
+    "initial_state": 17,
+    "foreground_state": 18,
+    "first_connection_epoch": 18
+  },
+  "layouts": [
+    "LIGHT ANATOMY — CUT / REPAIR TIMELINE",
+    "CURRENT HEAT — CUT / REPAIR TIMELINE",
+    "JOULE HEAT — CUT / REPAIR TIMELINE"
+  ],
+  "actual_pro_pixel_check": {
+    "epoch_17": "PASS: toolbar time 17, DEVELOPING CONNECTION, upper 0.750, lower 0.250, literal cells and edges visible",
+    "scrub_action": "PASS: one native timestep increment changed both time controls from 17 to 18",
+    "epoch_18": "PASS: toolbar time 18, FIRST CONNECTION — EPOCH 18, upper 0.500, lower 0.500, changed recorded anatomy visible",
+    "window": "maximized on the single selected Pro display",
+    "final_foreground": "LIGHT ANATOMY at epoch 18"
+  },
+  "preservation": {
+    "prior_scene_pid_84236": "still running",
+    "prior_scene_pid_87868": "still running",
+    "volumetric_scene_pid_91940": "still running",
+    "discarded_retry_pid_93686": "terminated only after PID 94297 passed the clean 17-to-18 scrub check"
+  },
+  "adaptive_route": {
+    "metadata_states": 121,
+    "metadata_sha256": "f574315310efa3d58e4a6b30a660dae65384c3aa15caea38cb140d58a8f5acaa",
+    "converter": "same build_timeline.py with moose-{epoch:04d}.e and topology-{epoch:04d}.png templates"
+  }
+}

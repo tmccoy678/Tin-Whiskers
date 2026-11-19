@@ -1,0 +1,8 @@
+{
+  "passed" : true,
+  "rejections" : {
+    "mode_action_mismatch" : true,
+    "nonintegral_lattice_roi" : true,
+    "state_count_mismatch" : true
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "action_label" : "APPLIED",
+  "actions_file" : "actions-presenter.json",
+  "fps" : 4,
+  "frame_prefix" : "topology-",
+  "lattice_roi" : {
+    "cell_scale" : 1,
+    "display_scale" : 6,
+    "height" : 128,
+    "width" : 192,
+    "x" : 0,
+    "y" : 0
+  },
+  "mode" : "ADAPTIVE CONTROLLER",
+  "palette" : "DARK_LITERAL",
+  "schema_version" : 1,
+  "sink_value" : "0 V",
+  "source_frames" : "..\/..\/..\/..\/..\/simulation\/work\/live_moose\/adaptive-reciprocal-pilot-120\/adaptive-seed-319",
+  "source_value" : "1 V",
+  "state_count" : 121,
+  "state_index_base" : 0,
+  "title" : "ADAPTIVE REMODELING · SEED 319 · 120 ACTIONS",
+  "write_movie" : true
+}

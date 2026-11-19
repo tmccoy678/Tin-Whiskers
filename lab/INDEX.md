@@ -39,10 +39,12 @@
 - `candidates/visual-presentation/` — pixel-exact presenter and Intel atomic
   surface.
 - `candidates/interactive-3d/` — local Pro ParaView scene with exact lattice
-  cells and fields.
+  cells and fields; `timeline/` provides exact recorded-state playback for the
+  cut–repair sequence and the same conversion route for adaptive states.
 - `candidates/dobeworks-lab-access/` — six-worker room-local access reference.
 - `candidates/cyber-gym/` — isolated NASim fixed/random/Q-learning benchmark.
-- `candidates/volumetric-physics/` — genuine 3D physics candidate in progress.
+- `candidates/volumetric-physics/` — admitted `192 × 128 × 9` finite-volume
+  mechanism test with six-face growth and recorded out-of-plane choices.
 
 Large solver fields, movies, virtual environments, vendored packages, and live
 run artifacts remain in ignored work paths. Documents and candidate source

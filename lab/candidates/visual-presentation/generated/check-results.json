@@ -1,0 +1,43 @@
+{
+  "decoded_representative_anatomy" : {
+    "9" : {
+      "channel_byte_mismatches" : 0,
+      "movie_frame" : 12,
+      "pixel_mismatches" : 0
+    },
+    "18" : {
+      "channel_byte_mismatches" : 0,
+      "movie_frame" : 21,
+      "pixel_mismatches" : 0
+    },
+    "27" : {
+      "channel_byte_mismatches" : 0,
+      "movie_frame" : 30,
+      "pixel_mismatches" : 0
+    }
+  },
+  "failures" : [
+
+  ],
+  "maximum_rendered_anatomy_channel_byte_mismatches" : 0,
+  "maximum_rendered_anatomy_pixel_mismatches" : 0,
+  "minimum_nonbackground_pixels_in_required_text_regions" : 1066,
+  "movie" : {
+    "codec" : "uncompressed 24-bit RGB lossless all-intra",
+    "codec_subtype" : 24,
+    "decoded_frames" : 43,
+    "duration_seconds" : 10.75,
+    "endpoint_hold_frames_each" : 4,
+    "fps" : 4,
+    "resolution" : [
+      1440,
+      960
+    ]
+  },
+  "passed" : true,
+  "rendered_resolution" : [
+    1440,
+    960
+  ],
+  "rendered_states" : 37
+}

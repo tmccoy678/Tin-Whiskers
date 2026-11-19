@@ -1,0 +1,12 @@
+{
+  "clear_and_home_prefix" : true,
+  "complete_braille_cells" : 576,
+  "error_braille_cells" : 0,
+  "failures" : [
+
+  ],
+  "final_surface_status" : "COMPLETE",
+  "overwrite_only_status_input" : true,
+  "passed" : true,
+  "running_braille_cells" : 576
+}

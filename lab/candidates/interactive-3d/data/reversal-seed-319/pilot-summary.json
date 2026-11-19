@@ -1,0 +1,54 @@
+{
+  "inference": "not_run",
+  "reversal_epoch": 60,
+  "summaries": [
+    {
+      "arm": "adaptive-seed-319",
+      "final_metal_fraction": 0.17721896701386,
+      "final_terminal_flux": 0.091595086091322,
+      "material_ratio": 2.00091883614067,
+      "peak_current_per_delivery_reduction_pct": 91.08880494006858,
+      "terminal_flux_ratio": 21.127103525217162
+    },
+    {
+      "arm": "adaptive-seed-571",
+      "final_metal_fraction": 0.17686631944442,
+      "final_terminal_flux": 0.089619881692048,
+      "material_ratio": 1.9969372128635376,
+      "peak_current_per_delivery_reduction_pct": 89.83785940848036,
+      "terminal_flux_ratio": 20.671507601814458
+    },
+    {
+      "arm": "fixed-seed-319",
+      "final_metal_fraction": 0.18069118923609,
+      "final_terminal_flux": 0.09475241732878,
+      "material_ratio": 2.0401225114853236,
+      "peak_current_per_delivery_reduction_pct": 91.06403645051526,
+      "terminal_flux_ratio": 21.85536599827899
+    },
+    {
+      "arm": "fixed-seed-571",
+      "final_metal_fraction": 0.18001302083331,
+      "final_terminal_flux": 0.092947715648567,
+      "material_ratio": 2.032465543644563,
+      "peak_current_per_delivery_reduction_pct": 89.84835745201873,
+      "terminal_flux_ratio": 21.439097824329366
+    },
+    {
+      "arm": "yoked-seed-319-from-571",
+      "final_metal_fraction": 0.17645941840275,
+      "final_terminal_flux": 0.090658352387471,
+      "material_ratio": 1.9923430321590587,
+      "peak_current_per_delivery_reduction_pct": 91.08897611732897,
+      "terminal_flux_ratio": 20.911038769111265
+    },
+    {
+      "arm": "yoked-seed-571-from-319",
+      "final_metal_fraction": 0.17602539062498,
+      "final_terminal_flux": 0.089178187074023,
+      "material_ratio": 1.9874425727410756,
+      "peak_current_per_delivery_reduction_pct": 89.83786171238762,
+      "terminal_flux_ratio": 20.56962737745131
+    }
+  ]
+}

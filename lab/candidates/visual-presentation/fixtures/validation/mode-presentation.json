@@ -1,0 +1,18 @@
+{
+  "actions_file" : "..\/adaptive-actions.json",
+  "fps" : 4,
+  "lattice_roi" : {
+    "cell_scale" : 6,
+    "height" : 288,
+    "width" : 576,
+    "x" : 64,
+    "y" : 54
+  },
+  "mode" : "FIXED-RULE CONTROL",
+  "schema_version" : 1,
+  "sink_value" : "0 V",
+  "source_frames" : "..\/source-states",
+  "source_value" : "1 V",
+  "state_count" : 3,
+  "title" : "SYNTHETIC LATTICE EVIDENCE"
+}

@@ -1,0 +1,31 @@
+{
+  "action_decisions" : [
+    "FIXED",
+    "FIXED",
+    "FIXED"
+  ],
+  "failures" : [
+
+  ],
+  "maximum_rendered_anatomy_channel_byte_mismatches" : 0,
+  "maximum_rendered_anatomy_pixel_mismatches" : 0,
+  "minimum_nonbackground_pixels_in_required_text_regions" : 1300,
+  "mode" : "FIXED-RULE CONTROL",
+  "movie" : {
+    "codec_subtype" : 24,
+    "decoded_frames" : 9,
+    "duration_seconds" : 2.25,
+    "expected_frames" : 9,
+    "fps" : 4,
+    "maximum_decoded_anatomy_channel_byte_mismatches" : 0,
+    "maximum_decoded_anatomy_pixel_mismatches" : 0
+  },
+  "passed" : true,
+  "rendered_resolution" : [
+    864,
+    480
+  ],
+  "sink_value" : "0 V",
+  "source_value" : "1 V",
+  "state_count" : 3
+}

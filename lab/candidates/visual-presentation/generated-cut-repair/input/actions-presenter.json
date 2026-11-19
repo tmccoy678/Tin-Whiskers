@@ -1,0 +1,339 @@
+{
+  "actions" : [
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "INACTIVE",
+      "lower_fraction" : 0.5,
+      "state" : 0,
+      "upper" : "INACTIVE",
+      "upper_fraction" : 0.5
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "INACTIVE",
+      "lower_fraction" : 0.25,
+      "state" : 1,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 0.75
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "INACTIVE",
+      "lower_fraction" : 0.066987298107780702,
+      "state" : 2,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 0.9330127018922193
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "OFF",
+      "lower_fraction" : 0,
+      "state" : 3,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 1
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "INACTIVE",
+      "lower_fraction" : 0.066987298107780646,
+      "state" : 4,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 0.93301270189221941
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "INACTIVE",
+      "lower_fraction" : 0.25,
+      "state" : 5,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 0.75
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "INACTIVE",
+      "lower_fraction" : 0.49999999999999994,
+      "state" : 6,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 0.50000000000000011
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 0.74999999999999989,
+      "state" : 7,
+      "upper" : "INACTIVE",
+      "upper_fraction" : 0.25000000000000011
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 0.93301270189221919,
+      "state" : 8,
+      "upper" : "INACTIVE",
+      "upper_fraction" : 0.066987298107780813
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 1,
+      "state" : 9,
+      "upper" : "OFF",
+      "upper_fraction" : 0
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 0.9330127018922193,
+      "state" : 10,
+      "upper" : "INACTIVE",
+      "upper_fraction" : 0.066987298107780702
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 0.75000000000000022,
+      "state" : 11,
+      "upper" : "INACTIVE",
+      "upper_fraction" : 0.24999999999999978
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 0.50000000000000011,
+      "state" : 12,
+      "upper" : "INACTIVE",
+      "upper_fraction" : 0.49999999999999989
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "INACTIVE",
+      "lower_fraction" : 0.25,
+      "state" : 13,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 0.75
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "INACTIVE",
+      "lower_fraction" : 0.066987298107780813,
+      "state" : 14,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 0.93301270189221919
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "OFF",
+      "lower_fraction" : 0,
+      "state" : 15,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 1
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "INACTIVE",
+      "lower_fraction" : 0.066987298107780424,
+      "state" : 16,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 0.93301270189221963
+    },
+    {
+      "connection" : "DISCONNECTED",
+      "decision" : "FIXED",
+      "lower" : "INACTIVE",
+      "lower_fraction" : 0.25000000000000011,
+      "state" : 17,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 0.74999999999999989
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "INACTIVE",
+      "lower_fraction" : 0.49999999999999983,
+      "state" : 18,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 0.50000000000000022
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 0.74999999999999956,
+      "state" : 19,
+      "upper" : "INACTIVE",
+      "upper_fraction" : 0.25000000000000044
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 0.93301270189221941,
+      "state" : 20,
+      "upper" : "INACTIVE",
+      "upper_fraction" : 0.066987298107780646
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 1,
+      "state" : 21,
+      "upper" : "OFF",
+      "upper_fraction" : 0
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 0.93301270189221963,
+      "state" : 22,
+      "upper" : "INACTIVE",
+      "upper_fraction" : 0.066987298107780424
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 0.75000000000000067,
+      "state" : 23,
+      "upper" : "INACTIVE",
+      "upper_fraction" : 0.24999999999999928
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 0.50000000000000022,
+      "state" : 24,
+      "upper" : "INACTIVE",
+      "upper_fraction" : 0.49999999999999978
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "INACTIVE",
+      "lower_fraction" : 0.24999999999999972,
+      "state" : 25,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 0.75000000000000022
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "INACTIVE",
+      "lower_fraction" : 0.066987298107780646,
+      "state" : 26,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 0.93301270189221941
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "OFF",
+      "lower_fraction" : 0,
+      "state" : 27,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 1
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "INACTIVE",
+      "lower_fraction" : 0.066987298107780369,
+      "state" : 28,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 0.93301270189221963
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "INACTIVE",
+      "lower_fraction" : 0.25,
+      "state" : 29,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 0.75
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "INACTIVE",
+      "lower_fraction" : 0.49999999999999878,
+      "state" : 30,
+      "upper" : "ACTIVE",
+      "upper_fraction" : 0.50000000000000122
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 0.74999999999999944,
+      "state" : 31,
+      "upper" : "INACTIVE",
+      "upper_fraction" : 0.25000000000000056
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 0.93301270189221885,
+      "state" : 32,
+      "upper" : "INACTIVE",
+      "upper_fraction" : 0.066987298107781146
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 1,
+      "state" : 33,
+      "upper" : "OFF",
+      "upper_fraction" : 0
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 0.93301270189221919,
+      "state" : 34,
+      "upper" : "INACTIVE",
+      "upper_fraction" : 0.066987298107780813
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 0.75,
+      "state" : 35,
+      "upper" : "INACTIVE",
+      "upper_fraction" : 0.24999999999999994
+    },
+    {
+      "connection" : "CONNECTED",
+      "decision" : "FIXED",
+      "lower" : "ACTIVE",
+      "lower_fraction" : 0.50000000000000033,
+      "state" : 36,
+      "upper" : "INACTIVE",
+      "upper_fraction" : 0.49999999999999961
+    }
+  ],
+  "schema_version" : 1,
+  "state_count" : 37
+}

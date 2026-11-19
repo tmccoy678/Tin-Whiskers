@@ -1,0 +1,56 @@
+{
+  "schema": "volumetric-physics-manifest/v1",
+  "status": "completed computational mechanism candidate",
+  "label_earned": "SIMULATED 3D PHYSICS",
+  "claim_boundary": "Dimensionless 3D finite-volume mechanism test; no physical material calibration is claimed.",
+  "mesh": {
+    "dimensions": [192, 128, 9],
+    "points": 221184,
+    "initial_condition_layer": 4,
+    "initial_occupied_voxels": 6539,
+    "final_occupied_voxels": 7019,
+    "occupied_z_layers": [2, 3, 4, 5, 6]
+  },
+  "physics": {
+    "equation": "div(sigma grad(V)) = 0",
+    "stencil": "six face-neighbors",
+    "source_boundary": "V=1 at x=0",
+    "sink_boundary": "V=0 at x=191",
+    "other_boundaries": "zero normal flux",
+    "solver": "red-black SOR",
+    "residual_linf": 4.997898526409e-8,
+    "source_sink_relative_error": 1.142007651402e-3,
+    "source_joule_relative_error": 5.577523764040e-4,
+    "out_of_plane_growth_choices": 214
+  },
+  "files": [
+    {
+      "path": "output/final-volume.vtk",
+      "sha256": "753a22b99bdc9c1a938ef043e7a653b4a22ac03366a82eb48820be2fd76bcfca"
+    },
+    {
+      "path": "output/metrics.tsv",
+      "sha256": "25280c0ac11d0c59e39df0a5b3006ffb0093ebfbff67412a2a7ff21707a3b4ab"
+    },
+    {
+      "path": "output/summary.json",
+      "sha256": "c9dec46421ae5cd5d6d34d21dad6d6c922b674ec4e3d76244d90ee48f79e0020"
+    },
+    {
+      "path": "seed/seed_cells.tsv",
+      "sha256": "fcc2e86d3a93d673611e07daac9126e51be663c2256ad2d3752af0a1416ebf5c"
+    },
+    {
+      "path": "seed/manifest.json",
+      "sha256": "aa0a83a04d25d4cf574a3cb123d0656ea9d92eb236ecd54fac6a424d158d34fc"
+    },
+    {
+      "path": "Cargo.lock",
+      "sha256": "43446c16bfaa961300e71734f13fd7ad68b322f3d77ae75af189244cc06738a2"
+    },
+    {
+      "path": "src/main.rs",
+      "sha256": "7a8cd64afb8df1cc8e5407e41194291843bca2dc72f71be13ff308e0b253f11d"
+    }
+  ]
+}

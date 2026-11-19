@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "status": "RUNNING",
+  "mode": "ADAPTIVE CONTROLLER",
+  "title": "SYNTHETIC LATTICE EVIDENCE",
+  "state": 1,
+  "state_count": 3,
+  "upper": "ACTIVE",
+  "lower": "OFF",
+  "decision": "EXPLORE",
+  "source_value": "1 V",
+  "sink_value": "0 V",
+  "frame": "generated/parameterized/adaptive/states/frame.0001.png",
+  "roi": {
+    "x": 144,
+    "y": 124,
+    "width": 576,
+    "height": 288,
+    "cell_scale": 6
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "paraview-pristine-install/v1",
+  "recorded_date": "2026-11-19",
+  "official_release_reference": "https://www.paraview.org/Download/",
+  "source_disk_image": {
+    "workspace_path": "simulation/work/downloads/ParaView-6.2.1-arm64.dmg",
+    "bytes": 530923745,
+    "sha256": "14ab14fb68adab31677c21c008a2d987145093b001ac2424c7a025dc6d765b57",
+    "hdiutil_verify": "VALID",
+    "spctl_install_assessment": "rejected: no usable signature",
+    "download_origin_xattr": null,
+    "identity_boundary": "Official identity is established by the mounted app's valid Kitware Developer ID signature and Apple notarization; the DMG itself has no usable Gatekeeper signature and carries no origin URL metadata."
+  },
+  "mounted_application": {
+    "bundle_name": "ParaView-6.2.1.app",
+    "architecture": "arm64",
+    "version_output": "paraview version 6.2.1",
+    "bundle_identifier": "org.paraview.ParaView",
+    "developer_id": "Developer ID Application: Kitware Inc. (W38PE5Y733)",
+    "team_identifier": "W38PE5Y733",
+    "signature_timestamp": "2026-11-10T06:24:44-06:00",
+    "codesign_verify_deep_strict": "PASS",
+    "spctl": "accepted; source=Notarized Developer ID",
+    "stapler_validate": "PASS",
+    "main_executable_sha256": "0a7119701da374e721d43108324cf96a36441f51e2d0e4df7c13d291da556c69",
+    "code_resources_sha256": "5e1a3c40469d3fead1bddd23f3e3ec2b23dbd01ff3f0c938c176579791f09785",
+    "info_plist_sha256": "468f57d5f0dc478fcf3cd544576cacb18d32934383beeda6d5950e0d2107d204"
+  },
+  "installation": {
+    "method": "Mounted the verified DMG read-only and copied the intact app bundle with ditto --rsrc --extattr; no tar archive was used.",
+    "studio_path": "/Users/tmccoy678/Applications/ParaView-6.2.1-Kitware-arm64.app",
+    "pro_path": "/Users/taylor/Applications/ParaView-6.2.1-Kitware-arm64.app",
+    "studio_codesign_verify_deep_strict": "PASS",
+    "pro_codesign_verify_deep_strict": "PASS",
+    "studio_spctl": "accepted; source=Notarized Developer ID",
+    "pro_spctl": "accepted; source=Notarized Developer ID",
+    "studio_stapler_validate": "PASS",
+    "pro_stapler_validate": "PASS",
+    "studio_version_output": "paraview version 6.2.1",
+    "pro_version_output": "paraview version 6.2.1",
+    "studio_evidence_open": "PASS: 24576 cells, 6539 occupied cells, nonzero required fields",
+    "pro_evidence_open": "PASS: 24576 cells, 6539 occupied cells, nonzero required fields",
+    "byte_identity": "DMG, main executable, CodeResources, and Info.plist hashes match across the mounted source and both installs."
+  },
+  "live_scene_preservation": {
+    "pro_pid_during_install": 84236,
+    "existing_executable": "/Users/taylor/Applications/ParaView-6.2.1.app/Contents/MacOS/paraview",
+    "status_after_parallel_install": "still running; not replaced or terminated",
+    "parallel_pristine_pid": 87868,
+    "parallel_pristine_executable": "/Users/taylor/Applications/ParaView-6.2.1-Kitware-arm64.app/Contents/MacOS/paraview",
+    "foreground_layout": "LIGHT ANATOMY",
+    "actual_pro_pixel_check": "PASS: pale background, categorical dark occupied cells, exact dark voxel edges, source/sink and stimulus markers, labels, and fine tendrils visible; CURRENT HEAT layout remains available with its legend"
+  }
+}

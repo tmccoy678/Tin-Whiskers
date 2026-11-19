@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "state_count": 3,
+  "actions": [
+    {
+      "state": 0,
+      "upper": "INACTIVE",
+      "lower": "INACTIVE",
+      "decision": "FIXED"
+    },
+    {
+      "state": 1,
+      "upper": "ACTIVE",
+      "lower": "OFF",
+      "decision": "FIXED"
+    },
+    {
+      "state": 2,
+      "upper": "OFF",
+      "lower": "ACTIVE",
+      "decision": "FIXED"
+    }
+  ]
+}

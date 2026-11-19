@@ -1,0 +1,38 @@
+{
+  "schema": "volumetric-physics-scene-receipt/v1",
+  "recorded_date": "2026-11-19",
+  "scene": {
+    "studio_path": "lab/candidates/volumetric-physics/open_volume_scene.py",
+    "scene_sha256": "63020f1e603e83f370d978af7fe73c717c3fdbfedc643ac303f0aff0fb20abee",
+    "launcher_sha256": "a4a0339c1044bdbf85849d9413ae828e6b4b0a578fb63f196b09aab03b967f16",
+    "pro_bundle": "/private/tmp/volumetric-physics-scene.00tpd8",
+    "vtk_sha256": "753a22b99bdc9c1a938ef043e7a653b4a22ac03366a82eb48820be2fd76bcfca",
+    "paraview_app": "/Users/taylor/Applications/ParaView-6.2.1-Kitware-arm64.app",
+    "pro_pid": 91940
+  },
+  "permanent_labels": [
+    "SIMULATED 3D PHYSICS",
+    "DIMENSIONLESS MECHANISM — MATERIAL CALIBRATION PENDING"
+  ],
+  "layouts": {
+    "foreground": "LIGHT ANATOMY — TRUE VOLUME",
+    "secondary": "CURRENT / JOULE — TRUE VOLUME"
+  },
+  "controls": {
+    "literal_voxels": "02 OCCUPIED VOXELS — LIGHT / CURRENT toggle",
+    "draggable_clip": "07 DRAGGABLE Z CLIP — toggle eye, then Show Plane",
+    "draggable_slice": "08 DRAGGABLE JOULE Z SLICE — select and Show Plane",
+    "full_field_clip": "09 FULL-FIELD Z CLIP — current/Joule diagnostic"
+  },
+  "actual_pro_pixel_check": {
+    "window": "maximized on the single selected Pro display",
+    "light_anatomy": "PASS: literal dark voxel edges, fine branches, gold +z and violet -z growth, z extent, source and sink, permanent labels, and solver/accounting footer are legible",
+    "current_joule": "PASS: clipped current-colored voxels, Joule z slice, and separate current/Joule legends are visible",
+    "final_foreground": "LIGHT ANATOMY — TRUE VOLUME"
+  },
+  "preservation": {
+    "prior_scene_pid_84236": "still running",
+    "prior_scene_pid_87868": "still running",
+    "discarded_retry_pid_91697": "terminated only after PID 91940 passed visual inspection"
+  }
+}

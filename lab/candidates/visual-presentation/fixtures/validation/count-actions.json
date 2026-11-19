@@ -1,0 +1,18 @@
+{
+  "actions" : [
+    {
+      "decision" : "WARMUP",
+      "lower" : "INACTIVE",
+      "state" : 0,
+      "upper" : "INACTIVE"
+    },
+    {
+      "decision" : "EXPLORE",
+      "lower" : "OFF",
+      "state" : 1,
+      "upper" : "ACTIVE"
+    }
+  ],
+  "schema_version" : 1,
+  "state_count" : 2
+}

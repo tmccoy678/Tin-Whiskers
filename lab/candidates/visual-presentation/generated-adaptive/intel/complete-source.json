@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETE",
+  "mode": "ADAPTIVE CONTROLLER",
+  "title": "ADAPTIVE REMODELING · SEED 319 · 120 ACTIONS",
+  "state": 120,
+  "state_count": 121,
+  "display_zero_based": true,
+  "upper": "ACTIVE",
+  "lower": "INACTIVE",
+  "decision": "EXPLOIT",
+  "source_value": "1 V",
+  "sink_value": "0 V",
+  "frame": "generated-adaptive/dark/states/topology-0120.png",
+  "roi": {
+    "x": 144,
+    "y": 124,
+    "width": 1152,
+    "height": 768,
+    "cell_scale": 6
+  }
+}

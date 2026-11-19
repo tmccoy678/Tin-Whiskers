@@ -1,0 +1,24 @@
+{
+  "action_label" : "PROBE",
+  "actions_file" : "actions-presenter.json",
+  "fps" : 4,
+  "frame_prefix" : "frame.",
+  "lattice_roi" : {
+    "cell_scale" : 6,
+    "display_scale" : 1,
+    "height" : 768,
+    "width" : 1152,
+    "x" : 64,
+    "y" : 54
+  },
+  "mode" : "FIXED-RULE CONTROL",
+  "palette" : "DARK_LITERAL",
+  "schema_version" : 1,
+  "sink_value" : "0 V",
+  "source_frames" : "\/Users\/tmccoy678\/Desktop\/Tin Whisker Dendrite Work\/Results\/current_fiber_cut_repair_frames",
+  "source_value" : "1 V",
+  "state_count" : 37,
+  "state_index_base" : 0,
+  "title" : "CUT AND REPAIR · TWO-FIBER PROBE",
+  "write_movie" : true
+}

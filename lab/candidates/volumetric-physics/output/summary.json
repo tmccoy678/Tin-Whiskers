@@ -1,0 +1,22 @@
+{
+  "schema": "volumetric-physics-result/v1",
+  "label": "SIMULATED 3D PHYSICS",
+  "grid": [192, 128, 9],
+  "initial_condition": "Exact 192 by 128 occupied-cell skeleton placed only on z=4",
+  "neighbor_rule": "six face-neighbors only",
+  "boundary_conditions": "V=1 at x=0, V=0 at x=191, zero normal flux on y and z exterior faces",
+  "conductivity_material": 1.0,
+  "conductivity_medium": 0.01,
+  "initial_occupied_voxels": 6539,
+  "final_occupied_voxels": 7019,
+  "out_of_plane_growth_choices": 214,
+  "final_sink_current": 8.317308539053e-4,
+  "final_joule_power": 8.312454650843e-4,
+  "final_max_current": 1.752656649543e0,
+  "solver_iterations": 8120,
+  "solver_residual_linf": 4.997898526409e-8,
+  "solver_residual_l2": 2.368645789131e-8,
+  "source_sink_relative_error": 1.142007651402e-3,
+  "source_joule_relative_error": 5.577523764040e-4,
+  "unit_boundary": "Dimensionless computational mechanism test; no physical material calibration is claimed."
+}

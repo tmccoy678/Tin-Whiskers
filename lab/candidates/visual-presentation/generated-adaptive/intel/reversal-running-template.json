@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "status": "RUNNING",
+  "mode": "ADAPTIVE CONTROLLER",
+  "title": "REVERSAL EXPERIMENT · CURRENT FROZEN STATE",
+  "state": 0,
+  "state_count": 121,
+  "display_zero_based": true,
+  "upper": "N/A",
+  "lower": "N/A",
+  "decision": "WARMUP",
+  "source_value": "1 V",
+  "sink_value": "0 V",
+  "frame": "REPLACE_WITH_FROZEN_CURRENT_FRAME.png",
+  "roi": {
+    "x": 144,
+    "y": 124,
+    "width": 1152,
+    "height": 768,
+    "cell_scale": 6
+  },
+  "template_note": "Replace state, action, frame, and any changed boundary values from the successor's current frozen manifest before deployment."
+}

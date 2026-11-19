@@ -12,6 +12,8 @@ lab/candidates/visual-presentation/generated/*.mov
 lab/candidates/visual-presentation/generated/**/*.mov
 lab/candidates/visual-presentation/generated/**/states/
 lab/candidates/visual-presentation/generated/**/decoded/
+lab/candidates/interactive-3d/timeline/*/data/
+manuscript/working/
 simulation/voltage-routing/*.csv
 simulation/voltage-routing/*.log
 simulation/voltage-routing/ablation/*.csv
