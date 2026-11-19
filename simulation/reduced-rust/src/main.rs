@@ -283,7 +283,9 @@ fn main() -> std::io::Result<()> {
     writeln!(log, "step,metal_cells,frontier_x,bridged")?;
 
     let events = (1.0 + 2.0 * cfg.drive.clamp(0.0, 1.5)).round() as usize;
+    let mut steps_completed = 0;
     for step in 0..cfg.steps {
+        steps_completed = step + 1;
         sim.solve_potential(45);
         sim.diffuse(3);
         for _ in 0..events.max(1) {
@@ -316,7 +318,8 @@ fn main() -> std::io::Result<()> {
     write_pgm(&output.with_extension("potential.pgm"), &potential)?;
 
     println!(
-        "steps={} seed={} drive={:.3} light_gain={:.3} metal={} frontier={} bridged={}",
+        "steps_completed={} step_budget={} seed={} drive={:.3} light_gain={:.3} metal={} frontier={} bridged={}",
+        steps_completed,
         cfg.steps,
         cfg.seed,
         cfg.drive,

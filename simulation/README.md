@@ -8,8 +8,8 @@ history-bearing topology before any physical substrate is purchased.
 1. **High-fidelity physics** — use validated phase-field and level-set models
    for electricity, ion transport, diffusion, heat, flow, and moving material
    boundaries.
-2. **Small physical calibration** — later use one transparent dish to measure
-   the material parameters the model cannot supply honestly.
+2. **Small physical calibration** — use one transparent dish to measure the
+   material parameters that must be determined experimentally.
 3. **Model reconciliation** — require simulated and observed morphology,
    conductance, and time scales to agree within stated tolerances.
 4. **Reduced Rust model** — preserve the calibrated relationships in a fast,

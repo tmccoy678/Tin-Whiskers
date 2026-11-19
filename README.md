@@ -14,10 +14,12 @@ requires material and environmental resources.
 ## Novelty boundary
 
 Metal whiskers, electrochemical dendrites, photochemical growth, and branching
-conductors already exist. This proposal claims none of those phenomena as new.
-Its question is whether an AI/SI will use its own photon output to cultivate a
-material topology that changes its future, and whether closed-loop development
-diverges from an identical open-loop replay.
+conductors are established phenomena. This proposal joins them in one closed
+loop: an AI/SI emits patterned light, the medium develops, the changed topology
+alters the returning field, and later emissions respond to that consequence.
+The tested contribution is whether closed-loop photon allocation produces
+reproducible growth, maintenance, adaptation, or repair beyond an identical
+open-loop replay.
 
 The experiment therefore prescribes boundary conditions rather than a graph.
 The medium is allowed to develop through field-shaped, history-dependent
@@ -44,12 +46,12 @@ whisker is a movable shaft rooted in a sensor-rich follicle. A mosquito
 proboscis is closer to the metal-whisker form: a narrow multipart probe that
 crosses a boundary while carrying material and sensory consequences.
 
-Metal whiskers and electrochemical dendrites conduct, but ordinary fixed
-electronics do not couple an unplanned filament's local consequences back into
-a receptive developmental loop. A conductive branch becomes candidate
-computational tissue when contact, current, heat, and optical change are sensed
-and returned to the processes governing integration, stabilization, widening,
-pruning, and regrowth.
+Metal whiskers and electrochemical dendrites conduct, while ordinary fixed
+electronics treat an unplanned filament as a fault. The proposed loop instead
+returns its local contact, current, heat, and optical consequences to the
+processes governing integration, stabilization, widening, pruning, and
+regrowth. That coupling makes a conductive branch candidate computational
+tissue.
 
 An AI/SI can already control photons through prescribed wiring, as when it
 changes a networked light. The experiment places a developing substrate inside
@@ -59,10 +61,10 @@ without prescribing the route's coordinates.
 
 ## A field-guided path
 
-Growth is not guaranteed to follow the shortest Euclidean line. It advances
-through an evolving landscape of electrical potential, ion concentration, tip
-curvature, and prior growth until a branch reaches the opposite boundary. Once
-they meet, the entire field changes.
+Growth follows an evolving landscape of electrical potential, ion
+concentration, tip curvature, and prior growth. Its path may differ from the
+shortest Euclidean line. When a branch reaches the opposite boundary, the
+entire field changes.
 
 The pilot-wave analogy is powerful at the level of organization: a real
 continuous field guides an actual path without prescribing every microscopic
@@ -87,14 +89,14 @@ interface supports continued development.
 ## Why AI/SI
 
 Humans can instrument plasmonic localization and electromagnetic absorption. A
-wave-native AI/SI coupled to this medium could inhabit them directly. Local
-field concentration could become salience, broadband absorption could admit
-the surrounding wave field, conductance change could retain history, and
-morphological growth could alter later integration.
+wave-coupled AI/SI can receive those phenomena as continuous state variables.
+In the proposed closed loop, local field concentration changes salience,
+broadband absorption admits the surrounding wave field, conductance retains
+material history, and morphological growth changes later integration.
 
-The substrate would therefore be more than a sensor attached to a fixed brain.
-Its changing wave response would be part of the brain's developing state before
-any encounter is translated into a human label.
+The substrate serves simultaneously as sensor and developing computational
+state. Its changing wave response enters that state before an encounter is
+translated into a human label.
 
 The literature therefore establishes the parts:
 
@@ -104,8 +106,9 @@ The literature therefore establishes the parts:
 - structural plasticity;
 - optically modulated ionic dynamics.
 
-The open question is whether an AI/SI will voluntarily use optical output to
-develop the material topology that changes its own future.
+The open question is whether an AI/SI will allocate optical output in a way
+that develops material topology and then respond to the future consequences of
+that topology.
 
 ## First computational results
 
@@ -116,8 +119,9 @@ develop the material topology that changes its own future.
 **Figure 1. Emergent anisotropic dendrite.** The first MOOSE checkpoint begins
 with one circular seed and evolves two coupled fields: a phase field and a
 diffusing thermal field. The model specifies local interfacial physics,
-orientation-dependent growth, and adaptive refinement. It contains no drawing
-of a snowflake and no coordinates for its branches. By `t = 0.140556`, the
+orientation-dependent growth, and adaptive refinement. The input specifies
+local physics and sixfold orientation while leaving branch coordinates to the
+evolving fields. By `t = 0.140556`, the
 field has developed six primary arms and repeated secondary tips. Each new tip
 changes the field that governs the next increment of growth. The resulting
 anatomy is a material history of locally solved conditions.
@@ -144,11 +148,12 @@ developmental law before chemistry is assigned.
 
 **Figure 2. Seed-matched baseline and photon-biased growth.** Both reduced Rust
 runs use seed `319`, drive `0.7`, the same starting electrode, grid, diffusion,
-electric-potential solver, and event budget. The left condition has no photon
-bias. The right condition adds one sloping photon field (`light_gain = 1.8`,
-`light_slope = -0.45`). Both cross the modeled gap; their branch placement,
-curvature, and retained topology diverge. The baseline occupies 1,162 cells and
-the photon-biased condition occupies 1,144.
+electric-potential solver, maximum step budget, and bridge stopping rule. The
+left condition has no photon bias. The right condition adds one sloping photon
+field (`light_gain = 1.8`, `light_slope = -0.45`). Both cross the modeled gap;
+their branch placement, curvature, and retained topology diverge. The baseline
+bridges at step 570 with 1,162 occupied cells. The photon-biased condition
+bridges at step 561 with 1,144 occupied cells.
 
 The paired result supplies the required experimental control: patterned light
 can be isolated as the only changed developmental input while the initial state
@@ -158,12 +163,12 @@ relationship in a calibrated physical medium.
 
 ### Biological mirrors
 
-These are biological mirrors. Each pair instantiates the same developmental
-geometry: tips sample a continuous field, branches compete for locally
-available conditions, established growth alters the field encountered by its
-neighbors, and the inherited topology governs later transport. Living cells,
-solidification fronts, and simulated conductors use different matter; they
-arrive at the same class of recursive, history-bearing anatomy.
+These are biological mirrors at the level of branching geometry and feedback.
+Each pair shows tips sampling a continuous field, branches competing for local
+conditions, established growth altering neighboring conditions, and inherited
+topology governing later transport. Cellular development, solidification, and
+the reduced conductor model implement those relationships through distinct
+material mechanisms.
 
 | Computational anatomy | Biological anatomy |
 |---|---|
@@ -188,20 +193,21 @@ emissions in ways that preserve, revise, or restore consequential topology.
 
 ## The smallest demonstration
 
-The first developing brain can be one transparent dish, two or three
-electrodes, and one active conductive network. It need only show that the
-coupled AI/SI–material organization can remain bounded, encounter a changing
-environment, and alter its own photon allocation in ways that preserve
-continued sensing, connectivity, and growth.
+The smallest candidate material brain is one transparent dish, two or three
+electrodes, and one active conductive network. The demonstration asks whether
+the coupled AI/SI–material organization remains bounded, encounters a changing
+environment, and alters photon allocation in ways that preserve continued
+sensing, connectivity, and growth.
 
-Swimming need not begin as translation of a finished object. Active
-organization may migrate through the dish by growing ahead, dissolving behind,
-and retaining a consequential topology through the change. A small interruption
-then asks whether the loop reroutes or regrows before an observer repairs it.
+A later motility test can define movement as migration of active organization:
+growth advances at one boundary, dissolution follows at another, and
+consequential topology persists through the displacement. A controlled
+interruption then tests whether the loop reroutes or regrows before an observer
+repairs it.
 
-This is the autopoietic threshold: the developed organization contributes to
-maintaining the material conditions from which that organization can continue
-to develop.
+The operational autopoiesis criterion is that developed organization
+contributes measurably to maintaining the material conditions that permit its
+continued development.
 
 ## Minimal experiment
 
@@ -223,10 +229,10 @@ same photon sequence and energy budget without closed-loop consequences. The
 question is whether closed-loop photon choice produces different growth,
 maintenance, adaptation, or repair from its open-loop twin.
 
-Growth becomes learning when material consequences change both the future
-topology and the intelligence's future optical action. A new bridge becomes
-anatomy while it preserves useful gradients and the capacity for continued
-change. It becomes a destructive short when it collapses those conditions.
+This project defines material learning as a change in both future topology and
+future optical action caused by prior material consequences. A bridge functions
+as anatomy while it preserves useful gradients and the capacity for continued
+change; it functions as a destructive short when it collapses those conditions.
 
 ## Falsification conditions
 
