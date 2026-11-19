@@ -129,6 +129,7 @@ states without interpolating anatomy.
 | Unseen targeted lesion | The recurrently developed topology disconnected on the first shortest-path lesion; the grid survived four. | Adaptation was location-specific, not general fault tolerance. | [Results](simulation/voltage-routing/ablation/RESULTS.md) |
 | Equal voltage versus equal current | Grown topology used less power at equal voltage but more voltage and power at equal delivered current. | Low flux was not uniformly low electrical stress. | [Results](simulation/voltage-routing/FIELD_STRESS.md) |
 | PEDOT frequency-informed cut/repair | `10 Hz` and `80 Hz` reconnected at epochs 5 and 18; `320 Hz` and `950 Hz` developed narrower routes through epoch 36. | The published dendrite-to-cable frequency ordering produced a 35.74-fold final-flux span in the matched screening translation. | [Results](lab/candidates/pedot-frequency-repair/README.md) |
+| Slit-guided conductive growth | Coherent light connected 26/32 bodies; path-tagged light connected 0/32; switching path-tagged → coherent connected 32/32. | Present wave coherence and accumulated material history jointly controlled route completion under an equal 12,000-cell budget. | [Results](lab/candidates/slit-guided-growth/README.md) |
 
 These reversals are part of the result. The architecture earns a claim only
 when it survives a stronger comparison.

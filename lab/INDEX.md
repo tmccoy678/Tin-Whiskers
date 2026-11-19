@@ -24,6 +24,14 @@
 - [`SWISS_OPEN_SILICON_COMPARISON_2026-11-19.md`](SWISS_OPEN_SILICON_COMPARISON_2026-11-19.md)
   — Occamy/MemPool hierarchy, data movement, fault handling, and joint lesion
   benchmark.
+- [`EARTH_SLIT_GUIDED_MEDIUM_2026-11-19.md`](EARTH_SLIT_GUIDED_MEDIUM_2026-11-19.md)
+  — buildable photoelectrochemical PEDOT medium, sparse fibres, and smallest
+  paired falsifier.
+- [`SLIT_GUIDED_EARTH_DIMENSIONING_2026-11-19.md`](SLIT_GUIDED_EARTH_DIMENSIONING_2026-11-19.md)
+  — real slit, wavelength, Fresnel, exposure, and FDTD admission dimensions.
+- [`RUST_FIRST_VALIDATION_ARCHITECTURE_2026-11-19.md`](RUST_FIRST_VALIDATION_ARCHITECTURE_2026-11-19.md)
+  — unified Rust modules, invariants, compact evidence, and MOOSE verification
+  boundary.
 
 ## Completed pilots
 
@@ -63,6 +71,10 @@
   credits and concealed consequence changes.
 - `candidates/pedot-frequency-repair/` — literature-informed `10–950 Hz`
   MOOSE cut/repair screen with exact `192 × 128` visual evidence.
+- `candidates/slit-guided-growth/` — Rust-first coherent, path-tagged, and
+  history-switch growth across two sparse optical apertures.
+- `candidates/intel-ceremony-terminal/` — wired Rust publisher and minimal
+  x86_64 Intel AS/400-style end terminal with bounded delayed state queue.
 
 Large solver fields, movies, virtual environments, vendored packages, and live
 run artifacts remain in ignored work paths. Documents and candidate source

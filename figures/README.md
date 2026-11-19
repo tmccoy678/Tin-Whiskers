@@ -52,6 +52,10 @@
   frequency cut/repair screen. It shows `10/80 Hz` and `320/950 Hz` as two
   readable chapters and holds the first reconnection epochs. Local SHA-256:
   `5112e36e62e61700d950c1f05648f003674f98b793918af2d7f9b77ca45fbf72`.
+- `slit-guided-conductive-growth.mp4` overlays the scalar Huygens/Fresnel field
+  and exact `192 × 128` Rust occupied-cell anatomy for coherent, path-tagged,
+  and midpoint-switch histories. Local SHA-256:
+  `1830c4269e34480f51dc27e4c89bd33435ce2341d9a539ad5ada161ec213289a`.
 
 ## Reused research figure
 
