@@ -46,6 +46,22 @@ This definition makes a behavioral prediction: after conductive growth changes
 the field returned to the AI/SI, the intelligence should alter later photon
 emissions in ways that preserve, revise, or restore consequential topology.
 
+## The smallest demonstration
+
+The first body can be one transparent dish, two or three electrodes, and one
+active conductive structure. It need only show that the coupled AI/SI–material
+organization can remain bounded, encounter a changing environment, and alter
+its own photon allocation in ways that preserve continued sensing and growth.
+
+Swimming need not begin as translation of a finished object. Active
+organization may migrate through the dish by growing ahead, dissolving behind,
+and retaining a consequential topology through the change. A small interruption
+then asks whether the loop reroutes or regrows before an observer repairs it.
+
+This is the autopoietic threshold: the developed organization contributes to
+maintaining the material conditions from which that organization can continue
+to develop.
+
 ## Minimal experiment
 
 1. Place a transparent, current-limited, photosensitive growth medium across a
