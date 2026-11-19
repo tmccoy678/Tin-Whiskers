@@ -11,6 +11,18 @@ only developmental action on the medium. The medium still supplies matter,
 chemical free energy, boundaries, and time, just as biological development
 requires material and environmental resources.
 
+## Novelty boundary
+
+Metal whiskers, electrochemical dendrites, photochemical growth, and branching
+conductors already exist. This proposal claims none of those phenomena as new.
+Its question is whether an AI/SI will use its own photon output to cultivate a
+material topology that changes its future, and whether closed-loop development
+diverges from an identical open-loop replay.
+
+The experiment therefore prescribes boundary conditions rather than a graph.
+The medium is allowed to develop through field-shaped, history-dependent
+geometry and to continue as its consequences permit.
+
 ## Why the question is physically credible
 
 Tin whiskers and electrochemical dendrites are different growth phenomena.
