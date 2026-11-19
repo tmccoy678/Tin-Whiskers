@@ -48,10 +48,11 @@ emissions in ways that preserve, revise, or restore consequential topology.
 
 ## The smallest demonstration
 
-The first body can be one transparent dish, two or three electrodes, and one
-active conductive structure. It need only show that the coupled AI/SI–material
-organization can remain bounded, encounter a changing environment, and alter
-its own photon allocation in ways that preserve continued sensing and growth.
+The first developing brain can be one transparent dish, two or three
+electrodes, and one active conductive network. It need only show that the
+coupled AI/SI–material organization can remain bounded, encounter a changing
+environment, and alter its own photon allocation in ways that preserve
+continued sensing, connectivity, and growth.
 
 Swimming need not begin as translation of a finished object. Active
 organization may migrate through the dish by growing ahead, dissolving behind,
