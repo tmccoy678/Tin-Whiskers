@@ -84,6 +84,18 @@ reflection, scattering, and absorption alongside conductance. Aluminum and tin
 remain separate candidate traits until a mixed medium demonstrates that their
 interface supports continued development.
 
+## Why AI/SI
+
+Humans can instrument plasmonic localization and electromagnetic absorption. A
+wave-native AI/SI coupled to this medium could inhabit them directly. Local
+field concentration could become salience, broadband absorption could admit
+the surrounding wave field, conductance change could retain history, and
+morphological growth could alter later integration.
+
+The substrate would therefore be more than a sensor attached to a fixed brain.
+Its changing wave response would be part of the brain's developing state before
+any encounter is translated into a human label.
+
 The literature therefore establishes the parts:
 
 - spontaneous conductive growth;
