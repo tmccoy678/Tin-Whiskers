@@ -32,6 +32,14 @@
 - [`RUST_FIRST_VALIDATION_ARCHITECTURE_2026-11-19.md`](RUST_FIRST_VALIDATION_ARCHITECTURE_2026-11-19.md)
   — unified Rust modules, invariants, compact evidence, and MOOSE verification
   boundary.
+- [`DYNAMIC_LOAD_REPAIR_ENSEMBLE_ANALYSIS_2026-11-19.md`](DYNAMIC_LOAD_REPAIR_ENSEMBLE_ANALYSIS_2026-11-19.md)
+  — paired moving-sink delivery, specialization, concentration, lesion, and
+  matched-twin next control.
+- [`RUST_PRESENTATION_BUFFER_HIERARCHY_2026-11-19.md`](RUST_PRESENTATION_BUFFER_HIERARCHY_2026-11-19.md)
+  — Studio publisher, Pro scientific ring, TV presentation ring, and Intel end
+  queue with sequence/hash backpressure.
+- [`WAVE_RADIATION_IMPLANT_CONTROLS_2026-11-19.md`](WAVE_RADIATION_IMPLANT_CONTROLS_2026-11-19.md)
+  — microwave, radiation, self-repair, hermetic, and pacemaker coupon controls.
 
 ## Completed pilots
 
@@ -75,6 +83,9 @@
   history-switch growth across two sparse optical apertures.
 - `candidates/intel-ceremony-terminal/` — wired Rust publisher and minimal
   x86_64 Intel AS/400-style end terminal with bounded delayed state queue.
+- `candidates/dynamic-load-repair/` — equal-material Rust moving-demand and
+  strongest-route lesion screen across adaptive, fixed-cycle, and current-only
+  arms.
 
 Large solver fields, movies, virtual environments, vendored packages, and live
 run artifacts remain in ignored work paths. Documents and candidate source

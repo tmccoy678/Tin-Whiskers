@@ -130,6 +130,7 @@ states without interpolating anatomy.
 | Equal voltage versus equal current | Grown topology used less power at equal voltage but more voltage and power at equal delivered current. | Low flux was not uniformly low electrical stress. | [Results](simulation/voltage-routing/FIELD_STRESS.md) |
 | PEDOT frequency-informed cut/repair | `10 Hz` and `80 Hz` reconnected at epochs 5 and 18; `320 Hz` and `950 Hz` developed narrower routes through epoch 36. | The published dendrite-to-cable frequency ordering produced a 35.74-fold final-flux span in the matched screening translation. | [Results](lab/candidates/pedot-frequency-repair/README.md) |
 | Slit-guided conductive growth | Coherent light connected 26/32 bodies; path-tagged light connected 0/32; switching path-tagged → coherent connected 32/32. | Present wave coherence and accumulated material history jointly controlled route completion under an equal 12,000-cell budget. | [Results](lab/candidates/slit-guided-growth/README.md) |
+| Moving load and strongest-route damage | Under identical material, demand, and lesion schedules, adaptive mean delivery reached 3.98× fixed-cycle and 9.29× current-only; connected-service fraction reached 2.49× and 5.65×. | Consequence-sensitive growth increased service under moving demand and revealed a measurable delivery–concentration Pareto frontier. | [Results](lab/candidates/dynamic-load-repair/README.md) |
 
 These reversals are part of the result. The architecture earns a claim only
 when it survives a stronger comparison.
