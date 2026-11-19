@@ -25,6 +25,20 @@ connections, alter their morphology and filtering properties, and implement
 structural plasticity in sparse neuromorphic networks. Optical control of ion
 dynamics has also produced artificial dendritic integration and plasticity.
 
+## The missing receptor
+
+Biological dendrites are living signal-integrating branches. A mammalian
+whisker is a movable shaft rooted in a sensor-rich follicle. A mosquito
+proboscis is closer to the metal-whisker form: a narrow multipart probe that
+crosses a boundary while carrying material and sensory consequences.
+
+Metal whiskers and electrochemical dendrites conduct, but fixed electronics
+give an unplanned filament no local receptor through which contact, current,
+heat, or optical change can regulate later growth. A conductive branch becomes
+candidate computational tissue when its consequences are sensed and returned
+to the processes governing integration, stabilization, widening, pruning, and
+regrowth.
+
 The literature therefore establishes the parts:
 
 - spontaneous conductive growth;
@@ -162,3 +176,10 @@ grow and return.
   the morphogenesis of conducting polymer dendrites in
   water](https://doi.org/10.1039/D5LP00225G). *RSC Applied Polymers, 4*,
   261–277.
+- Luo, Y., Bresee, C. S., Rudnicki, J. W., & Hartmann, M. J. Z. (2021).
+  [Constraints on the deformation of the vibrissa within the
+  follicle](https://doi.org/10.1371/journal.pcbi.1007887). *PLOS
+  Computational Biology, 17*(4), e1007887.
+- Kong, X. Q., & Wu, C. W. (2010). [Mosquito proboscis: An elegant
+  biomicroelectromechanical system](https://doi.org/10.1103/PhysRevE.82.011910).
+  *Physical Review E, 82*, 011910.
