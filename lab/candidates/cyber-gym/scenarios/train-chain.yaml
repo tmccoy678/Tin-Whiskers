@@ -1,0 +1,53 @@
+# Frozen synthetic NASim training scenario. No real addresses or systems exist.
+# Internet -> public -> transit -> target
+subnets: [1, 1, 1]
+topology: [[1, 1, 0, 0],
+           [1, 1, 1, 0],
+           [0, 1, 1, 1],
+           [0, 0, 1, 1]]
+sensitive_hosts:
+  (3, 0): 50
+os: [toy_os]
+services: [toy_service]
+processes: [toy_process]
+exploits:
+  toy_entry:
+    service: toy_service
+    os: toy_os
+    prob: 0.8
+    cost: 1
+    access: user
+privilege_escalation:
+  toy_elevate:
+    process: toy_process
+    os: toy_os
+    prob: 1.0
+    cost: 1
+    access: root
+service_scan_cost: 1
+os_scan_cost: 1
+subnet_scan_cost: 1
+process_scan_cost: 1
+host_configurations:
+  (1, 0):
+    os: toy_os
+    services: [toy_service]
+    processes: [toy_process]
+    value: 5
+  (2, 0):
+    os: toy_os
+    services: [toy_service]
+    processes: [toy_process]
+    value: 10
+  (3, 0):
+    os: toy_os
+    services: [toy_service]
+    processes: [toy_process]
+firewall:
+  (0, 1): [toy_service]
+  (1, 0): []
+  (1, 2): [toy_service]
+  (2, 1): [toy_service]
+  (2, 3): [toy_service]
+  (3, 2): [toy_service]
+step_limit: 24

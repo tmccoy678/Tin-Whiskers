@@ -1,0 +1,86 @@
+{
+  "policy_version": "1.0.0",
+  "regimes": {
+    "earth": {
+      "candidate_id": "earth-pedot",
+      "manifest": "earth-pedot.json",
+      "admitted_modes": ["exploratory", "promotion"],
+      "sample_axes": [
+        { "path": "numeric_parameters.geometry.electrode_gap", "strategy": "uniform" },
+        { "path": "numeric_parameters.geometry.active_wire_length", "strategy": "uniform" },
+        { "path": "numeric_parameters.growth_drive.growth_voltage_peak_to_peak", "strategy": "uniform" },
+        { "path": "numeric_parameters.growth_drive.growth_frequency", "strategy": "uniform" },
+        { "path": "numeric_parameters.growth_drive.growth_duty_fraction", "strategy": "uniform" },
+        { "path": "numeric_parameters.environment.temperature", "strategy": "uniform" },
+        { "path": "numeric_parameters.environment.absolute_pressure", "strategy": "uniform" },
+        { "path": "numeric_parameters.optical_interface.projection_wavelength", "strategy": "uniform" },
+        { "path": "numeric_parameters.optical_interface.projected_corridor_width", "strategy": "uniform" },
+        { "path": "numeric_parameters.optical_interface.projected_irradiance", "strategy": "uniform" }
+      ],
+      "admitted_options": {
+        "pair_assignment": [
+          "corridor-left_uniform-right",
+          "corridor-right_uniform-left"
+        ],
+        "control_energy": ["equal-energy"],
+        "cell_state": ["fresh-electrolyte"]
+      },
+      "constraints": [],
+      "static_rejections": [
+        {
+          "candidate": "space material, vacuum, thermal-cycle, or radiation option",
+          "reason": "The Earth exploratory policy forbids importing a space-regime parameter or option."
+        }
+      ]
+    },
+    "space": {
+      "candidate_id": "space-cbram",
+      "manifest": "space-cbram.json",
+      "admitted_modes": ["screening", "promotion"],
+      "sample_axes": [
+        { "path": "numeric_parameters.geometry.cell_width", "strategy": "uniform" },
+        { "path": "numeric_parameters.geometry.cell_height", "strategy": "uniform" },
+        { "path": "numeric_parameters.geometry.silver_electrode_thickness", "strategy": "uniform" },
+        { "path": "numeric_parameters.geometry.solid_electrolyte_thickness", "strategy": "uniform" },
+        { "path": "numeric_parameters.geometry.inert_electrode_thickness", "strategy": "uniform" },
+        { "path": "numeric_parameters.geometry.passivation_thickness", "strategy": "uniform" },
+        { "path": "numeric_parameters.vacuum_environment.comparison_temperature", "strategy": "uniform" },
+        { "path": "numeric_parameters.vacuum_environment.plateau_dwell", "strategy": "uniform" },
+        { "path": "numeric_parameters.optical_interface.fabrication_photodoping_wavelength", "strategy": "uniform" },
+        { "path": "numeric_parameters.optical_interface.operational_address_wavelength", "strategy": "uniform" }
+      ],
+      "admitted_options": {
+        "inert_electrode": ["nickel", "platinum"],
+        "passivation_material": ["alumina", "silicon-nitride"],
+        "radiation_cohort": ["active-program", "unbiased-retention"],
+        "operational_address": [
+          "direct-electrical",
+          "optoelectronic-blue",
+          "none-unbiased"
+        ]
+      },
+      "constraints": [
+        {
+          "if": { "radiation_cohort": "unbiased-retention" },
+          "requires": { "operational_address": "none-unbiased" },
+          "reason": "An unbiased-retention cohort cannot receive an operational address."
+        },
+        {
+          "if": { "radiation_cohort": "active-program" },
+          "forbids": { "operational_address": "none-unbiased" },
+          "reason": "An active-program cohort requires a declared electrical or optoelectronic address."
+        }
+      ],
+      "static_rejections": [
+        {
+          "candidate": "aqueous PEDOT chemistry or ambient Earth parameter",
+          "reason": "The space screening policy forbids importing an Earth-regime parameter or option."
+        },
+        {
+          "candidate": "direct optical steering of the buried silver filament",
+          "reason": "The source manifest admits optical-to-electrical addressing but does not establish direct photon steering of the buried filament."
+        }
+      ]
+    }
+  }
+}

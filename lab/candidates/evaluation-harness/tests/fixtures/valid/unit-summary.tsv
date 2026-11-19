@@ -1,0 +1,7 @@
+run_id	block_id	batch_id	condition	U	delivered_charge_C	recovery_s	Jstar_m2_inv	Hstar_J_C	control_energy_J	irreversible_failure	valid	exclusion_code
+W001	B001	BAT001	W	0.6	2.4	0	4	0.1	0	false	true	NONE
+G001	B001	BAT001	G	0.7	2.8	0	3.333333333333	0.1	0	false	true	NONE
+F24001	B001	BAT001	F24	0.7	2.8	0	3.076923076923	0.1	0	false	true	NONE
+F36001	B001	BAT001	F36	0.775	3.1	0	2.857142857143	0.1	0	false	true	NONE
+A001	B001	BAT001	A	0.95	3.8	0	2.222222222222	0.1	4	false	true	NONE
+Y001	B001	BAT001	Y	0.75	3.0	0	2.857142857143	0.1	4	false	true	NONE

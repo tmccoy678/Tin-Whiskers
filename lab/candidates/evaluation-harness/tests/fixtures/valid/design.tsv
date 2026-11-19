@@ -1,0 +1,7 @@
+run_id	block_id	batch_id	condition	position_code	microstate_seed	policy_rng_id	growth_rng_id	damage_rng_id	schedule_hash	controller_hash	fixed_rule_hash	lesion_algorithm_hash	material_hash	M0_kg	E0_J	P0_W	T0_K	yoke_donor
+W001	B001	BAT001	W	P1	101	policy-w001	growth-w001	damage-w001	schedule-001	NONE	NONE	lesion-v1	material-v1	1	100	10	300	NONE
+G001	B001	BAT001	G	P2	102	policy-g001	growth-g001	damage-g001	schedule-001	NONE	NONE	lesion-v1	material-v1	1	100	10	300	NONE
+F24001	B001	BAT001	F24	P3	103	policy-f24001	growth-f24001	damage-f24001	schedule-001	NONE	d90551339a7de346d7b5bb58b84ae8a23d00e6be3d1cd3042d1b1d426538b0b3	lesion-v1	material-v1	1	100	10	300	NONE
+F36001	B001	BAT001	F36	P4	104	policy-f36001	growth-f36001	damage-f36001	schedule-001	NONE	a89f78fae2fb1ffc65cee5d0c3e7eb229b229035eff26be1c2c8180f9496474a	lesion-v1	material-v1	1	100	10	300	NONE
+A001	B001	BAT001	A	P5	105	policy-a001	growth-a001	damage-a001	schedule-001	controller-a-v1	NONE	lesion-v1	material-v1	1	100	10	300	NONE
+Y001	B001	BAT001	Y	P6	106	policy-y001	growth-y001	damage-y001	schedule-001	NONE	NONE	lesion-v1	material-v1	1	100	10	300	A001

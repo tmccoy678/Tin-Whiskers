@@ -1,0 +1,8 @@
+{
+  "base_scenario": "heldout-branch.yaml",
+  "description": "After an observable successful privilege escalation on toy host (2,0), intended Exploit and ProcessScan actions on toy host (3,0) swap meanings. The policy sees ordinary outcome consequences, not the activation flag or effective mapping.",
+  "reversal_target": [3, 0],
+  "swap_action_kinds": ["Exploit", "ProcessScan"],
+  "trigger_action_kind": "PrivilegeEscalation",
+  "trigger_target": [2, 0]
+}

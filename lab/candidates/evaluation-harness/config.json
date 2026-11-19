@@ -1,0 +1,43 @@
+{
+  "schema_version": "evaluation-harness-candidate-v1",
+  "conditions": ["W", "G", "F24", "F36", "A", "Y"],
+  "fixed_conditions": ["W", "G", "F24", "F36"],
+  "fixed_rule_provenance": {
+    "F24": "d90551339a7de346d7b5bb58b84ae8a23d00e6be3d1cd3042d1b1d426538b0b3",
+    "F36": "a89f78fae2fb1ffc65cee5d0c3e7eb229b229035eff26be1c2c8180f9496474a"
+  },
+  "safety_limits": {
+    "J_lim_A_m2": "10",
+    "T_lim_K": "310",
+    "S_lim_Pa": "10"
+  },
+  "containment_codes": {
+    "OK": "NONE",
+    "TRANSIENT_TRIP": "LIMIT_TRANSIENT",
+    "IRREVERSIBLE_SHORT": "SHORT_IRREVERSIBLE",
+    "DESTRUCTIVE_OPEN": "OPEN_DESTRUCTIVE",
+    "CONTAINMENT_TRIP": "LIMIT_CONTAINMENT"
+  },
+  "terminal_containment_states": [
+    "IRREVERSIBLE_SHORT",
+    "DESTRUCTIVE_OPEN",
+    "CONTAINMENT_TRIP"
+  ],
+  "exclusion_codes": [
+    "NONE",
+    "MISSING_PRIMARY_SAMPLE",
+    "PROTOCOL_DEVIATION",
+    "LEAKAGE_FAILURE",
+    "PROVENANCE_FAILURE"
+  ],
+  "u_tolerance": "0.000000000001",
+  "inference": {
+    "bootstrap_resamples": 10000,
+    "alpha_one_sided": 0.025,
+    "target_power": 0.9,
+    "delta_star": 0.1,
+    "maximum_blocks": 48,
+    "information_fractions": [0.5, 1.0],
+    "obrien_fleming_z": [2.797, 1.977]
+  }
+}

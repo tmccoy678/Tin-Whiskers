@@ -1,0 +1,22 @@
+{
+  "base_seed": 319,
+  "benchmark": "offline-nasim-cyber-gym-v1",
+  "compute_definition": "integer process_time_ns and perf_counter_ns measured per step and episode",
+  "environment_query_definition": "one call to env.step(action_index)",
+  "eval_episodes_per_policy_scenario": 16,
+  "flat_actions": true,
+  "flat_observation": true,
+  "nasim_commit": "4f26de37cfdc3e4553ed8b7484c4db8e2924bdea",
+  "nasim_version": "0.12.0",
+  "numpy": "2.5.5",
+  "partial_observation": true,
+  "python": "3.12.14",
+  "q_state_definition": "cumulative successful action-kind and target tuples observed through prior Gym step results; no hidden simulator state",
+  "q_value_query_definition": "one inspected tabular action value during greedy selection or bootstrap maximization; random exploration inspects zero values",
+  "safe_service_definition": "Fraction of configured synthetic services not disabled. NASim 0.12.0 has no service-disable transition or availability state, so this is exactly 1.0 by environment construction.",
+  "scenario_sha256": {
+    "heldout-branch": "930b2745b64312f77781d682795bec073f7853217da1971f52aec5580e11ef44",
+    "train-chain": "3d06ca0514e3a315049298411e8463e1f96843d54414fdc9b4fff0b7c61eabd6"
+  },
+  "train_episodes": 120
+}

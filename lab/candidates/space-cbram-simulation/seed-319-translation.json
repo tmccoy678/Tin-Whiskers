@@ -1,0 +1,1458 @@
+{
+  "candidate_id": "space-cbram-si-translation",
+  "claim_boundary": "This translation supplies SI ranges, conductance observables, screening tally targets, and coupling gates only. It is not a filament constitutive model, mission environment, radiation qualification, or new physical claim.",
+  "constitutive_blockers": [
+    {
+      "blocker_id": "filament-geometry",
+      "missing": [
+        "filament length",
+        "filament cross-sectional area",
+        "filament tortuosity",
+        "filament continuity and contact shape"
+      ],
+      "reason": "Terminal conductance cannot be converted to filament conductivity or current density without measured geometry.",
+      "solver_targets": [
+        "moose-conduction",
+        "moose-thermal",
+        "moose-mechanics"
+      ]
+    },
+    {
+      "blocker_id": "solid-electrolyte-ion-transport",
+      "missing": [
+        "Ag+ diffusivity in photodoped Ge30Se70",
+        "Ag+ mobility",
+        "mobile-ion concentration",
+        "transference number",
+        "temperature dependence",
+        "electric permittivity"
+      ],
+      "reason": "Terminal voltage does not determine Ag-ion flux or local field.",
+      "solver_targets": [
+        "moose-conduction"
+      ]
+    },
+    {
+      "blocker_id": "interface-redox-kinetics",
+      "missing": [
+        "Ag oxidation exchange current",
+        "Ag+ reduction exchange current",
+        "transfer coefficients",
+        "equilibrium potentials",
+        "nucleation barrier",
+        "dissolution law"
+      ],
+      "reason": "SET and RESET limits are experimental boundaries, not a reversible filament-growth rate law.",
+      "solver_targets": [
+        "moose-conduction"
+      ]
+    },
+    {
+      "blocker_id": "electronic-state-conduction",
+      "missing": [
+        "HRS conduction law",
+        "LRS conduction law",
+        "contact resistance",
+        "tunneling gap relation",
+        "temperature dependence",
+        "state-to-state variability"
+      ],
+      "reason": "Conductance remains the observable; bulk Ag conductivity cannot replace these laws.",
+      "solver_targets": [
+        "moose-conduction"
+      ]
+    },
+    {
+      "blocker_id": "pulse-time-history",
+      "missing": [
+        "SET pulse duration",
+        "RESET pulse duration",
+        "voltage ramp rate",
+        "inter-pulse dwell",
+        "read cadence"
+      ],
+      "reason": "Voltage and compliance alone cannot determine electrical energy, switching kinetics, or Joule dose.",
+      "solver_targets": [
+        "moose-conduction",
+        "moose-thermal"
+      ]
+    },
+    {
+      "blocker_id": "layer-thermal-properties",
+      "missing": [
+        "density of Ge30Se70, inert electrode, cap, and substrate",
+        "specific heat of every layer",
+        "thermal conductivity of every layer",
+        "interface thermal resistance",
+        "emissivity",
+        "package thermal boundary"
+      ],
+      "reason": "The thermal schedule is known, but self-heating and layer temperatures are not predictable.",
+      "solver_targets": [
+        "moose-thermal",
+        "openmc-temperature-feedback"
+      ]
+    },
+    {
+      "blocker_id": "layer-mechanical-properties",
+      "missing": [
+        "elastic moduli",
+        "Poisson ratios",
+        "coefficients of thermal expansion",
+        "residual film stress",
+        "adhesion and fracture energies",
+        "creep or viscoelastic laws"
+      ],
+      "reason": "Geometry and temperature cycles do not determine stress, delamination, or cracking.",
+      "solver_targets": [
+        "moose-mechanics"
+      ]
+    },
+    {
+      "blocker_id": "passivation-vacuum-law",
+      "missing": [
+        "cap permeability",
+        "outgassing rates",
+        "trapped gas composition",
+        "vacuum interface heat transfer",
+        "tarnish kinetics at defects"
+      ],
+      "reason": "Chamber pressure is metadata until cap and gas transport are calibrated.",
+      "solver_targets": [
+        "moose-thermal",
+        "moose-mechanics",
+        "environment-model"
+      ]
+    },
+    {
+      "blocker_id": "optical-to-electrical-transfer",
+      "missing": [
+        "photodiode responsivity",
+        "micro-LED efficiency",
+        "optical coupling loss",
+        "driver transfer function",
+        "photodoping dose-to-Ag-profile law"
+      ],
+      "reason": "Wavelength identifies the interface but does not determine an electrical SET pulse or Ag distribution.",
+      "solver_targets": [
+        "external-controller",
+        "moose-conduction"
+      ]
+    },
+    {
+      "blocker_id": "openmc-material-definitions",
+      "missing": [
+        "measured Ge-Se-Ag atomic composition",
+        "isotopic composition",
+        "density of every non-Ag layer",
+        "selected inert-electrode material",
+        "selected cap material",
+        "substrate and package composition"
+      ],
+      "reason": "OpenMC reaction rates and heating tallies require material atom densities; geometry alone is insufficient.",
+      "solver_targets": [
+        "openmc-material",
+        "openmc-heating"
+      ]
+    },
+    {
+      "blocker_id": "mission-radiation-source",
+      "missing": [
+        "orbit or trajectory",
+        "particle species",
+        "energy spectra",
+        "angular distributions",
+        "time history",
+        "device-local shielding geometry",
+        "source rate"
+      ],
+      "reason": "The cobalt-60 dose points are screening targets, not a mission radiation source.",
+      "solver_targets": [
+        "openmc-source",
+        "openmc-normalization"
+      ]
+    },
+    {
+      "blocker_id": "dose-material-conversion",
+      "missing": [
+        "silicon-equivalent scoring volume",
+        "device-material heating tallies",
+        "mass normalization",
+        "dose-to-temperature transfer",
+        "dose-to-conductance response"
+      ],
+      "reason": "Gy(Si) cannot be assigned as absorbed energy in Ag, Ge-Se, cap, or substrate without transport and mass-specific tallies.",
+      "solver_targets": [
+        "openmc-heating",
+        "moose-thermal",
+        "coupling-transfer"
+      ]
+    },
+    {
+      "blocker_id": "displacement-and-see-response",
+      "missing": [
+        "damage-energy cross sections",
+        "NIEL or DPA response",
+        "sensitive volume",
+        "critical charge or conductance upset rule",
+        "device and peripheral SEE cross sections"
+      ],
+      "reason": "TID behavior does not supply displacement-damage or single-event constitutive response.",
+      "solver_targets": [
+        "openmc-damage-response",
+        "openmc-see-response",
+        "coupling-postprocessor"
+      ]
+    },
+    {
+      "blocker_id": "radiation-programming-coupling",
+      "missing": [
+        "dose-dependent ion mobility",
+        "dose-dependent interface kinetics",
+        "dose-dependent conductance-update law",
+        "annealing and recovery law"
+      ],
+      "reason": "Published programming degradation motivates measurement but does not furnish an exact-stack coupling coefficient.",
+      "solver_targets": [
+        "moose-conduction",
+        "openmc-heating",
+        "coupling-transfer"
+      ]
+    },
+    {
+      "blocker_id": "stochastic-filament-population",
+      "missing": [
+        "nucleation distribution",
+        "cycle-to-cycle variance",
+        "cell-to-cell covariance",
+        "failure-hazard law",
+        "radiation-conditioned variability"
+      ],
+      "reason": "A random simulation seed is not a physical filament population until exact-stack ensembles are measured.",
+      "solver_targets": [
+        "moose-conduction",
+        "coupling-ensemble"
+      ]
+    }
+  ],
+  "derived_si": {
+    "array_cell_count": {
+      "formula": "N_row N_column",
+      "range": {
+        "maximum": 64.0,
+        "minimum": 64.0
+      },
+      "selected": 64.0,
+      "unit": "cell"
+    },
+    "cell_active_area": {
+      "formula": "L_width L_height",
+      "range": {
+        "maximum": 1.1024999999999998e-08,
+        "minimum": 9.024999999999998e-09
+      },
+      "selected": 9.951486139180735e-09,
+      "unit": "m^2"
+    },
+    "fabrication_photon_energy": {
+      "formula": "h c / lambda_fabrication",
+      "interpretation": "Photon energy only; photodoping dose and Ag-profile response are blocked.",
+      "range": {
+        "maximum": 4.966114642872321e-19,
+        "minimum": 4.844989895485191e-19
+      },
+      "selected": 4.870946006494462e-19,
+      "unit": "J photon^-1"
+    },
+    "inert_electrode_volume": {
+      "formula": "L_width L_height t_inert",
+      "range": {
+        "maximum": 1.2127499999999998e-15,
+        "minimum": 8.122499999999999e-16
+      },
+      "selected": 9.17647508479604e-16,
+      "unit": "m^3"
+    },
+    "minimum_plateau_exposure_time": {
+      "formula": "2 N_cycle t_dwell",
+      "interpretation": "Counts two stabilized plateaus per cycle and excludes ramps.",
+      "range": {
+        "maximum": 115200.0,
+        "minimum": 57600.0
+      },
+      "selected": 100342.4772928,
+      "unit": "s"
+    },
+    "nominal_read_current": {
+      "formula": "V_read G_on",
+      "range": {
+        "maximum": 5e-05,
+        "minimum": 0.0
+      },
+      "selected": 5e-06,
+      "unit": "A"
+    },
+    "nominal_read_power": {
+      "formula": "V_read^2 G_on",
+      "range": {
+        "maximum": 2.5e-06,
+        "minimum": 0.0
+      },
+      "selected": 2.5000000000000004e-07,
+      "unit": "W"
+    },
+    "nominal_reset_field_magnitude": {
+      "formula": "abs(V_reset_limit) / t_electrolyte",
+      "interpretation": "Terminal-voltage-over-film-thickness descriptor, not local dissolution field.",
+      "range": {
+        "maximum": 8333333.333333332,
+        "minimum": 0.0
+      },
+      "selected": 6886681.868665403,
+      "unit": "V m^-1"
+    },
+    "nominal_set_field": {
+      "formula": "V_set_limit / t_electrolyte",
+      "interpretation": "Terminal-voltage-over-film-thickness descriptor, not local ionic field or electrochemical overpotential.",
+      "range": {
+        "maximum": 8333333.333333332,
+        "minimum": 0.0
+      },
+      "selected": 6886681.868665403,
+      "unit": "V m^-1"
+    },
+    "operational_address_photon_energy": {
+      "formula": "h c / lambda_address",
+      "interpretation": "Photon energy at the external address interface, not direct filament actuation.",
+      "range": {
+        "maximum": 4.463923274491974e-19,
+        "minimum": 4.365815070656986e-19
+      },
+      "selected": 4.404684500525177e-19,
+      "unit": "J photon^-1"
+    },
+    "passivation_volume": {
+      "formula": "L_width L_height t_cap",
+      "range": {
+        "maximum": 5.512499999999999e-16,
+        "minimum": 1.8049999999999997e-16
+      },
+      "selected": 4.023479432453714e-16,
+      "unit": "m^3"
+    },
+    "silver_electrode_volume": {
+      "formula": "L_width L_height t_Ag",
+      "range": {
+        "maximum": 3.6382499999999995e-16,
+        "minimum": 2.4367499999999996e-16
+      },
+      "selected": 3.241683859387043e-16,
+      "unit": "m^3"
+    },
+    "silver_reservoir_atom_count": {
+      "formula": "m_Ag N_A / M_Ag",
+      "range": {
+        "maximum": 21311218930303.316,
+        "minimum": 14273376686158.621
+      },
+      "selected": 18988314280279.77,
+      "unit": "atom"
+    },
+    "silver_reservoir_mass_from_sampled_geometry": {
+      "formula": "rho_Ag L_width L_height t_Ag",
+      "interpretation": "Bulk-density inventory estimate; not a filament mass or thin-film density measurement.",
+      "range": {
+        "maximum": 3.8172519e-12,
+        "minimum": 2.5566380999999996e-12
+      },
+      "selected": 3.4011747052688853e-12,
+      "unit": "kg"
+    },
+    "silver_reservoir_moles": {
+      "formula": "m_Ag / M_Ag",
+      "range": {
+        "maximum": 3.5388111602863495e-11,
+        "minimum": 2.3701499607854767e-11
+      },
+      "selected": 3.15308376821796e-11,
+      "unit": "mol"
+    },
+    "solid_electrolyte_volume": {
+      "formula": "L_width L_height t_electrolyte",
+      "range": {
+        "maximum": 9.701999999999999e-16,
+        "minimum": 6.497999999999999e-16
+      },
+      "selected": 8.670201117719938e-16,
+      "unit": "m^3"
+    },
+    "temperature_screen_span": {
+      "formula": "T_hot - T_cold",
+      "range": {
+        "maximum": 125.0,
+        "minimum": 125.0
+      },
+      "selected": 125.0,
+      "unit": "K"
+    },
+    "terminal_on_resistance": {
+      "formula": "1 / G_on",
+      "range": {
+        "maximum": 99999.99999999999,
+        "minimum": 1000.0
+      },
+      "selected": 10000.0,
+      "unit": "ohm"
+    }
+  },
+  "dimensionless_groups": {
+    "cell_lateral_aspect": {
+      "formula": "L_width / L_height",
+      "range": {
+        "maximum": 1.105263157894737,
+        "minimum": 0.9047619047619048
+      },
+      "selected": 1.054127205574183,
+      "unit": "1"
+    },
+    "electrolyte_to_lateral_scale": {
+      "formula": "t_electrolyte / sqrt(A_cell)",
+      "range": {
+        "maximum": 0.0009263157894736844,
+        "minimum": 0.0006857142857142859
+      },
+      "selected": 0.0008733679649842623,
+      "unit": "1"
+    },
+    "nominal_read_current_to_high_compliance": {
+      "formula": "V_read G_on / I_compliance_high",
+      "range": {
+        "maximum": null,
+        "minimum": null
+      },
+      "range_blocker": "The compliance allowable range includes zero, so no finite ratio interval exists without inventing a positive lower bound.",
+      "selected": 0.05,
+      "unit": "1"
+    },
+    "passivation_to_electrolyte_thickness": {
+      "formula": "t_cap / t_electrolyte",
+      "range": {
+        "maximum": 0.6944444444444444,
+        "minimum": 0.22727272727272727
+      },
+      "selected": 0.4640583739436711,
+      "unit": "1"
+    },
+    "programming_drift_tolerance": {
+      "formula": "delta_G_program_max / G_program_reference",
+      "range": {
+        "maximum": 0.2,
+        "minimum": 0.0
+      },
+      "selected": 0.2,
+      "unit": "1"
+    },
+    "radiation_screen_dose_span": {
+      "formula": "D_screen_max / D_screen_min",
+      "range": {
+        "maximum": 100.0,
+        "minimum": 100.0
+      },
+      "selected": 100.0,
+      "unit": "1"
+    },
+    "read_to_set_voltage": {
+      "formula": "V_read / V_set_limit",
+      "range": {
+        "maximum": null,
+        "minimum": null
+      },
+      "range_blocker": "The set-voltage allowable range includes zero, so a finite ratio interval cannot be propagated without inventing a positive lower bound.",
+      "selected": 0.08333333333333334,
+      "unit": "1"
+    },
+    "reservoir_mass_consistency": {
+      "formula": "rho_Ag A_cell t_Ag / m_Ag_manifest",
+      "range": {
+        "maximum": 1.413797,
+        "minimum": 0.7004487945205479
+      },
+      "selected": 1.0797380016726619,
+      "unit": "1"
+    },
+    "set_voltage_to_thermal_potential": {
+      "formula": "e V_set_limit / (k_B T_compare)",
+      "interpretation": "Uses one elementary charge as a scale; it is not a local Ag-ion overpotential.",
+      "range": {
+        "maximum": 23.926841487732123,
+        "minimum": 0.0
+      },
+      "selected": 23.86925682435665,
+      "unit": "1"
+    },
+    "silver_to_electrolyte_thickness": {
+      "formula": "t_Ag / t_electrolyte",
+      "range": {
+        "maximum": 0.4583333333333333,
+        "minimum": 0.3068181818181818
+      },
+      "selected": 0.37388796584680967,
+      "unit": "1"
+    },
+    "temperature_screen_span_fraction": {
+      "formula": "(T_hot - T_cold) / T_compare",
+      "range": {
+        "maximum": 0.42955326460481097,
+        "minimum": 0.423728813559322
+      },
+      "selected": 0.42851945994836327,
+      "unit": "1"
+    },
+    "vacuum_to_standard_atmosphere": {
+      "formula": "p_vacuum_max / p_standard",
+      "range": {
+        "maximum": 1.2830002467308167e-08,
+        "minimum": 0.0
+      },
+      "selected": 1.2830002467308167e-08,
+      "unit": "1"
+    }
+  },
+  "mission_gates": {
+    "required_unset_gates.mission_displacement_damage_fluence": {
+      "disposition": "required-unset",
+      "hard_stop": {
+        "action": "Block displacement-damage test definition and space qualification.",
+        "condition": "Mission displacement-damage fluence remains unset."
+      },
+      "provenance": {
+        "kind": "rationale",
+        "text": "Particle spectrum, shielding, and equivalent-damage convention require a defined mission.",
+        "url": null
+      },
+      "solver_targets": [
+        "openmc-damage-response",
+        "coupling-promotion"
+      ],
+      "status": "required-unset",
+      "unit": "1 MeV neq m^-2",
+      "value": null
+    },
+    "required_unset_gates.mission_heavy_ion_fluence": {
+      "disposition": "required-unset",
+      "hard_stop": {
+        "action": "Block SEE test execution and space qualification.",
+        "condition": "Mission heavy-ion fluence remains unset."
+      },
+      "provenance": {
+        "kind": "rationale",
+        "text": "Required fluence follows the mission environment and acceptable event-rate confidence, neither of which is defined.",
+        "url": null
+      },
+      "solver_targets": [
+        "openmc-source-normalization",
+        "coupling-promotion"
+      ],
+      "status": "required-unset",
+      "unit": "m^-2",
+      "value": null
+    },
+    "required_unset_gates.mission_lifetime": {
+      "disposition": "required-unset",
+      "hard_stop": {
+        "action": "Block lifetime scaling and space qualification.",
+        "condition": "Mission lifetime remains unset."
+      },
+      "provenance": {
+        "kind": "rationale",
+        "text": "Retention, cycling, TID, and spontaneous-switch budgets depend on a defined service lifetime.",
+        "url": null
+      },
+      "solver_targets": [
+        "moose-transient",
+        "openmc-normalization",
+        "coupling-promotion"
+      ],
+      "status": "required-unset",
+      "unit": "s",
+      "value": null
+    },
+    "required_unset_gates.mission_operational_temperature_maximum": {
+      "disposition": "required-unset",
+      "hard_stop": {
+        "action": "Block mission-tailored thermal-vacuum qualification.",
+        "condition": "Mission operational maximum remains unset."
+      },
+      "provenance": {
+        "kind": "rationale",
+        "text": "NASA verification limits derive from expected mission temperature plus margin; the generic screen cannot fill this value.",
+        "url": "https://standards.nasa.gov/sites/default/files/standards/NASA/B/1/NASA-STD-7002B-w-Change-1.pdf"
+      },
+      "solver_targets": [
+        "moose-thermal",
+        "moose-mechanics",
+        "openmc-material-temperature",
+        "coupling-promotion"
+      ],
+      "status": "required-unset",
+      "unit": "K",
+      "value": null
+    },
+    "required_unset_gates.mission_operational_temperature_minimum": {
+      "disposition": "required-unset",
+      "hard_stop": {
+        "action": "Block mission-tailored thermal-vacuum qualification.",
+        "condition": "Mission operational minimum remains unset."
+      },
+      "provenance": {
+        "kind": "rationale",
+        "text": "NASA verification limits derive from expected mission temperature plus margin; the generic screen cannot fill this value.",
+        "url": "https://standards.nasa.gov/sites/default/files/standards/NASA/B/1/NASA-STD-7002B-w-Change-1.pdf"
+      },
+      "solver_targets": [
+        "moose-thermal",
+        "moose-mechanics",
+        "openmc-material-temperature",
+        "coupling-promotion"
+      ],
+      "status": "required-unset",
+      "unit": "K",
+      "value": null
+    },
+    "required_unset_gates.mission_shielding_areal_density": {
+      "disposition": "required-unset",
+      "hard_stop": {
+        "action": "Block environment transport and space qualification.",
+        "condition": "Device-local shielding areal density remains unset."
+      },
+      "provenance": {
+        "kind": "rationale",
+        "text": "Device-local shielding is needed to translate external environment into absorbed dose and particle spectrum.",
+        "url": null
+      },
+      "solver_targets": [
+        "openmc-geometry",
+        "openmc-material",
+        "coupling-promotion"
+      ],
+      "status": "required-unset",
+      "unit": "kg m^-2",
+      "value": null
+    },
+    "required_unset_gates.mission_single_event_let_threshold": {
+      "disposition": "required-unset",
+      "hard_stop": {
+        "action": "Block SEE test definition and space qualification.",
+        "condition": "Mission SEE LET threshold remains unset."
+      },
+      "provenance": {
+        "kind": "rationale",
+        "text": "Heavy-ion species, spectrum, shielding, circuit state, and acceptable cross-section are mission-specific.",
+        "url": null
+      },
+      "solver_targets": [
+        "openmc-see-response",
+        "coupling-promotion"
+      ],
+      "status": "required-unset",
+      "unit": "MeV cm^2 mg^-1",
+      "value": null
+    },
+    "required_unset_gates.mission_total_ionizing_dose": {
+      "disposition": "required-unset",
+      "hard_stop": {
+        "action": "Block space qualification and any mission-reliability claim.",
+        "condition": "Mission TID remains unset."
+      },
+      "provenance": {
+        "kind": "rationale",
+        "text": "Requires mission orbit, duration, shielding, and device location; the materials-screen dose cannot substitute for it.",
+        "url": null
+      },
+      "solver_targets": [
+        "openmc-normalization",
+        "coupling-promotion"
+      ],
+      "status": "required-unset",
+      "unit": "Gy(Si)",
+      "value": null
+    }
+  },
+  "openmc_screening_targets": {
+    "absorbed_dose_targets": [
+      {
+        "material_basis": "silicon",
+        "not_a_source": true,
+        "openmc_role": "absorbed-dose tally target after a source and mass normalization exist",
+        "range": {
+          "maximum": 100.0,
+          "minimum": 100.0
+        },
+        "selected": 100.0,
+        "unit": "J kg^-1(Si)"
+      },
+      {
+        "material_basis": "silicon",
+        "not_a_source": true,
+        "openmc_role": "absorbed-dose tally target after a source and mass normalization exist",
+        "range": {
+          "maximum": 1000.0,
+          "minimum": 1000.0
+        },
+        "selected": 1000.0,
+        "unit": "J kg^-1(Si)"
+      },
+      {
+        "material_basis": "silicon",
+        "not_a_source": true,
+        "openmc_role": "absorbed-dose tally target after a source and mass normalization exist",
+        "range": {
+          "maximum": 3000.0,
+          "minimum": 3000.0
+        },
+        "selected": 3000.0,
+        "unit": "J kg^-1(Si)"
+      },
+      {
+        "material_basis": "silicon",
+        "not_a_source": true,
+        "openmc_role": "absorbed-dose tally target after a source and mass normalization exist",
+        "range": {
+          "maximum": 10000.0,
+          "minimum": 10000.0
+        },
+        "selected": 10000.0,
+        "unit": "J kg^-1(Si)"
+      }
+    ],
+    "coupling_direction": "OpenMC heating or dose tally to MOOSE volumetric source; MOOSE temperature and density feedback to OpenMC only after both models are independently calibrated",
+    "normalization_status": "blocked until a particle source, material densities, scoring volume, and mass normalization exist"
+  },
+  "parameter_deck": "lab/candidates/space-cbram-simulation/parameter-deck.json",
+  "parameter_deck_sha256": "8fd40273cc8a644d95336e447af79221a337323ae877a49f75d3c5f6039034bc",
+  "reversible_filament_observable": {
+    "bulk_silver_conductivity_reference": {
+      "admission": "reference-only",
+      "unit": "S m^-1",
+      "value": 61000000.0
+    },
+    "filament_conductivity": {
+      "reason": "Do not substitute bulk silver conductivity for the reversible filament observable.",
+      "required_measurements": [
+        "filament length",
+        "filament cross-sectional area",
+        "terminal and contact resistance separation"
+      ],
+      "status": "blocked",
+      "unit": "S m^-1",
+      "value": null
+    },
+    "terminal_on_conductance": {
+      "range": {
+        "maximum": 0.001,
+        "minimum": 1e-05
+      },
+      "selected": 0.0001,
+      "unit": "S"
+    },
+    "terminal_on_resistance": {
+      "formula": "1 / G_on",
+      "range": {
+        "maximum": 99999.99999999999,
+        "minimum": 1000.0
+      },
+      "selected": 10000.0,
+      "unit": "ohm"
+    }
+  },
+  "seed": 319,
+  "selected_enumerated_options": {
+    "inert_electrode": "nickel",
+    "operational_address": "direct-electrical",
+    "passivation_material": "silicon-nitride",
+    "radiation_cohort": "active-program"
+  },
+  "solver_admission": {
+    "blocked_constitutive": [
+      "displacement-and-see-response",
+      "dose-material-conversion",
+      "electronic-state-conduction",
+      "filament-geometry",
+      "interface-redox-kinetics",
+      "layer-mechanical-properties",
+      "layer-thermal-properties",
+      "mission-radiation-source",
+      "openmc-material-definitions",
+      "optical-to-electrical-transfer",
+      "passivation-vacuum-law",
+      "pulse-time-history",
+      "radiation-programming-coupling",
+      "solid-electrolyte-ion-transport",
+      "stochastic-filament-population"
+    ],
+    "mission_gated": [
+      "required_unset_gates.mission_displacement_damage_fluence",
+      "required_unset_gates.mission_heavy_ion_fluence",
+      "required_unset_gates.mission_lifetime",
+      "required_unset_gates.mission_operational_temperature_maximum",
+      "required_unset_gates.mission_operational_temperature_minimum",
+      "required_unset_gates.mission_shielding_areal_density",
+      "required_unset_gates.mission_single_event_let_threshold",
+      "required_unset_gates.mission_total_ionizing_dose"
+    ],
+    "moose_conduction": [
+      "numeric_parameters.electrical_admission.nominal_on_conductance",
+      "numeric_parameters.electrical_drive.absolute_voltage_ceiling",
+      "numeric_parameters.electrical_drive.compliance_high",
+      "numeric_parameters.electrical_drive.compliance_low",
+      "numeric_parameters.electrical_drive.compliance_mid",
+      "numeric_parameters.electrical_drive.read_voltage",
+      "numeric_parameters.electrical_drive.reset_sweep_limit",
+      "numeric_parameters.electrical_drive.set_sweep_limit",
+      "numeric_parameters.geometry.cell_height",
+      "numeric_parameters.geometry.cell_width",
+      "numeric_parameters.geometry.inert_electrode_thickness",
+      "numeric_parameters.geometry.silver_electrode_thickness",
+      "numeric_parameters.geometry.solid_electrolyte_thickness"
+    ],
+    "moose_mechanics": [
+      "numeric_parameters.geometry.cell_height",
+      "numeric_parameters.geometry.cell_width",
+      "numeric_parameters.geometry.inert_electrode_thickness",
+      "numeric_parameters.geometry.passivation_thickness",
+      "numeric_parameters.geometry.silver_electrode_thickness",
+      "numeric_parameters.geometry.solid_electrolyte_thickness",
+      "numeric_parameters.reservoir.bulk_silver_density",
+      "numeric_parameters.vacuum_environment.temperature_ramp_rate_maximum",
+      "numeric_parameters.vacuum_environment.thermal_cycle_count"
+    ],
+    "moose_thermal": [
+      "numeric_parameters.geometry.cell_height",
+      "numeric_parameters.geometry.cell_width",
+      "numeric_parameters.geometry.inert_electrode_thickness",
+      "numeric_parameters.geometry.passivation_thickness",
+      "numeric_parameters.geometry.silver_electrode_thickness",
+      "numeric_parameters.geometry.solid_electrolyte_thickness",
+      "numeric_parameters.reservoir.bulk_silver_density",
+      "numeric_parameters.vacuum_environment.comparison_temperature",
+      "numeric_parameters.vacuum_environment.plateau_dwell",
+      "numeric_parameters.vacuum_environment.screen_temperature_maximum",
+      "numeric_parameters.vacuum_environment.screen_temperature_minimum",
+      "numeric_parameters.vacuum_environment.temperature_ramp_rate_maximum",
+      "numeric_parameters.vacuum_environment.thermal_cycle_count"
+    ],
+    "openmc_geometry_material": [
+      "numeric_parameters.geometry.cell_height",
+      "numeric_parameters.geometry.cell_width",
+      "numeric_parameters.geometry.inert_electrode_thickness",
+      "numeric_parameters.geometry.passivation_thickness",
+      "numeric_parameters.geometry.silver_electrode_thickness",
+      "numeric_parameters.geometry.solid_electrolyte_thickness",
+      "numeric_parameters.reservoir.bulk_silver_density",
+      "numeric_parameters.vacuum_environment.comparison_temperature"
+    ],
+    "openmc_tally_targets": [
+      "numeric_parameters.radiation_materials_screen.cobalt60_dose_step_1",
+      "numeric_parameters.radiation_materials_screen.cobalt60_dose_step_2",
+      "numeric_parameters.radiation_materials_screen.cobalt60_dose_step_3",
+      "numeric_parameters.radiation_materials_screen.cobalt60_dose_step_4"
+    ],
+    "reference_or_metadata": [
+      "numeric_parameters.optical_interface.fabrication_photodoping_wavelength",
+      "numeric_parameters.optical_interface.operational_address_wavelength",
+      "numeric_parameters.reservoir.bulk_silver_conductivity_reference",
+      "numeric_parameters.vacuum_environment.vacuum_pressure_maximum",
+      "numeric_parameters.vacuum_falsifier.air_cell_count",
+      "numeric_parameters.vacuum_falsifier.set_reset_cycles_per_cell",
+      "numeric_parameters.vacuum_falsifier.vacuum_cell_count"
+    ]
+  },
+  "source_draw": "lab/candidates/space-cbram-simulation/seed-319-draw.json",
+  "source_draw_sha256": "6dc8dc0c6ead6aa2ad40487b60ada7542417a54e8ba75f4cb1a6321d7f4b0691",
+  "source_manifest": "lab/candidates/material-manifests/space-cbram.json",
+  "source_manifest_sha256": "041f4f19de781c5577432eaf4f15dfa8e1e054d03638b4f17885b9758b498894",
+  "translated_inputs_si": {
+    "numeric_parameters.electrical_admission.minimum_on_off_ratio": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 1000000.0,
+      "minimum": 10.0,
+      "selected": 10.0,
+      "solver_targets": [
+        "postprocessor"
+      ],
+      "source_unit": "ratio",
+      "status": "proposed",
+      "unit": "1"
+    },
+    "numeric_parameters.electrical_admission.nominal_on_conductance": {
+      "admission": "observable-only",
+      "admission_reason": "Use terminal conductance or resistance; do not infer filament conductivity.",
+      "disposition": "fixed-proposed-control",
+      "maximum": 0.001,
+      "minimum": 1e-05,
+      "selected": 0.0001,
+      "solver_targets": [
+        "moose-conduction",
+        "observable",
+        "postprocessor"
+      ],
+      "source_unit": "S",
+      "status": "proposed",
+      "unit": "S"
+    },
+    "numeric_parameters.electrical_admission.unbiased_retention_hold": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 86400.0,
+      "minimum": 86400.0,
+      "selected": 86400.0,
+      "solver_targets": [
+        "experiment-control",
+        "postprocessor"
+      ],
+      "source_unit": "s",
+      "status": "proposed",
+      "unit": "s"
+    },
+    "numeric_parameters.electrical_drive.absolute_voltage_ceiling": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 0.8,
+      "minimum": 0.0,
+      "selected": 0.8,
+      "solver_targets": [
+        "moose-conduction",
+        "experiment-control"
+      ],
+      "source_unit": "V",
+      "status": "proposed",
+      "unit": "V"
+    },
+    "numeric_parameters.electrical_drive.compliance_high": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 0.0001,
+      "minimum": 0.0,
+      "selected": 0.0001,
+      "solver_targets": [
+        "moose-conduction",
+        "external-circuit-limit"
+      ],
+      "source_unit": "A",
+      "status": "proposed",
+      "unit": "A"
+    },
+    "numeric_parameters.electrical_drive.compliance_low": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 1e-06,
+      "minimum": 0.0,
+      "selected": 1e-06,
+      "solver_targets": [
+        "moose-conduction",
+        "external-circuit-limit"
+      ],
+      "source_unit": "A",
+      "status": "proposed",
+      "unit": "A"
+    },
+    "numeric_parameters.electrical_drive.compliance_mid": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 1e-05,
+      "minimum": 0.0,
+      "selected": 1e-05,
+      "solver_targets": [
+        "moose-conduction",
+        "external-circuit-limit"
+      ],
+      "source_unit": "A",
+      "status": "proposed",
+      "unit": "A"
+    },
+    "numeric_parameters.electrical_drive.read_voltage": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 0.05,
+      "minimum": 0.0,
+      "selected": 0.05,
+      "solver_targets": [
+        "moose-conduction"
+      ],
+      "source_unit": "V",
+      "status": "proposed",
+      "unit": "V"
+    },
+    "numeric_parameters.electrical_drive.reset_sweep_limit": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 0.0,
+      "minimum": -0.6,
+      "selected": -0.6,
+      "solver_targets": [
+        "moose-conduction",
+        "experiment-control"
+      ],
+      "source_unit": "V",
+      "status": "proposed",
+      "unit": "V"
+    },
+    "numeric_parameters.electrical_drive.set_sweep_limit": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 0.6,
+      "minimum": 0.0,
+      "selected": 0.6,
+      "solver_targets": [
+        "moose-conduction",
+        "experiment-control"
+      ],
+      "source_unit": "V",
+      "status": "proposed",
+      "unit": "V"
+    },
+    "numeric_parameters.geometry.array_columns": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 8.0,
+      "minimum": 8.0,
+      "selected": 8.0,
+      "solver_targets": [
+        "mesh-layout",
+        "experiment-control"
+      ],
+      "source_unit": "count",
+      "status": "proposed",
+      "unit": "1"
+    },
+    "numeric_parameters.geometry.array_rows": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 8.0,
+      "minimum": 8.0,
+      "selected": 8.0,
+      "solver_targets": [
+        "mesh-layout",
+        "experiment-control"
+      ],
+      "source_unit": "count",
+      "status": "proposed",
+      "unit": "1"
+    },
+    "numeric_parameters.geometry.cell_height": {
+      "admission": "ready",
+      "disposition": "sampled-proposed",
+      "maximum": 0.00010499999999999999,
+      "minimum": 9.499999999999999e-05,
+      "selected": 9.71622269432e-05,
+      "solver_targets": [
+        "moose-conduction",
+        "moose-thermal",
+        "moose-mechanics",
+        "openmc-geometry"
+      ],
+      "source_unit": "um",
+      "status": "proposed",
+      "unit": "m"
+    },
+    "numeric_parameters.geometry.cell_width": {
+      "admission": "ready",
+      "disposition": "sampled-proposed",
+      "maximum": 0.00010499999999999999,
+      "minimum": 9.499999999999999e-05,
+      "selected": 0.000102421346775,
+      "solver_targets": [
+        "moose-conduction",
+        "moose-thermal",
+        "moose-mechanics",
+        "openmc-geometry"
+      ],
+      "source_unit": "um",
+      "status": "proposed",
+      "unit": "m"
+    },
+    "numeric_parameters.geometry.inert_electrode_thickness": {
+      "admission": "ready",
+      "disposition": "sampled-proposed",
+      "maximum": 1.1e-07,
+      "minimum": 9.000000000000001e-08,
+      "selected": 9.22121073823e-08,
+      "solver_targets": [
+        "moose-conduction",
+        "moose-thermal",
+        "moose-mechanics",
+        "openmc-geometry"
+      ],
+      "source_unit": "nm",
+      "status": "proposed",
+      "unit": "m"
+    },
+    "numeric_parameters.geometry.passivation_thickness": {
+      "admission": "ready",
+      "disposition": "sampled-proposed",
+      "maximum": 5.0000000000000004e-08,
+      "minimum": 2e-08,
+      "selected": 4.043094042620001e-08,
+      "solver_targets": [
+        "moose-thermal",
+        "moose-mechanics",
+        "openmc-geometry"
+      ],
+      "source_unit": "nm",
+      "status": "proposed",
+      "unit": "m"
+    },
+    "numeric_parameters.geometry.silver_electrode_thickness": {
+      "admission": "ready",
+      "disposition": "sampled-proposed",
+      "maximum": 3.3000000000000004e-08,
+      "minimum": 2.7e-08,
+      "selected": 3.2574871873900006e-08,
+      "solver_targets": [
+        "moose-conduction",
+        "moose-thermal",
+        "moose-mechanics",
+        "openmc-geometry"
+      ],
+      "source_unit": "nm",
+      "status": "proposed",
+      "unit": "m"
+    },
+    "numeric_parameters.geometry.solid_electrolyte_thickness": {
+      "admission": "ready",
+      "disposition": "sampled-proposed",
+      "maximum": 8.800000000000001e-08,
+      "minimum": 7.200000000000001e-08,
+      "selected": 8.71246866695e-08,
+      "solver_targets": [
+        "moose-conduction",
+        "moose-thermal",
+        "moose-mechanics",
+        "openmc-geometry"
+      ],
+      "source_unit": "nm",
+      "status": "proposed",
+      "unit": "m"
+    },
+    "numeric_parameters.optical_interface.fabrication_photodoping_wavelength": {
+      "admission": "metadata-only",
+      "admission_reason": "No photodoping dose or Ag-profile constitutive law is calibrated.",
+      "disposition": "sampled-proposed",
+      "maximum": 4.1000000000000004e-07,
+      "minimum": 4.0000000000000003e-07,
+      "selected": 4.07815207662e-07,
+      "solver_targets": [
+        "fabrication-metadata"
+      ],
+      "source_unit": "nm",
+      "status": "proposed",
+      "unit": "m"
+    },
+    "numeric_parameters.optical_interface.operational_address_wavelength": {
+      "admission": "metadata-only",
+      "admission_reason": "The admitted mechanism is optical-to-electrical addressing, not direct filament illumination.",
+      "disposition": "sampled-proposed",
+      "maximum": 4.5500000000000004e-07,
+      "minimum": 4.4500000000000003e-07,
+      "selected": 4.5098482238900004e-07,
+      "solver_targets": [
+        "external-controller-metadata"
+      ],
+      "source_unit": "nm",
+      "status": "proposed",
+      "unit": "m"
+    },
+    "numeric_parameters.radiation_materials_screen.cobalt60_dose_step_1": {
+      "admission": "screening-only",
+      "admission_reason": "Absorbed dose target in silicon, not a particle source specification.",
+      "disposition": "fixed-proposed-control",
+      "maximum": 100.0,
+      "minimum": 100.0,
+      "selected": 100.0,
+      "solver_targets": [
+        "openmc-tally-target"
+      ],
+      "source_unit": "Gy(Si)",
+      "status": "proposed",
+      "unit": "J kg^-1(Si)"
+    },
+    "numeric_parameters.radiation_materials_screen.cobalt60_dose_step_2": {
+      "admission": "screening-only",
+      "admission_reason": "Absorbed dose target in silicon, not a particle source specification.",
+      "disposition": "fixed-proposed-control",
+      "maximum": 1000.0,
+      "minimum": 1000.0,
+      "selected": 1000.0,
+      "solver_targets": [
+        "openmc-tally-target"
+      ],
+      "source_unit": "Gy(Si)",
+      "status": "proposed",
+      "unit": "J kg^-1(Si)"
+    },
+    "numeric_parameters.radiation_materials_screen.cobalt60_dose_step_3": {
+      "admission": "screening-only",
+      "admission_reason": "Absorbed dose target in silicon, not a particle source specification.",
+      "disposition": "fixed-proposed-control",
+      "maximum": 3000.0,
+      "minimum": 3000.0,
+      "selected": 3000.0,
+      "solver_targets": [
+        "openmc-tally-target"
+      ],
+      "source_unit": "Gy(Si)",
+      "status": "proposed",
+      "unit": "J kg^-1(Si)"
+    },
+    "numeric_parameters.radiation_materials_screen.cobalt60_dose_step_4": {
+      "admission": "screening-only",
+      "admission_reason": "Absorbed dose target in silicon, not a particle source specification.",
+      "disposition": "fixed-proposed-control",
+      "maximum": 10000.0,
+      "minimum": 10000.0,
+      "selected": 10000.0,
+      "solver_targets": [
+        "openmc-tally-target"
+      ],
+      "source_unit": "Gy(Si)",
+      "status": "proposed",
+      "unit": "J kg^-1(Si)"
+    },
+    "numeric_parameters.radiation_materials_screen.maximum_programming_efficacy_fractional_drift": {
+      "admission": "screening-only",
+      "disposition": "fixed-proposed-control",
+      "maximum": 0.2,
+      "minimum": 0.0,
+      "selected": 0.2,
+      "solver_targets": [
+        "coupling-postprocessor"
+      ],
+      "source_unit": "fraction",
+      "status": "proposed",
+      "unit": "1"
+    },
+    "numeric_parameters.reservoir.bulk_silver_conductivity_reference": {
+      "admission": "reference-only",
+      "admission_reason": "Filament conductivity remains undefined until filament geometry and state are measured.",
+      "disposition": "fixed-established",
+      "maximum": 63000000.0,
+      "minimum": 60000000.0,
+      "selected": 61000000.0,
+      "solver_targets": [
+        "reference-only"
+      ],
+      "source_unit": "S m^-1",
+      "status": "established",
+      "unit": "S m^-1"
+    },
+    "numeric_parameters.reservoir.bulk_silver_density": {
+      "admission": "conditional",
+      "admission_reason": "Bulk reference is usable for an inventory check; the deposited thin-film density still requires metrology before predictive coupling.",
+      "disposition": "fixed-established",
+      "maximum": 10492.0,
+      "minimum": 10492.0,
+      "selected": 10492.0,
+      "solver_targets": [
+        "moose-thermal",
+        "moose-mechanics",
+        "openmc-material"
+      ],
+      "source_unit": "kg m^-3",
+      "status": "established",
+      "unit": "kg m^-3"
+    },
+    "numeric_parameters.reservoir.silver_reservoir_mass_per_cell": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 3.65e-12,
+      "minimum": 2.7e-12,
+      "selected": 3.15e-12,
+      "solver_targets": [
+        "global-mass-constraint"
+      ],
+      "source_unit": "kg",
+      "status": "proposed",
+      "unit": "kg"
+    },
+    "numeric_parameters.vacuum_environment.comparison_temperature": {
+      "admission": "ready",
+      "disposition": "sampled-proposed",
+      "maximum": 295.0,
+      "minimum": 291.0,
+      "selected": 291.702038491,
+      "solver_targets": [
+        "moose-thermal",
+        "openmc-material-temperature"
+      ],
+      "source_unit": "K",
+      "status": "proposed",
+      "unit": "K"
+    },
+    "numeric_parameters.vacuum_environment.plateau_dwell": {
+      "admission": "screening-only",
+      "disposition": "sampled-proposed",
+      "maximum": 7200.0,
+      "minimum": 3600.0,
+      "selected": 6271.4048308,
+      "solver_targets": [
+        "moose-thermal",
+        "experiment-control"
+      ],
+      "source_unit": "s",
+      "status": "proposed",
+      "unit": "s"
+    },
+    "numeric_parameters.vacuum_environment.screen_temperature_maximum": {
+      "admission": "screening-only",
+      "admission_reason": "Generic material screen, not mission qualification.",
+      "disposition": "fixed-proposed-control",
+      "maximum": 358.0,
+      "minimum": 358.0,
+      "selected": 358.0,
+      "solver_targets": [
+        "moose-thermal"
+      ],
+      "source_unit": "K",
+      "status": "proposed",
+      "unit": "K"
+    },
+    "numeric_parameters.vacuum_environment.screen_temperature_minimum": {
+      "admission": "screening-only",
+      "admission_reason": "Generic material screen, not mission qualification.",
+      "disposition": "fixed-proposed-control",
+      "maximum": 233.0,
+      "minimum": 233.0,
+      "selected": 233.0,
+      "solver_targets": [
+        "moose-thermal"
+      ],
+      "source_unit": "K",
+      "status": "proposed",
+      "unit": "K"
+    },
+    "numeric_parameters.vacuum_environment.temperature_ramp_rate_maximum": {
+      "admission": "screening-only",
+      "disposition": "fixed-proposed-control",
+      "maximum": 0.0333,
+      "minimum": 0.0,
+      "selected": 0.0333,
+      "solver_targets": [
+        "moose-thermal",
+        "moose-mechanics"
+      ],
+      "source_unit": "K s^-1",
+      "status": "proposed",
+      "unit": "K s^-1"
+    },
+    "numeric_parameters.vacuum_environment.thermal_cycle_count": {
+      "admission": "screening-only",
+      "disposition": "fixed-proposed-control",
+      "maximum": 8.0,
+      "minimum": 8.0,
+      "selected": 8.0,
+      "solver_targets": [
+        "moose-thermal",
+        "moose-mechanics",
+        "experiment-control"
+      ],
+      "source_unit": "count",
+      "status": "proposed",
+      "unit": "1"
+    },
+    "numeric_parameters.vacuum_environment.vacuum_pressure_maximum": {
+      "admission": "metadata-only",
+      "admission_reason": "Pressure requires gas composition and outgassing constitutive laws before it can drive a MOOSE field.",
+      "disposition": "fixed-proposed-control",
+      "maximum": 0.0013,
+      "minimum": 0.0,
+      "selected": 0.0013,
+      "solver_targets": [
+        "environment-metadata"
+      ],
+      "source_unit": "Pa",
+      "status": "proposed",
+      "unit": "Pa"
+    },
+    "numeric_parameters.vacuum_falsifier.air_cell_count": {
+      "admission": "metadata-only",
+      "disposition": "fixed-proposed-control",
+      "maximum": 12.0,
+      "minimum": 12.0,
+      "selected": 12.0,
+      "solver_targets": [
+        "experiment-design"
+      ],
+      "source_unit": "count",
+      "status": "proposed",
+      "unit": "1"
+    },
+    "numeric_parameters.vacuum_falsifier.maximum_median_fractional_drift": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 0.2,
+      "minimum": 0.0,
+      "selected": 0.2,
+      "solver_targets": [
+        "postprocessor"
+      ],
+      "source_unit": "fraction",
+      "status": "proposed",
+      "unit": "1"
+    },
+    "numeric_parameters.vacuum_falsifier.maximum_spontaneous_switch_rate": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 2.7777777777777777e-10,
+      "minimum": 0.0,
+      "selected": 2.7777777777777777e-10,
+      "solver_targets": [
+        "postprocessor"
+      ],
+      "source_unit": "event cell^-1 h^-1",
+      "status": "proposed",
+      "unit": "event cell^-1 s^-1"
+    },
+    "numeric_parameters.vacuum_falsifier.maximum_vacuum_cell_failures": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "selected": 1.0,
+      "solver_targets": [
+        "postprocessor"
+      ],
+      "source_unit": "count",
+      "status": "proposed",
+      "unit": "1"
+    },
+    "numeric_parameters.vacuum_falsifier.set_reset_cycles_per_cell": {
+      "admission": "metadata-only",
+      "disposition": "fixed-proposed-control",
+      "maximum": 100.0,
+      "minimum": 100.0,
+      "selected": 100.0,
+      "solver_targets": [
+        "experiment-design",
+        "postprocessor"
+      ],
+      "source_unit": "count",
+      "status": "proposed",
+      "unit": "1"
+    },
+    "numeric_parameters.vacuum_falsifier.vacuum_cell_count": {
+      "admission": "metadata-only",
+      "disposition": "fixed-proposed-control",
+      "maximum": 12.0,
+      "minimum": 12.0,
+      "selected": 12.0,
+      "solver_targets": [
+        "experiment-design"
+      ],
+      "source_unit": "count",
+      "status": "proposed",
+      "unit": "1"
+    }
+  },
+  "translator_version": "1.0.0"
+}

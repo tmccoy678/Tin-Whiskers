@@ -1,0 +1,536 @@
+{
+  "schema_version": "1.0.0",
+  "candidate_id": "earth-pedot",
+  "regime": "earth",
+  "state": "candidate",
+  "derived_from": "lab/materials-calibration.md#1-safe-earth-lab-proof-of-principle",
+  "separation_contract": {
+    "regime_id": "earth",
+    "forbidden_regime_id": "space",
+    "prohibits_cross_regime_parameter_import": true,
+    "promotion_rule": "Earth results may establish aqueous proof-of-principle behavior only; they cannot qualify vacuum, radiation, or flight behavior."
+  },
+  "materials": {
+    "conductor": "electropolymerized PEDOT:PSS dendrite",
+    "growth_medium": "aqueous EDOT, 1,4-benzoquinone, and NaPSS",
+    "electrodes": "gold wire",
+    "substrate": "Parylene-C-coated glass with sealed coverslip",
+    "reservoir": "finite EDOT content in one fresh droplet",
+    "oxidation": "EDOT oxidation is intended; BQ reduction is the paired counter-reaction",
+    "passivation": "Parylene-C covers the floor and inactive lead length but not the growth zone"
+  },
+  "interfaces": {
+    "electrical": "bipolar square-wave growth with independent current trip; low-voltage conductance read",
+    "optical": "inverted bright-field microscope and DMD-projected blue corridor measured by a calibrated photodiode",
+    "thermal": "temperature probe adjacent to the sealed droplet",
+    "safety": "ventilated chemical enclosure, splash goggles, compatible gloves, secondary containment, and collected hazardous waste"
+  },
+  "numeric_parameters": {
+    "chemistry": {
+      "electrolyte_volume": {
+        "value": 20.0,
+        "unit": "uL",
+        "status": "established",
+        "provenance": {
+          "kind": "source",
+          "text": "Published exact-stack droplet volume; range is the proposed handling tolerance.",
+          "url": "https://doi.org/10.1038/s41467-021-27274-9"
+        },
+        "allowable_range": { "minimum": 19.5, "maximum": 20.5, "inclusive": true },
+        "hard_stop": {
+          "condition": "Measured volume is outside the allowable range.",
+          "action": "Discard the droplet and prepare a fresh cell; do not normalize an evaporation error after growth."
+        }
+      },
+      "edot_concentration": {
+        "value": 10.0,
+        "unit": "mol m^-3",
+        "status": "established",
+        "provenance": {
+          "kind": "source",
+          "text": "Published exact-stack aqueous EDOT concentration.",
+          "url": "https://doi.org/10.1038/s41467-021-27274-9"
+        },
+        "allowable_range": { "minimum": 9.5, "maximum": 10.5, "inclusive": true },
+        "hard_stop": {
+          "condition": "Prepared concentration is outside the allowable range.",
+          "action": "Reject the batch and prepare a fresh electrolyte."
+        }
+      },
+      "benzoquinone_concentration": {
+        "value": 10.0,
+        "unit": "mol m^-3",
+        "status": "established",
+        "provenance": {
+          "kind": "source",
+          "text": "Published exact-stack BQ concentration.",
+          "url": "https://doi.org/10.1038/s41467-021-27274-9"
+        },
+        "allowable_range": { "minimum": 9.5, "maximum": 10.5, "inclusive": true },
+        "hard_stop": {
+          "condition": "Prepared concentration is outside the allowable range or lot SDS controls are unavailable.",
+          "action": "Do not energize the cell; reject the batch or restore the safety controls."
+        }
+      },
+      "napss_concentration": {
+        "value": 1.0,
+        "unit": "mol m^-3",
+        "status": "established",
+        "provenance": {
+          "kind": "source",
+          "text": "Published exact-stack NaPSS concentration.",
+          "url": "https://doi.org/10.1038/s41467-021-27274-9"
+        },
+        "allowable_range": { "minimum": 0.95, "maximum": 1.05, "inclusive": true },
+        "hard_stop": {
+          "condition": "Prepared concentration is outside the allowable range.",
+          "action": "Reject the batch and prepare a fresh electrolyte."
+        }
+      },
+      "edot_reservoir_amount": {
+        "value": 2.0e-7,
+        "unit": "mol",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Derived from the proposed droplet volume and established EDOT concentration; used as the finite material budget.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 1.9e-7, "maximum": 2.1e-7, "inclusive": true },
+        "hard_stop": {
+          "condition": "Calculated reservoir falls outside the range after measured volume and concentration are entered.",
+          "action": "Invalidate the specimen's mass-budget comparison."
+        }
+      },
+      "edot_reservoir_mass_upper_bound": {
+        "value": 28.4,
+        "unit": "ug",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Stoichiometric upper bound from EDOT amount and molar mass before yield and counter-reaction losses.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 27.0, "maximum": 30.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Reported deposited mass exceeds the measured starting reservoir mass.",
+          "action": "Reject the mass accounting and inspect calibration or contamination."
+        }
+      }
+    },
+    "geometry": {
+      "gold_wire_diameter": {
+        "value": 25.0,
+        "unit": "um",
+        "status": "established",
+        "provenance": {
+          "kind": "source",
+          "text": "Published exact-stack Au wire diameter.",
+          "url": "https://doi.org/10.1038/s41467-021-27274-9"
+        },
+        "allowable_range": { "minimum": 25.0, "maximum": 25.0, "inclusive": true },
+        "hard_stop": null
+      },
+      "electrode_gap": {
+        "value": 240.0,
+        "unit": "um",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Reproduces the published nominal geometry with a bounded placement tolerance.",
+          "url": "https://doi.org/10.1038/s41467-021-27274-9"
+        },
+        "allowable_range": { "minimum": 230.0, "maximum": 250.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Measured pre-growth tip gap is outside the allowable range.",
+          "action": "Reposition or replace the wires before adding electrolyte."
+        }
+      },
+      "active_wire_length": {
+        "value": 500.0,
+        "unit": "um",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Leaves a visible growth zone while Parylene-C shields the inactive lead length.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 450.0, "maximum": 550.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Exposed length is outside range or passivation enters the tip gap.",
+          "action": "Reject the cell before energizing."
+        }
+      }
+    },
+    "growth_drive": {
+      "growth_voltage_peak_to_peak": {
+        "value": 10.0,
+        "unit": "V",
+        "status": "proposed",
+        "provenance": {
+          "kind": "source",
+          "text": "Published companion study used a ten-volt peak-to-peak bipolar signal; adopted as the upper first-cell setting.",
+          "url": "https://doi.org/10.1002/advs.202102973"
+        },
+        "allowable_range": { "minimum": 7.0, "maximum": 10.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Commanded or measured peak-to-peak voltage exceeds the maximum.",
+          "action": "Open the output relay and mark the specimen electrically overstressed."
+        }
+      },
+      "growth_frequency": {
+        "value": 80.0,
+        "unit": "Hz",
+        "status": "proposed",
+        "provenance": {
+          "kind": "source",
+          "text": "Published bridge-growth frequency; the cited setup bubbled below ten hertz.",
+          "url": "https://doi.org/10.1038/s41467-021-27274-9"
+        },
+        "allowable_range": { "minimum": 10.0, "maximum": 320.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Frequency is below the minimum or visible bubbling begins.",
+          "action": "Stop the waveform immediately and reject the run as electrolysis-confounded."
+        }
+      },
+      "growth_duty_fraction": {
+        "value": 0.50,
+        "unit": "fraction",
+        "status": "proposed",
+        "provenance": {
+          "kind": "source",
+          "text": "Published bridge-growth duty fraction.",
+          "url": "https://doi.org/10.1038/s41467-021-27274-9"
+        },
+        "allowable_range": { "minimum": 0.45, "maximum": 0.55, "inclusive": true },
+        "hard_stop": {
+          "condition": "Measured duty fraction is outside the allowable range.",
+          "action": "Stop and correct the waveform before continuing."
+        }
+      },
+      "growth_current_compliance": {
+        "value": 0.002,
+        "unit": "A",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Conservative first-cell ceiling chosen to prevent an uncontrolled post-bridge current surge while retaining the published millisiemens-scale envelope.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 0.002, "inclusive": true },
+        "hard_stop": {
+          "condition": "Measured current reaches the compliance ceiling.",
+          "action": "Trip the source output and preserve the last synchronized frame."
+        }
+      },
+      "growth_timeout": {
+        "value": 300.0,
+        "unit": "s",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Bounds energy and chemical exposure around the faster published bridge condition.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 300.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "No bridge is detected by the timeout or a bridge is detected earlier.",
+          "action": "Stop the growth waveform; classify as timeout or bridge completion."
+        }
+      }
+    },
+    "readout": {
+      "read_voltage": {
+        "value": 0.10,
+        "unit": "V",
+        "status": "proposed",
+        "provenance": {
+          "kind": "source",
+          "text": "Low-voltage PEDOT dendrite readout demonstrated in the companion electrical study.",
+          "url": "https://doi.org/10.1002/advs.202102973"
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 0.10, "inclusive": true },
+        "hard_stop": {
+          "condition": "Read command exceeds the maximum.",
+          "action": "Abort the read to avoid confusing continued electrochemistry with passive conductance."
+        }
+      },
+      "read_duration": {
+        "value": 0.10,
+        "unit": "s",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Short read interval limits charge injection while allowing synchronized conductance sampling.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 0.05, "maximum": 0.20, "inclusive": true },
+        "hard_stop": {
+          "condition": "Read duration exceeds the upper bound.",
+          "action": "Abort the read and mark it non-comparable."
+        }
+      },
+      "read_current_compliance": {
+        "value": 0.0002,
+        "unit": "A",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Bounds read power above the admission conductance while remaining below the growth-current ceiling.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 0.0002, "inclusive": true },
+        "hard_stop": {
+          "condition": "Read current reaches compliance.",
+          "action": "Trip the read and inspect for a hard short."
+        }
+      }
+    },
+    "environment": {
+      "temperature": {
+        "value": 295.0,
+        "unit": "K",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Controlled ambient starting point for matched wet-cell comparisons.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 293.0, "maximum": 297.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Cell temperature exits the range.",
+          "action": "Pause growth and reject the matched comparison if the paired lane did not share the excursion."
+        }
+      },
+      "absolute_pressure": {
+        "value": 101000.0,
+        "unit": "Pa",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Ambient-pressure Earth regime; explicitly excludes vacuum inference.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 96000.0, "maximum": 106000.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Pressure leaves the ambient range or the cell is placed under vacuum.",
+          "action": "Stop and classify the specimen outside the Earth manifest."
+        }
+      }
+    },
+    "optical_interface": {
+      "projection_wavelength": {
+        "value": 450.0,
+        "unit": "nm",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Visible DMD-compatible starting wavelength; direct optical steering of this Au-wire chemistry remains the tested unknown.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 445.0, "maximum": 455.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Measured peak wavelength is outside range.",
+          "action": "Do not combine the run with the calibrated optical cohort."
+        }
+      },
+      "projected_corridor_width": {
+        "value": 50.0,
+        "unit": "um",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Resolvable corridor narrower than the electrode gap and wider than a single fine branch.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 45.0, "maximum": 55.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Calibrated projected width is outside range.",
+          "action": "Recalibrate projection before dosing the specimen."
+        }
+      },
+      "projected_irradiance": {
+        "value": 100.0,
+        "unit": "W m^-2",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Upper first-screen irradiance selected for a paired optical-leverage test, not asserted as a published dendrite-growth value.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 100.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Measured irradiance exceeds the maximum or local temperature exits its range.",
+          "action": "Blank the projector and reject the exposure as over-dose or thermally confounded."
+        }
+      }
+    },
+    "admission_metrics": {
+      "minimum_bridge_conductance": {
+        "value": 5.0e-5,
+        "unit": "S",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Conservative admission floor below the published order-of-magnitude bridge conductance.",
+          "url": "https://doi.org/10.1002/advs.202102973"
+        },
+        "allowable_range": { "minimum": 5.0e-5, "maximum": 1.0e-3, "inclusive": true },
+        "hard_stop": {
+          "condition": "Post-bridge conductance is below the floor.",
+          "action": "Do not admit the specimen as a useful conductive bridge."
+        }
+      },
+      "minimum_effective_conductivity": {
+        "value": 10.0,
+        "unit": "S m^-1",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Admission floor below the companion study's image-derived conductivity range; valid only when geometry is reconstructed.",
+          "url": "https://doi.org/10.1002/advs.202102973"
+        },
+        "allowable_range": { "minimum": 10.0, "maximum": 140.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Geometry-supported effective conductivity is below the floor or geometry was not measured.",
+          "action": "Report conductance only and withhold conductivity-based admission."
+        }
+      },
+      "paired_chip_count": {
+        "value": 6.0,
+        "unit": "count",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Smallest paired screen chosen to require repeatable direction rather than a single photomicrograph.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 6.0, "maximum": 6.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Fewer paired chips complete without protocol violations.",
+          "action": "Do not evaluate the optical steering gate."
+        }
+      },
+      "required_directional_successes": {
+        "value": 5.0,
+        "unit": "count",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Predeclared sign-consistency requirement for the smallest optical falsifier.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 5.0, "maximum": 6.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Directional success count is below the threshold.",
+          "action": "Reject optical steering at this dose and geometry."
+        }
+      },
+      "minimum_tip_displacement": {
+        "value": 25.0,
+        "unit": "um",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Spatial effect floor chosen to exceed a fine branch-scale registration ambiguity.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 25.0, "maximum": 240.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Paired median directed displacement is below the threshold and bridge-time criterion also fails.",
+          "action": "Reject optical steering at this dose and geometry."
+        }
+      },
+      "minimum_bridge_time_fractional_change": {
+        "value": 0.20,
+        "unit": "fraction",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Predeclared bridge-time effect floor for the paired falsifier.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 0.20, "maximum": 1.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Paired median bridge-time change is below the threshold and displacement criterion also fails.",
+          "action": "Reject optical steering at this dose and geometry."
+        }
+      }
+    }
+  },
+  "required_unset_gates": {},
+  "gates": [
+    {
+      "gate_id": "earth-safety",
+      "kind": "safety",
+      "description": "Confirm chemical controls and lot-specific SDS before preparing BQ electrolyte.",
+      "parameter_refs": ["numeric_parameters.chemistry.benzoquinone_concentration"],
+      "pass": "Required enclosure, PPE, containment, and waste path are present.",
+      "fail": "Do not prepare or energize the cell.",
+      "next": "earth-electrical-reproduction"
+    },
+    {
+      "gate_id": "earth-electrical-reproduction",
+      "kind": "experiment",
+      "description": "Reproduce a bounded conductive PEDOT bridge before interpreting optical action.",
+      "parameter_refs": [
+        "numeric_parameters.growth_drive.growth_voltage_peak_to_peak",
+        "numeric_parameters.growth_drive.growth_frequency",
+        "numeric_parameters.admission_metrics.minimum_bridge_conductance"
+      ],
+      "pass": "A bridge completes within the timeout and meets the conductance floor without bubbling or current trip.",
+      "fail": "Reject the specimen and diagnose chemistry, geometry, or waveform without claiming photon response.",
+      "next": "earth-optical-falsifier"
+    },
+    {
+      "gate_id": "earth-optical-falsifier",
+      "kind": "experiment",
+      "description": "Compare spatially patterned illumination with equal-energy uniform exposure on paired lanes.",
+      "parameter_refs": [
+        "numeric_parameters.optical_interface.projected_irradiance",
+        "numeric_parameters.admission_metrics.paired_chip_count",
+        "numeric_parameters.admission_metrics.required_directional_successes",
+        "numeric_parameters.admission_metrics.minimum_tip_displacement",
+        "numeric_parameters.admission_metrics.minimum_bridge_time_fractional_change"
+      ],
+      "pass": "Directional-success threshold is met and at least one predeclared effect-size threshold is met.",
+      "fail": "Reject optical steering for this dose and geometry; retain electrical electropolymerization only.",
+      "next": "earth-candidate-promotion"
+    },
+    {
+      "gate_id": "earth-candidate-promotion",
+      "kind": "promotion",
+      "description": "Admit only the calibrated Earth material response to later controller comparison.",
+      "parameter_refs": ["numeric_parameters.admission_metrics.minimum_effective_conductivity"],
+      "pass": "Safety, electrical reproduction, and optical falsifier gates pass with complete mass and energy accounting.",
+      "fail": "Keep the manifest in candidate state.",
+      "next": null
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "janzakova-growth-2021",
+      "title": "Analog programming of conducting-polymer dendritic interconnections and control of their morphology",
+      "url": "https://doi.org/10.1038/s41467-021-27274-9",
+      "scope": "Exact wet chemistry, gold-wire geometry, voltage threshold, waveform, bridge time, and bubbling boundary."
+    },
+    {
+      "source_id": "janzakova-oect-2021",
+      "title": "Dendritic organic electrochemical transistors grown by electropolymerization for 3D neuromorphic engineering",
+      "url": "https://doi.org/10.1002/advs.202102973",
+      "scope": "Bipolar growth signal, conductance, image-derived resistivity, and low-voltage read behavior."
+    },
+    {
+      "source_id": "hwang-light-guided-2025",
+      "title": "Light-guided patterning of electroactive PEDOT on hematite",
+      "url": "https://doi.org/10.1016/j.cej.2025.168284",
+      "scope": "Separate evidence that DMD-addressed photoelectrochemical PEDOT patterning is feasible; not evidence for the Au-wire cell."
+    },
+    {
+      "source_id": "bq-sds",
+      "title": "Sigma-Aldrich safety data sheet for 1,4-benzoquinone",
+      "url": "https://www.sigmaaldrich.com/US/en/sds/sial/phr1028",
+      "scope": "Chemical handling boundary; the current lot-specific SDS remains controlling."
+    }
+  ]
+}

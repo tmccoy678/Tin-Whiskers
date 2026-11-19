@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/tin-whiskers-dendrites-ai-si/material-candidate.schema.json",
+  "title": "Materials candidate manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "candidate_id",
+    "regime",
+    "state",
+    "derived_from",
+    "separation_contract",
+    "materials",
+    "interfaces",
+    "numeric_parameters",
+    "required_unset_gates",
+    "gates",
+    "sources"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "candidate_id": { "enum": ["earth-pedot", "space-cbram"] },
+    "regime": { "enum": ["earth", "space"] },
+    "state": { "enum": ["candidate", "screening", "rejected", "admitted"] },
+    "derived_from": { "type": "string", "minLength": 1 },
+    "separation_contract": { "$ref": "#/$defs/separationContract" },
+    "materials": { "$ref": "#/$defs/stringMap" },
+    "interfaces": { "$ref": "#/$defs/stringMap" },
+    "numeric_parameters": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/parameterGroup" }
+    },
+    "required_unset_gates": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/quantity" }
+    },
+    "gates": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/gate" }
+    },
+    "sources": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/source" }
+    }
+  },
+  "$defs": {
+    "stringMap": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "string" },
+          { "type": "array", "items": { "type": "string" } }
+        ]
+      }
+    },
+    "separationContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "regime_id",
+        "forbidden_regime_id",
+        "prohibits_cross_regime_parameter_import",
+        "promotion_rule"
+      ],
+      "properties": {
+        "regime_id": { "enum": ["earth", "space"] },
+        "forbidden_regime_id": { "enum": ["earth", "space"] },
+        "prohibits_cross_regime_parameter_import": { "const": true },
+        "promotion_rule": { "type": "string", "minLength": 1 }
+      }
+    },
+    "parameterGroup": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/quantity" }
+    },
+    "quantity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "unit",
+        "status",
+        "provenance",
+        "allowable_range",
+        "hard_stop"
+      ],
+      "properties": {
+        "value": { "type": ["number", "null"] },
+        "unit": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["established", "proposed", "required-unset"] },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "allowable_range": { "$ref": "#/$defs/range" },
+        "hard_stop": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/hardStop" }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "required-unset" } } },
+          "then": {
+            "properties": {
+              "value": { "type": "null" },
+              "allowable_range": {
+                "properties": {
+                  "minimum": { "type": "null" },
+                  "maximum": { "type": "null" }
+                }
+              },
+              "hard_stop": { "$ref": "#/$defs/hardStop" }
+            }
+          },
+          "else": {
+            "properties": {
+              "value": { "type": "number" },
+              "allowable_range": {
+                "properties": {
+                  "minimum": { "type": "number" },
+                  "maximum": { "type": "number" }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "text", "url"],
+      "properties": {
+        "kind": { "enum": ["source", "rationale"] },
+        "text": { "type": "string", "minLength": 1 },
+        "url": { "type": ["string", "null"] }
+      }
+    },
+    "range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum", "maximum", "inclusive"],
+      "properties": {
+        "minimum": { "type": ["number", "null"] },
+        "maximum": { "type": ["number", "null"] },
+        "inclusive": { "type": "boolean" }
+      }
+    },
+    "hardStop": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["condition", "action"],
+      "properties": {
+        "condition": { "type": "string", "minLength": 1 },
+        "action": { "type": "string", "minLength": 1 }
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gate_id", "kind", "description", "parameter_refs", "pass", "fail", "next"],
+      "properties": {
+        "gate_id": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["experiment", "safety", "required-input", "promotion"] },
+        "description": { "type": "string", "minLength": 1 },
+        "parameter_refs": { "type": "array", "items": { "type": "string" } },
+        "pass": { "type": "string", "minLength": 1 },
+        "fail": { "type": "string", "minLength": 1 },
+        "next": { "type": ["string", "null"] }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "title", "url", "scope"],
+      "properties": {
+        "source_id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "minLength": 1 },
+        "scope": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

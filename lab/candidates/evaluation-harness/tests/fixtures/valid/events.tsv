@@ -1,0 +1,13 @@
+run_id	time_s	episode	load_id	source_pad	sink_pad	I_req_A	damage_id	damage_type	mask_hash	removed_volume_m3	event_blind_code
+W001	0	E0	base	S	K	1	NONE	NONE	NONE	0	EV-W0
+W001	2	E1	heldout	S2	K2	1	D1	exogenous	mask-1	0.1	EV-W1
+G001	0	E0	base	S	K	1	NONE	NONE	NONE	0	EV-G0
+G001	2	E1	heldout	S2	K2	1	D1	exogenous	mask-1	0.1	EV-G1
+F24001	0	E0	base	S	K	1	NONE	NONE	NONE	0	EV-F240
+F24001	2	E1	heldout	S2	K2	1	D1	exogenous	mask-1	0.1	EV-F241
+F36001	0	E0	base	S	K	1	NONE	NONE	NONE	0	EV-F360
+F36001	2	E1	heldout	S2	K2	1	D1	exogenous	mask-1	0.1	EV-F361
+A001	0	E0	base	S	K	1	NONE	NONE	NONE	0	EV-A0
+A001	2	E1	heldout	S2	K2	1	D1	exogenous	mask-1	0.1	EV-A1
+Y001	0	E0	base	S	K	1	NONE	NONE	NONE	0	EV-Y0
+Y001	2	E1	heldout	S2	K2	1	D1	exogenous	mask-1	0.1	EV-Y1

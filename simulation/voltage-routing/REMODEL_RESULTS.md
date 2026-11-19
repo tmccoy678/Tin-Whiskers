@@ -18,13 +18,14 @@ No target graph, branch count, or final thickness was supplied.
 
 The absolute peak rises at fixed voltage because the remodeled network carries
 8.26 times more current. At the original network's delivered current, the
-remodeled topology requires 0.121 normalized volts and its predicted integrated
-Joule density falls from 0.003632 to 0.000514, an 85.85% reduction.
+remodeled topology requires 12.1% of the original applied voltage and its
+predicted integrated Joule density falls from 0.003632 to 0.000514, an 85.85%
+reduction.
 
 The morphology separates into a widened current-bearing backbone and retained
 fine branches. Current-dependent widening therefore improves transport faster
-than it consumes material and reduces normalized bottleneck stress. It remains
-below the parallel grid in absolute one-volt flux.
+than it consumes material and reduces bottleneck stress per delivered current.
+It remains below the parallel grid in absolute one-volt flux.
 
 The raw epoch table is [`remodel-metrics.tsv`](remodel-metrics.tsv). The loop is
 implemented by [`remodel_flow.py`](remodel_flow.py).

@@ -1,9 +1,17 @@
 .DS_Store
 __pycache__/
+.jitcache/
 *.pyc
 simulation/work/
 simulation/output/
 simulation/reduced-rust/target/
+lab/candidates/**/target/
+lab/candidates/visual-presentation/generated/states/
+lab/candidates/visual-presentation/generated/decoded/
+lab/candidates/visual-presentation/generated/*.mov
+lab/candidates/visual-presentation/generated/**/*.mov
+lab/candidates/visual-presentation/generated/**/states/
+lab/candidates/visual-presentation/generated/**/decoded/
 simulation/voltage-routing/*.csv
 simulation/voltage-routing/*.log
 simulation/voltage-routing/ablation/*.csv

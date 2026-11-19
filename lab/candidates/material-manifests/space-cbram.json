@@ -1,0 +1,909 @@
+{
+  "schema_version": "1.0.0",
+  "candidate_id": "space-cbram",
+  "regime": "space",
+  "state": "candidate",
+  "derived_from": "lab/materials-calibration.md#2-vacuumspace-reliability-regime",
+  "separation_contract": {
+    "regime_id": "space",
+    "forbidden_regime_id": "earth",
+    "prohibits_cross_regime_parameter_import": true,
+    "promotion_rule": "Space admission requires its own solid-state vacuum, thermal-vacuum, active-program radiation, and mission-input gates; aqueous PEDOT results cannot fill them."
+  },
+  "materials": {
+    "conductor": "silver filament",
+    "growth_medium": "Ag-photodoped amorphous Ge30Se70 solid electrolyte",
+    "active_electrode": "silver",
+    "inert_electrode": "nickel or platinum selected before fabrication and held constant within a cohort",
+    "substrate": "fused silica coupon",
+    "reservoir": "finite patterned silver film plus measured photodoped silver",
+    "oxidation": "Ag to Ag+ at the active electrode; reverse bias dissolves the bridge",
+    "passivation": "ALD alumina or silicon nitride cap with hermetic coupon seal and gold-capped external contact"
+  },
+  "interfaces": {
+    "electrical": "guarded source-measure and pulse measurement units with independent current compliance",
+    "optical_fabrication": "violet exposure through fused silica for calibrated Ag photodoping",
+    "optical_operation": "blue photodiode or micro-LED address converted into a bounded electrical set pulse; direct light steering of the buried filament is not claimed",
+    "vacuum": "temperature-controlled vacuum probe station with chamber gauge and residual gas analyzer",
+    "radiation": "calibrated cobalt-60 dosimetry with separate active-program and unbiased-retention groups"
+  },
+  "numeric_parameters": {
+    "geometry": {
+      "cell_width": {
+        "value": 100.0,
+        "unit": "um",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Large first-coupon footprint selected for probing and post-test cross-sectioning before nanoscale reduction.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 95.0, "maximum": 105.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Measured width is outside range.",
+          "action": "Exclude the cell from matched electrical and reservoir calculations."
+        }
+      },
+      "cell_height": {
+        "value": 100.0,
+        "unit": "um",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Square first-coupon footprint makes reservoir mass and current-density comparisons explicit.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 95.0, "maximum": 105.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Measured height is outside range.",
+          "action": "Exclude the cell from matched electrical and reservoir calculations."
+        }
+      },
+      "silver_electrode_thickness": {
+        "value": 30.0,
+        "unit": "nm",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Starting active-electrode thickness used to create a finite, weighable Ag reservoir.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 27.0, "maximum": 33.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Metrology places Ag thickness outside range.",
+          "action": "Reject the coupon before photodoping."
+        }
+      },
+      "solid_electrolyte_thickness": {
+        "value": 80.0,
+        "unit": "nm",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "First-coupon Ge30Se70 thickness chosen to retain a measurable solid electrolyte while remaining in established thin-film PMC practice.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 72.0, "maximum": 88.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Metrology places electrolyte thickness outside range or finds pinholes.",
+          "action": "Reject the coupon before electrical forming."
+        }
+      },
+      "inert_electrode_thickness": {
+        "value": 100.0,
+        "unit": "nm",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Mechanically robust probe electrode for the first coupon; material is fixed per cohort.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 90.0, "maximum": 110.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Metrology places inert-electrode thickness outside range.",
+          "action": "Reject the coupon before electrical forming."
+        }
+      },
+      "passivation_thickness": {
+        "value": 35.0,
+        "unit": "nm",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Midpoint of the proposed ALD cap screen; cap chemistry and thickness remain a controlled fabrication factor.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 20.0, "maximum": 50.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Cap is outside range, delaminated, cracked, or blocks the internal Ag-electrolyte interface.",
+          "action": "Reject the coupon from vacuum screening."
+        }
+      },
+      "array_rows": {
+        "value": 8.0,
+        "unit": "count",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Coupon array size supplies separate matched environmental and endpoint-analysis groups.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 8.0, "maximum": 8.0, "inclusive": true },
+        "hard_stop": null
+      },
+      "array_columns": {
+        "value": 8.0,
+        "unit": "count",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Coupon array size supplies separate matched environmental and endpoint-analysis groups.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 8.0, "maximum": 8.0, "inclusive": true },
+        "hard_stop": null
+      }
+    },
+    "reservoir": {
+      "bulk_silver_density": {
+        "value": 10492.0,
+        "unit": "kg m^-3",
+        "status": "established",
+        "provenance": {
+          "kind": "source",
+          "text": "NIST reference density for bulk silver near room temperature.",
+          "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1363.pdf"
+        },
+        "allowable_range": { "minimum": 10492.0, "maximum": 10492.0, "inclusive": true },
+        "hard_stop": null
+      },
+      "silver_reservoir_mass_per_cell": {
+        "value": 3.15e-12,
+        "unit": "kg",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Derived upper-bound mass from cell area, Ag film thickness, and bulk density before subtracting photodoped material.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 2.70e-12, "maximum": 3.65e-12, "inclusive": true },
+        "hard_stop": {
+          "condition": "Inferred deposited or migrated Ag exceeds the measured starting inventory.",
+          "action": "Reject the mass model and inspect thickness, area, contamination, and cross-section measurements."
+        }
+      },
+      "bulk_silver_conductivity_reference": {
+        "value": 6.1e7,
+        "unit": "S m^-1",
+        "status": "established",
+        "provenance": {
+          "kind": "source",
+          "text": "Authoritative room-temperature bulk reference; not assigned to a nanoscale filament.",
+          "url": "https://www-pub.iaea.org/MTCD/Publications/PDF/TCS-48_web.pdf"
+        },
+        "allowable_range": { "minimum": 6.0e7, "maximum": 6.3e7, "inclusive": true },
+        "hard_stop": {
+          "condition": "A report assigns this bulk value to an unmeasured filament cross-section.",
+          "action": "Withhold conductivity and report conductance only until TEM geometry is available."
+        }
+      }
+    },
+    "electrical_drive": {
+      "read_voltage": {
+        "value": 0.05,
+        "unit": "V",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Low-bias state read chosen to limit filament modification.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 0.05, "inclusive": true },
+        "hard_stop": {
+          "condition": "Read command exceeds the maximum.",
+          "action": "Abort the read and mark it potentially state-altering."
+        }
+      },
+      "set_sweep_limit": {
+        "value": 0.60,
+        "unit": "V",
+        "status": "proposed",
+        "provenance": {
+          "kind": "source",
+          "text": "Closely related Ag/Ag-Ge-S/W cells demonstrated cycling below this voltage; used only as the first sweep bound.",
+          "url": "https://doi.org/10.1088/0957-4484/22/25/254017"
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 0.60, "inclusive": true },
+        "hard_stop": {
+          "condition": "Positive sweep reaches the limit without SET.",
+          "action": "Stop the sweep and classify no-SET; do not raise voltage within this run."
+        }
+      },
+      "reset_sweep_limit": {
+        "value": -0.60,
+        "unit": "V",
+        "status": "proposed",
+        "provenance": {
+          "kind": "source",
+          "text": "Symmetric first reset bound derived from the related sub-volt cycling study; exact selected-stack behavior remains to be measured.",
+          "url": "https://doi.org/10.1088/0957-4484/22/25/254017"
+        },
+        "allowable_range": { "minimum": -0.60, "maximum": 0.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Negative sweep reaches the limit without RESET.",
+          "action": "Stop the sweep and classify no-RESET; do not increase magnitude within this run."
+        }
+      },
+      "absolute_voltage_ceiling": {
+        "value": 0.80,
+        "unit": "V",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Pre-breakdown ceiling retained until the exact stack's distribution is measured.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 0.80, "inclusive": true },
+        "hard_stop": {
+          "condition": "Absolute terminal voltage reaches the ceiling.",
+          "action": "Open the output relay and mark the cell electrically overstressed."
+        }
+      },
+      "compliance_low": {
+        "value": 1.0e-6,
+        "unit": "A",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "First rung of a bounded filament-size screen.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 1.0e-6, "inclusive": true },
+        "hard_stop": {
+          "condition": "Current reaches compliance.",
+          "action": "Clamp current and finish the pulse without increasing compliance automatically."
+        }
+      },
+      "compliance_mid": {
+        "value": 1.0e-5,
+        "unit": "A",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Second rung used only after the low-compliance cell remains reversible.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 1.0e-5, "inclusive": true },
+        "hard_stop": {
+          "condition": "Low-compliance reversibility gate has not passed or current reaches this compliance.",
+          "action": "Do not enter or exceed the mid rung; clamp and preserve the state trace."
+        }
+      },
+      "compliance_high": {
+        "value": 1.0e-4,
+        "unit": "A",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Maximum first-coupon rung, below the highest currents reported for the related stack.",
+          "url": "https://doi.org/10.1088/0957-4484/22/25/254017"
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 1.0e-4, "inclusive": true },
+        "hard_stop": {
+          "condition": "Prior rungs have not passed or current reaches the maximum compliance.",
+          "action": "Do not increase compliance; terminate on a hard short or irreversible state."
+        }
+      }
+    },
+    "electrical_admission": {
+      "nominal_on_conductance": {
+        "value": 1.0e-4,
+        "unit": "S",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Midpoint on a broad useful-conductance screen; measured conductance remains primary.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 1.0e-5, "maximum": 1.0e-3, "inclusive": true },
+        "hard_stop": {
+          "condition": "ON conductance is outside range or cannot be reset.",
+          "action": "Reject the cell from reliability cycling."
+        }
+      },
+      "minimum_on_off_ratio": {
+        "value": 10.0,
+        "unit": "ratio",
+        "status": "proposed",
+        "provenance": {
+          "kind": "source",
+          "text": "Related Ag/Ag-Ge-S/W cycling maintained an OFF/ON resistance ratio above this value.",
+          "url": "https://doi.org/10.1088/0957-4484/22/25/254017"
+        },
+        "allowable_range": { "minimum": 10.0, "maximum": 1000000.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Measured conductance-state ratio falls below the minimum.",
+          "action": "Reject the cell from the admitted reliability population."
+        }
+      },
+      "unbiased_retention_hold": {
+        "value": 86400.0,
+        "unit": "s",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "One-day first-coupon retention screen; not a mission-lifetime claim.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 86400.0, "maximum": 86400.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "A spontaneous state change occurs during the hold.",
+          "action": "Reject the cell and preserve it for endpoint analysis."
+        }
+      }
+    },
+    "vacuum_environment": {
+      "vacuum_pressure_maximum": {
+        "value": 1.3e-3,
+        "unit": "Pa",
+        "status": "proposed",
+        "provenance": {
+          "kind": "source",
+          "text": "First screen uses the established GSFC thermal-vacuum pressure class; mission qualification remains tailored.",
+          "url": "https://standards.nasa.gov/node/791"
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 1.3e-3, "inclusive": true },
+        "hard_stop": {
+          "condition": "Chamber pressure exceeds the maximum after stabilization.",
+          "action": "Pause electrical cycling and do not count the interval as vacuum exposure."
+        }
+      },
+      "comparison_temperature": {
+        "value": 293.0,
+        "unit": "K",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Room-temperature air/vacuum falsifier isolates pressure before thermal cycling.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 291.0, "maximum": 295.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Coupon temperature leaves range or differs between cohorts beyond the recorded control tolerance.",
+          "action": "Pause and reject the pressure comparison if temperature matching cannot be restored."
+        }
+      },
+      "screen_temperature_minimum": {
+        "value": 233.0,
+        "unit": "K",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Mission-independent component screen only; replaced by mission extrema plus margin before qualification.",
+          "url": "https://standards.nasa.gov/sites/default/files/standards/NASA/B/1/NASA-STD-7002B-w-Change-1.pdf"
+        },
+        "allowable_range": { "minimum": 233.0, "maximum": 233.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Temperature undershoots the screen minimum or a mission claim is made from this generic limit.",
+          "action": "Stop the ramp or block mission promotion, respectively."
+        }
+      },
+      "screen_temperature_maximum": {
+        "value": 358.0,
+        "unit": "K",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Mission-independent component screen only; replaced by mission extrema plus margin before qualification.",
+          "url": "https://standards.nasa.gov/sites/default/files/standards/NASA/B/1/NASA-STD-7002B-w-Change-1.pdf"
+        },
+        "allowable_range": { "minimum": 358.0, "maximum": 358.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Temperature overshoots the screen maximum or a mission claim is made from this generic limit.",
+          "action": "Stop the ramp or block mission promotion, respectively."
+        }
+      },
+      "thermal_cycle_count": {
+        "value": 8.0,
+        "unit": "count",
+        "status": "proposed",
+        "provenance": {
+          "kind": "source",
+          "text": "GSFC workmanship-oriented starting count; mission and project verification remain controlling.",
+          "url": "https://standards.nasa.gov/system/files/tmp/GSFC-STD-1000RevI_Approved_0.pdf"
+        },
+        "allowable_range": { "minimum": 8.0, "maximum": 8.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Fewer complete cycles finish without protocol violation.",
+          "action": "Do not pass the thermal-vacuum gate."
+        }
+      },
+      "temperature_ramp_rate_maximum": {
+        "value": 0.0333,
+        "unit": "K s^-1",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Controlled first-coupon ramp equivalent to approximately two kelvin per minute.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 0.0333, "inclusive": true },
+        "hard_stop": {
+          "condition": "Measured ramp magnitude exceeds the maximum.",
+          "action": "Pause the ramp and do not count the affected transition."
+        }
+      },
+      "plateau_dwell": {
+        "value": 3600.0,
+        "unit": "s",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "One-hour stabilized dwell supports a read and one programming sequence at each extreme.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 3600.0, "maximum": 7200.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Dwell is shorter than the minimum or temperature is not stabilized.",
+          "action": "Do not count the plateau or its electrical measurements."
+        }
+      }
+    },
+    "vacuum_falsifier": {
+      "air_cell_count": {
+        "value": 12.0,
+        "unit": "count",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Matched first-screen group size from the calibration plan.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 12.0, "maximum": 12.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Fewer valid air cells complete the protocol.",
+          "action": "Do not compare cohorts."
+        }
+      },
+      "vacuum_cell_count": {
+        "value": 12.0,
+        "unit": "count",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Matched first-screen group size from the calibration plan.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 12.0, "maximum": 12.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Fewer valid vacuum cells complete the protocol.",
+          "action": "Do not compare cohorts."
+        }
+      },
+      "set_reset_cycles_per_cell": {
+        "value": 100.0,
+        "unit": "count",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Smallest bounded pressure-screen sequence; not an endurance qualification.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 100.0, "maximum": 100.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "A hard short occurs or a cell loses reversible switching.",
+          "action": "Stop that cell and preserve it for endpoint analysis."
+        }
+      },
+      "maximum_vacuum_cell_failures": {
+        "value": 1.0,
+        "unit": "count",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Predeclared first-screen rejection threshold.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 1.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Vacuum-cell failure count exceeds the maximum.",
+          "action": "Reject the stack at the vacuum gate."
+        }
+      },
+      "maximum_median_fractional_drift": {
+        "value": 0.20,
+        "unit": "fraction",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Predeclared allowable shift in median SET voltage or ON conductance between air and vacuum cohorts.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 0.20, "inclusive": true },
+        "hard_stop": {
+          "condition": "Either median fractional drift exceeds the maximum.",
+          "action": "Reject the stack at the vacuum gate."
+        }
+      },
+      "maximum_spontaneous_switch_rate": {
+        "value": 1.0e-6,
+        "unit": "event cell^-1 h^-1",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Conservative first-screen state-stability ceiling.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 1.0e-6, "inclusive": true },
+        "hard_stop": {
+          "condition": "Observed spontaneous-switch rate exceeds the ceiling.",
+          "action": "Reject the stack from reliability admission."
+        }
+      }
+    },
+    "optical_interface": {
+      "fabrication_photodoping_wavelength": {
+        "value": 405.0,
+        "unit": "nm",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Calibrated violet starting wavelength for Ag photodoping; dose must be established on witness coupons.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 400.0, "maximum": 410.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Peak wavelength is outside range or witness-coupon Ag profile is unmeasured.",
+          "action": "Do not fabricate the reliability cohort."
+        }
+      },
+      "operational_address_wavelength": {
+        "value": 450.0,
+        "unit": "nm",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "External optoelectronic addressing wavelength; photons command a bounded electrical pulse rather than directly steering the buried filament.",
+          "url": null
+        },
+        "allowable_range": { "minimum": 445.0, "maximum": 455.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Address wavelength or optical-to-electrical calibration is outside its characterized range.",
+          "action": "Disable optical addressing and use direct electrical calibration only."
+        }
+      }
+    },
+    "radiation_materials_screen": {
+      "cobalt60_dose_step_1": {
+        "value": 100.0,
+        "unit": "Gy(Si)",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "First logarithmic materials-screen point; it is not a mission requirement.",
+          "url": "https://doi.org/10.1109/TNS.2017.2779860"
+        },
+        "allowable_range": { "minimum": 100.0, "maximum": 100.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Dosimetry cannot bound absorbed dose at the device or a hard short appears.",
+          "action": "Stop exposure for the affected cohort."
+        }
+      },
+      "cobalt60_dose_step_2": {
+        "value": 1000.0,
+        "unit": "Gy(Si)",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Second logarithmic materials-screen point; it is not a mission requirement.",
+          "url": "https://doi.org/10.1109/TNS.2017.2779860"
+        },
+        "allowable_range": { "minimum": 1000.0, "maximum": 1000.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Prior dose step was not electrically characterized or a hard short appears.",
+          "action": "Do not proceed to this or a higher dose step."
+        }
+      },
+      "cobalt60_dose_step_3": {
+        "value": 3000.0,
+        "unit": "Gy(Si)",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Intermediate materials-screen point; it is not a mission requirement.",
+          "url": "https://doi.org/10.1109/TNS.2017.2779860"
+        },
+        "allowable_range": { "minimum": 3000.0, "maximum": 3000.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Prior dose step was not electrically characterized or a hard short appears.",
+          "action": "Do not proceed to this or a higher dose step."
+        }
+      },
+      "cobalt60_dose_step_4": {
+        "value": 10000.0,
+        "unit": "Gy(Si)",
+        "status": "proposed",
+        "provenance": {
+          "kind": "source",
+          "text": "Upper materials screen matches the order of the published greater-than-one-megarad exposure; it is not a mission requirement.",
+          "url": "https://doi.org/10.1109/TNS.2017.2779860"
+        },
+        "allowable_range": { "minimum": 10000.0, "maximum": 10000.0, "inclusive": true },
+        "hard_stop": {
+          "condition": "Prior dose step was not electrically characterized or a hard short appears.",
+          "action": "Do not proceed to this dose; preserve the lower-dose endpoint."
+        }
+      },
+      "maximum_programming_efficacy_fractional_drift": {
+        "value": 0.20,
+        "unit": "fraction",
+        "status": "proposed",
+        "provenance": {
+          "kind": "rationale",
+          "text": "Predeclared materials-screen ceiling because published in-situ work found pulse-programmed conductance change more sensitive than DC I-V.",
+          "url": "https://doi.org/10.1109/TNS.2017.2779860"
+        },
+        "allowable_range": { "minimum": 0.0, "maximum": 0.20, "inclusive": true },
+        "hard_stop": {
+          "condition": "Programming efficacy drift exceeds the ceiling at or below the later mission dose.",
+          "action": "Reject mission admission; continue higher-dose characterization only as a labeled failure study."
+        }
+      }
+    }
+  },
+  "required_unset_gates": {
+    "mission_total_ionizing_dose": {
+      "value": null,
+      "unit": "Gy(Si)",
+      "status": "required-unset",
+      "provenance": {
+        "kind": "rationale",
+        "text": "Requires mission orbit, duration, shielding, and device location; the materials-screen dose cannot substitute for it.",
+        "url": null
+      },
+      "allowable_range": { "minimum": null, "maximum": null, "inclusive": true },
+      "hard_stop": {
+        "condition": "Mission TID remains unset.",
+        "action": "Block space qualification and any mission-reliability claim."
+      }
+    },
+    "mission_single_event_let_threshold": {
+      "value": null,
+      "unit": "MeV cm^2 mg^-1",
+      "status": "required-unset",
+      "provenance": {
+        "kind": "rationale",
+        "text": "Heavy-ion species, spectrum, shielding, circuit state, and acceptable cross-section are mission-specific.",
+        "url": null
+      },
+      "allowable_range": { "minimum": null, "maximum": null, "inclusive": true },
+      "hard_stop": {
+        "condition": "Mission SEE LET threshold remains unset.",
+        "action": "Block SEE test definition and space qualification."
+      }
+    },
+    "mission_heavy_ion_fluence": {
+      "value": null,
+      "unit": "m^-2",
+      "status": "required-unset",
+      "provenance": {
+        "kind": "rationale",
+        "text": "Required fluence follows the mission environment and acceptable event-rate confidence, neither of which is defined.",
+        "url": null
+      },
+      "allowable_range": { "minimum": null, "maximum": null, "inclusive": true },
+      "hard_stop": {
+        "condition": "Mission heavy-ion fluence remains unset.",
+        "action": "Block SEE test execution and space qualification."
+      }
+    },
+    "mission_displacement_damage_fluence": {
+      "value": null,
+      "unit": "1 MeV neq m^-2",
+      "status": "required-unset",
+      "provenance": {
+        "kind": "rationale",
+        "text": "Particle spectrum, shielding, and equivalent-damage convention require a defined mission.",
+        "url": null
+      },
+      "allowable_range": { "minimum": null, "maximum": null, "inclusive": true },
+      "hard_stop": {
+        "condition": "Mission displacement-damage fluence remains unset.",
+        "action": "Block displacement-damage test definition and space qualification."
+      }
+    },
+    "mission_lifetime": {
+      "value": null,
+      "unit": "s",
+      "status": "required-unset",
+      "provenance": {
+        "kind": "rationale",
+        "text": "Retention, cycling, TID, and spontaneous-switch budgets depend on a defined service lifetime.",
+        "url": null
+      },
+      "allowable_range": { "minimum": null, "maximum": null, "inclusive": true },
+      "hard_stop": {
+        "condition": "Mission lifetime remains unset.",
+        "action": "Block lifetime scaling and space qualification."
+      }
+    },
+    "mission_shielding_areal_density": {
+      "value": null,
+      "unit": "kg m^-2",
+      "status": "required-unset",
+      "provenance": {
+        "kind": "rationale",
+        "text": "Device-local shielding is needed to translate external environment into absorbed dose and particle spectrum.",
+        "url": null
+      },
+      "allowable_range": { "minimum": null, "maximum": null, "inclusive": true },
+      "hard_stop": {
+        "condition": "Device-local shielding areal density remains unset.",
+        "action": "Block environment transport and space qualification."
+      }
+    },
+    "mission_operational_temperature_minimum": {
+      "value": null,
+      "unit": "K",
+      "status": "required-unset",
+      "provenance": {
+        "kind": "rationale",
+        "text": "NASA verification limits derive from expected mission temperature plus margin; the generic screen cannot fill this value.",
+        "url": "https://standards.nasa.gov/sites/default/files/standards/NASA/B/1/NASA-STD-7002B-w-Change-1.pdf"
+      },
+      "allowable_range": { "minimum": null, "maximum": null, "inclusive": true },
+      "hard_stop": {
+        "condition": "Mission operational minimum remains unset.",
+        "action": "Block mission-tailored thermal-vacuum qualification."
+      }
+    },
+    "mission_operational_temperature_maximum": {
+      "value": null,
+      "unit": "K",
+      "status": "required-unset",
+      "provenance": {
+        "kind": "rationale",
+        "text": "NASA verification limits derive from expected mission temperature plus margin; the generic screen cannot fill this value.",
+        "url": "https://standards.nasa.gov/sites/default/files/standards/NASA/B/1/NASA-STD-7002B-w-Change-1.pdf"
+      },
+      "allowable_range": { "minimum": null, "maximum": null, "inclusive": true },
+      "hard_stop": {
+        "condition": "Mission operational maximum remains unset.",
+        "action": "Block mission-tailored thermal-vacuum qualification."
+      }
+    }
+  },
+  "gates": [
+    {
+      "gate_id": "space-electrical-reversibility",
+      "kind": "experiment",
+      "description": "Establish bounded SET, RESET, conductance ratio, and reservoir accounting on the exact capped stack.",
+      "parameter_refs": [
+        "numeric_parameters.electrical_drive.absolute_voltage_ceiling",
+        "numeric_parameters.electrical_admission.minimum_on_off_ratio",
+        "numeric_parameters.reservoir.silver_reservoir_mass_per_cell"
+      ],
+      "pass": "Exact-stack cells switch reversibly without hard short, inventory violation, or voltage-ceiling breach.",
+      "fail": "Reject the fabrication cohort before vacuum work.",
+      "next": "space-vacuum-falsifier"
+    },
+    {
+      "gate_id": "space-vacuum-falsifier",
+      "kind": "experiment",
+      "description": "Compare matched air and vacuum cells at room temperature before thermal or radiation expense.",
+      "parameter_refs": [
+        "numeric_parameters.vacuum_environment.vacuum_pressure_maximum",
+        "numeric_parameters.vacuum_falsifier.air_cell_count",
+        "numeric_parameters.vacuum_falsifier.vacuum_cell_count",
+        "numeric_parameters.vacuum_falsifier.maximum_vacuum_cell_failures",
+        "numeric_parameters.vacuum_falsifier.maximum_median_fractional_drift"
+      ],
+      "pass": "Failure count and median pressure-induced drift remain within limits with no hard short.",
+      "fail": "Reject the stack or cap and preserve endpoint specimens.",
+      "next": "space-thermal-vacuum"
+    },
+    {
+      "gate_id": "space-thermal-vacuum",
+      "kind": "experiment",
+      "description": "Run the generic materials thermal-vacuum screen without presenting it as mission qualification.",
+      "parameter_refs": [
+        "numeric_parameters.vacuum_environment.screen_temperature_minimum",
+        "numeric_parameters.vacuum_environment.screen_temperature_maximum",
+        "numeric_parameters.vacuum_environment.thermal_cycle_count"
+      ],
+      "pass": "All counted cycles complete with reversible switching and no cap or reservoir failure.",
+      "fail": "Reject the stack from radiation screening unless continued as a labeled failure study.",
+      "next": "space-materials-tid"
+    },
+    {
+      "gate_id": "space-materials-tid",
+      "kind": "experiment",
+      "description": "Measure active-program and unbiased-retention behavior through the proposed cobalt-60 materials screen.",
+      "parameter_refs": [
+        "numeric_parameters.radiation_materials_screen.cobalt60_dose_step_1",
+        "numeric_parameters.radiation_materials_screen.cobalt60_dose_step_4",
+        "numeric_parameters.radiation_materials_screen.maximum_programming_efficacy_fractional_drift"
+      ],
+      "pass": "No hard short occurs and programming efficacy remains within the declared materials-screen limit through relevant dose steps.",
+      "fail": "Reject mission admission; higher exposure may continue only as an explicit failure characterization.",
+      "next": "space-mission-inputs"
+    },
+    {
+      "gate_id": "space-mission-inputs",
+      "kind": "required-input",
+      "description": "Require mission environment, lifetime, shielding, thermal limits, TID, SEE, and displacement-damage values before qualification planning.",
+      "parameter_refs": [
+        "required_unset_gates.mission_total_ionizing_dose",
+        "required_unset_gates.mission_single_event_let_threshold",
+        "required_unset_gates.mission_heavy_ion_fluence",
+        "required_unset_gates.mission_displacement_damage_fluence",
+        "required_unset_gates.mission_lifetime",
+        "required_unset_gates.mission_shielding_areal_density",
+        "required_unset_gates.mission_operational_temperature_minimum",
+        "required_unset_gates.mission_operational_temperature_maximum"
+      ],
+      "pass": "Every required-unset gate is replaced by a traceable mission value and tailored test rationale.",
+      "fail": "Block space qualification and mission-reliability claims.",
+      "next": "space-candidate-promotion"
+    },
+    {
+      "gate_id": "space-candidate-promotion",
+      "kind": "promotion",
+      "description": "Admit the exact stack only after material screens and mission-tailored gates pass.",
+      "parameter_refs": ["numeric_parameters.vacuum_falsifier.maximum_spontaneous_switch_rate"],
+      "pass": "All prior gates pass on the exact stack with complete mass, energy, environment, and failure records.",
+      "fail": "Keep the manifest in candidate or rejected state.",
+      "next": null
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "mahalanabis-incremental-2014",
+      "title": "Incremental resistance programming of programmable metallization cells for use as electronic synapses",
+      "url": "https://doi.org/10.1016/j.sse.2014.07.002",
+      "scope": "Ag-Ge30Se70 incremental conductance states and selected-stack mechanism."
+    },
+    {
+      "source_id": "kamalanathan-low-voltage-2011",
+      "title": "Low voltage cycling of programmable metallization cell memory devices",
+      "url": "https://doi.org/10.1088/0957-4484/22/25/254017",
+      "scope": "Related Ag/Ag-Ge-S/W sub-volt cycling, programmed-current range, resistance ratio, and endurance anchor."
+    },
+    {
+      "source_id": "taggart-tid-2018",
+      "title": "In Situ Synaptic Programming of CBRAM in an Ionizing Radiation Environment",
+      "url": "https://doi.org/10.1109/TNS.2017.2779860",
+      "scope": "Active-program versus DC response under cobalt-60 exposure beyond one megarad."
+    },
+    {
+      "source_id": "nasa-nepp-see",
+      "title": "Single-Event Effect Performance of a Conductive-Bridge Memory EEPROM",
+      "url": "https://nepp.nasa.gov/files/27878/NEPP-CP-2015-Chen-Poster-NSREC-TN24782.pdf",
+      "scope": "Commercial CBRAM standby and peripheral-circuit SEE boundary; not qualification of this stack."
+    },
+    {
+      "source_id": "nasa-gevs",
+      "title": "General Environmental Verification Standard for GSFC Flight Programs and Projects",
+      "url": "https://standards.nasa.gov/node/791",
+      "scope": "Thermal-vacuum verification framework and pressure-class anchor."
+    },
+    {
+      "source_id": "nasa-std-7002b",
+      "title": "Payload Test Requirements",
+      "url": "https://standards.nasa.gov/sites/default/files/standards/NASA/B/1/NASA-STD-7002B-w-Change-1.pdf",
+      "scope": "Mission-derived thermal limits and test margins."
+    },
+    {
+      "source_id": "nist-silver",
+      "title": "Cryogenic properties of silver",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1363.pdf",
+      "scope": "Authoritative bulk silver density reference."
+    },
+    {
+      "source_id": "iaea-conductors",
+      "title": "Eddy Current Testing at Level 2: Manual for the Syllabi Contained in IAEA-TECDOC-628.Rev.2",
+      "url": "https://www-pub.iaea.org/MTCD/Publications/PDF/TCS-48_web.pdf",
+      "scope": "Authoritative room-temperature bulk silver conductivity reference."
+    }
+  ]
+}

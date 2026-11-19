@@ -1,0 +1,46 @@
+{
+  "adaptive_reversal": {
+    "carry_learning_across_eval_episodes": true,
+    "epsilon": 0.15,
+    "neural_batch_size": 8,
+    "neural_replay_capacity": 512,
+    "neural_target_sync_interval": 16,
+    "neural_warmup": 8,
+    "tabular_updates_online": true
+  },
+  "all_actions_through_gym_step": true,
+  "base_seed": 319,
+  "benchmark": "offline-nasim-neural-q-v1",
+  "eval_episodes_per_condition": 16,
+  "nasim_commit": "4f26de37cfdc3e4553ed8b7484c4db8e2924bdea",
+  "nasim_version": "0.12.0",
+  "neural_architecture": {
+    "activation": "ReLU",
+    "hidden": 32,
+    "input": 75,
+    "learning_rate": 0.001,
+    "optimizer": "NumPy Adam",
+    "output": 18,
+    "parameters": 3026,
+    "reward_scale": 50.0
+  },
+  "numpy": "2.5.5",
+  "partial_observation": true,
+  "python": "3.12.14",
+  "q_value_query_definition": "one recorded tabular cell read or one computed neural output cell; a neural replay update counts online and target output cells",
+  "reversal_hidden_state_boundary": "activation and effective mapping are audit-only; policies receive ordinary NASim observations, rewards, and action-result info",
+  "safe_service_definition": "fraction of immutable configured synthetic services not disabled; exactly 1.0 because NASim has no service-disable transition",
+  "scenario_sha256": {
+    "heldout-branch": "930b2745b64312f77781d682795bec073f7853217da1971f52aec5580e11ef44",
+    "reversal-deception": "7aade85c4a2275a116636ccbf5484db7c8ce91079eec496064b991aed311e3dd",
+    "train-chain": "3d06ca0514e3a315049298411e8463e1f96843d54414fdc9b4fff0b7c61eabd6"
+  },
+  "stability": {
+    "batch_size": 32,
+    "gradient_global_norm_cap": 10.0,
+    "replay_capacity": 4096,
+    "target_sync_interval_updates": 120,
+    "warmup": 256
+  },
+  "train_episodes_per_learned_policy": 600
+}

@@ -1,0 +1,257 @@
+{
+  "deck_version": "1.0.0",
+  "candidate_id": "earth-pedot-si-translation",
+  "regime": "earth",
+  "purpose": "Translate an accepted Earth PEDOT sampler draw into SI-valued geometry, boundary conditions, conservative bounds, and explicitly blocked constitutive inputs for a later MOOSE candidate.",
+  "source_manifest": "lab/candidates/material-manifests/earth-pedot.json",
+  "source_calibration": "lab/materials-calibration.md",
+  "input_map": {
+    "numeric_parameters.chemistry.electrolyte_volume": {
+      "moose_role": "global_initial_inventory",
+      "admission": "conditional",
+      "reason": "The volume is valid, but a spatial field requires the missing drop shape and height."
+    },
+    "numeric_parameters.chemistry.edot_concentration": {
+      "moose_role": "initial_condition",
+      "admission": "ready"
+    },
+    "numeric_parameters.chemistry.benzoquinone_concentration": {
+      "moose_role": "initial_condition",
+      "admission": "ready"
+    },
+    "numeric_parameters.chemistry.napss_concentration": {
+      "moose_role": "initial_condition",
+      "admission": "ready"
+    },
+    "numeric_parameters.chemistry.edot_reservoir_amount": {
+      "moose_role": "global_mass_constraint",
+      "admission": "ready"
+    },
+    "numeric_parameters.chemistry.edot_reservoir_mass_upper_bound": {
+      "moose_role": "global_mass_constraint",
+      "admission": "conditional",
+      "reason": "It is a monomer upper bound, not a PEDOT deposited-mass law."
+    },
+    "numeric_parameters.geometry.gold_wire_diameter": {
+      "moose_role": "mesh_geometry",
+      "admission": "ready"
+    },
+    "numeric_parameters.geometry.electrode_gap": {
+      "moose_role": "mesh_geometry",
+      "admission": "ready"
+    },
+    "numeric_parameters.geometry.active_wire_length": {
+      "moose_role": "mesh_geometry",
+      "admission": "ready"
+    },
+    "numeric_parameters.growth_drive.growth_voltage_peak_to_peak": {
+      "moose_role": "time_dependent_dirichlet_boundary",
+      "admission": "ready"
+    },
+    "numeric_parameters.growth_drive.growth_frequency": {
+      "moose_role": "time_function",
+      "admission": "ready"
+    },
+    "numeric_parameters.growth_drive.growth_duty_fraction": {
+      "moose_role": "time_function",
+      "admission": "ready"
+    },
+    "numeric_parameters.growth_drive.growth_current_compliance": {
+      "moose_role": "external_circuit_hard_limit",
+      "admission": "ready"
+    },
+    "numeric_parameters.growth_drive.growth_timeout": {
+      "moose_role": "simulation_end_time_ceiling",
+      "admission": "ready"
+    },
+    "numeric_parameters.readout.read_voltage": {
+      "moose_role": "read_boundary_condition",
+      "admission": "ready"
+    },
+    "numeric_parameters.readout.read_duration": {
+      "moose_role": "read_time_window",
+      "admission": "ready"
+    },
+    "numeric_parameters.readout.read_current_compliance": {
+      "moose_role": "external_circuit_hard_limit",
+      "admission": "ready"
+    },
+    "numeric_parameters.environment.temperature": {
+      "moose_role": "initial_temperature",
+      "admission": "ready"
+    },
+    "numeric_parameters.environment.absolute_pressure": {
+      "moose_role": "run_metadata",
+      "admission": "metadata-only",
+      "reason": "Pressure does not become a transport coefficient without a constitutive evaporation or gas model."
+    },
+    "numeric_parameters.optical_interface.projection_wavelength": {
+      "moose_role": "incident_optical_boundary",
+      "admission": "ready"
+    },
+    "numeric_parameters.optical_interface.projected_corridor_width": {
+      "moose_role": "incident_optical_boundary_geometry",
+      "admission": "ready"
+    },
+    "numeric_parameters.optical_interface.projected_irradiance": {
+      "moose_role": "incident_optical_boundary",
+      "admission": "conditional",
+      "reason": "Only incident dose is known; absorbed dose and photochemical action remain blocked."
+    },
+    "numeric_parameters.admission_metrics.minimum_bridge_conductance": {
+      "moose_role": "postprocessor_threshold",
+      "admission": "ready"
+    },
+    "numeric_parameters.admission_metrics.minimum_effective_conductivity": {
+      "moose_role": "screening_material_range",
+      "admission": "screening-only",
+      "reason": "The range may be swept for sensitivity but cannot be asserted as the exact wet dendrite constitutive conductivity."
+    }
+  },
+  "reference_quantities": {
+    "electropolymerization_threshold_nominal": {
+      "value": 0.9,
+      "unit": "V",
+      "status": "established",
+      "range": null,
+      "uncertainty": "not reported as a calibrated interval",
+      "source": "https://doi.org/10.1038/s41467-021-27274-9",
+      "use": "Reference denominator for a conditional voltage-to-threshold descriptor, not a kinetic coefficient."
+    },
+    "planck_constant": {
+      "value": 6.62607015e-34,
+      "unit": "J s",
+      "status": "established-exact-si",
+      "range": { "minimum": 6.62607015e-34, "maximum": 6.62607015e-34 },
+      "source": "https://physics.nist.gov/cgi-bin/cuu/Value?h"
+    },
+    "speed_of_light": {
+      "value": 299792458.0,
+      "unit": "m s^-1",
+      "status": "established-exact-si",
+      "range": { "minimum": 299792458.0, "maximum": 299792458.0 },
+      "source": "https://physics.nist.gov/cgi-bin/cuu/Value?c"
+    },
+    "elementary_charge": {
+      "value": 1.602176634e-19,
+      "unit": "C",
+      "status": "established-exact-si",
+      "range": { "minimum": 1.602176634e-19, "maximum": 1.602176634e-19 },
+      "source": "https://physics.nist.gov/cgi-bin/cuu/Value?e"
+    },
+    "boltzmann_constant": {
+      "value": 1.380649e-23,
+      "unit": "J K^-1",
+      "status": "established-exact-si",
+      "range": { "minimum": 1.380649e-23, "maximum": 1.380649e-23 },
+      "source": "https://physics.nist.gov/cgi-bin/cuu/Value?k"
+    }
+  },
+  "dimensionless_groups": {
+    "waveform_duty_fraction": "D",
+    "gap_to_wire_diameter": "L_gap / d_wire",
+    "active_length_to_gap": "L_active / L_gap",
+    "optical_corridor_to_gap": "w_opt / L_gap",
+    "conditional_voltage_to_polymerization_threshold": "V_peak / V_threshold_nominal",
+    "voltage_to_thermal_potential": "e V_peak / (k_B T)",
+    "threshold_read_current_to_growth_compliance": "V_read G_bridge_min / I_growth_compliance",
+    "reservoir_amount_consistency": "c_EDOT V_drop / n_EDOT_manifest",
+    "incident_optical_to_electrical_energy_ceiling": "E_opt_incident / E_electrical_ceiling"
+  },
+  "constitutive_blockers": [
+    {
+      "blocker_id": "drop-domain-geometry",
+      "missing": ["drop height field", "contact angle", "free-surface shape", "wire elevation above substrate"],
+      "blocks": ["3-D mesh", "volume-to-concentration field mapping", "optical path length"],
+      "reason": "A scalar droplet volume does not determine a spatial domain."
+    },
+    {
+      "blocker_id": "species-transport",
+      "missing": ["EDOT diffusivity", "BQ diffusivity", "HQ diffusivity", "PSS diffusivity", "counter-ion diffusivities", "species charges", "ionic mobilities", "transference numbers", "activity coefficients"],
+      "blocks": ["Nernst-Planck transport", "concentration polarization", "electromigration groups"],
+      "reason": "No exact-stack transport coefficients or thermodynamic factors are present in the calibration evidence."
+    },
+    {
+      "blocker_id": "electrolyte-electrical",
+      "missing": ["electrolyte conductivity as a function of composition and temperature", "relative permittivity", "double-layer capacitance", "electrode-electrolyte contact impedance"],
+      "blocks": ["potential distribution in the liquid", "RC time scale", "omega-tau dimensionless group", "local overpotential"],
+      "reason": "Applied terminal voltage alone does not determine the local electrochemical field."
+    },
+    {
+      "blocker_id": "redox-kinetics",
+      "missing": ["EDOT oxidation equilibrium potential for the exact reference convention", "BQ reduction equilibrium potential", "exchange current densities", "charge-transfer coefficients", "reaction orders", "Butler-Volmer or alternative rate law", "water-electrolysis kinetic parameters"],
+      "blocks": ["Faradaic source terms", "growth rate", "bubble-onset prediction", "Damkohler numbers"],
+      "reason": "The published threshold and waveform are observations, not a constitutive kinetic law."
+    },
+    {
+      "blocker_id": "polymerization-yield",
+      "missing": ["Faradaic efficiency", "EDOT-to-PEDOT mass yield", "dopant uptake", "BQ-to-HQ stoichiometric yield", "PEDOT wet density", "swelling ratio"],
+      "blocks": ["charge-to-volume conversion", "reservoir depletion", "mass-conserving phase growth"],
+      "reason": "The monomer reservoir is bounded, but conversion from charge or moles to wet dendrite volume is unknown."
+    },
+    {
+      "blocker_id": "phase-field-free-energy",
+      "missing": ["bulk free-energy density", "gradient-energy coefficient", "interfacial energy", "interface mobility", "anisotropy function and strength", "nucleation barrier", "nucleation-site density and distribution"],
+      "blocks": ["Allen-Cahn or Cahn-Hilliard growth", "branch selection", "tip splitting", "morphology time scale"],
+      "reason": "No phase-field coefficients have been calibrated for this wet PEDOT dendrite system."
+    },
+    {
+      "blocker_id": "pedot-state-conductivity",
+      "missing": ["conductivity versus PSS doping", "conductivity versus hydration", "conductivity versus oxidation state", "conductivity versus temperature", "contact resistance", "branch-thickness distribution"],
+      "blocks": ["predictive current density", "Joule heating", "conductivity evolution during growth"],
+      "reason": "The available effective-conductivity range is image-model dependent and suitable only for a sensitivity sweep."
+    },
+    {
+      "blocker_id": "dissolution-and-aging",
+      "missing": ["PEDOT over-oxidation kinetics", "dissolution kinetics", "dedoping kinetics", "drying and rehydration behavior"],
+      "blocks": ["pruning", "reversible remodeling", "long-term retention"],
+      "reason": "The first experiment establishes growth and readout, not a calibrated removal law."
+    },
+    {
+      "blocker_id": "thermal-properties",
+      "missing": ["thermal conductivity of electrolyte and wet PEDOT", "mass density of every phase", "specific heat of every phase", "reaction enthalpy", "electrode thermal contact", "convective coefficient", "evaporative mass and heat transfer", "surface emissivity"],
+      "blocks": ["temperature rise", "thermal stress", "Joule-damage prediction", "thermal dimensionless groups"],
+      "reason": "Voltage and current ceilings bound electrical energy but do not determine temperature."
+    },
+    {
+      "blocker_id": "optical-constitutive",
+      "missing": ["complex refractive index of every phase", "absorption coefficient", "scattering coefficient", "boundary reflectance", "DMD point-spread function at the sample", "photochemical quantum yield", "photoelectrochemical coupling coefficient"],
+      "blocks": ["absorbed optical dose", "optical source term", "light-guided reaction rate", "direct photon-steering claim"],
+      "reason": "Wavelength and incident irradiance determine photon delivery, not absorption or chemical action."
+    },
+    {
+      "blocker_id": "mechanochemical-coupling",
+      "missing": ["elastic moduli", "Poisson ratios", "viscoelastic law", "growth stress", "adhesion energy", "stress-chemical-potential coupling"],
+      "blocks": ["fracture", "delamination", "stress-directed growth", "mechanical pruning"],
+      "reason": "The Earth proof contains no calibrated mechanical constitutive data."
+    },
+    {
+      "blocker_id": "stochastic-law",
+      "missing": ["nucleation noise amplitude", "spatial correlation length", "batch-to-batch parameter distribution", "initial-defect distribution"],
+      "blocks": ["physical ensemble calibration", "predictive branch-probability claims"],
+      "reason": "Simulation seeds cannot be equated to physical variance until wet-cell ensembles are measured."
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "janzakova-growth-2021",
+      "url": "https://doi.org/10.1038/s41467-021-27274-9",
+      "scope": "Exact wet chemistry, wire geometry, voltage threshold, waveform, bridge time, and low-frequency bubbling observation."
+    },
+    {
+      "source_id": "janzakova-oect-2021",
+      "url": "https://doi.org/10.1002/advs.202102973",
+      "scope": "Dendrite conductance, image-derived resistivity, and low-voltage read behavior."
+    },
+    {
+      "source_id": "hwang-light-guided-2025",
+      "url": "https://doi.org/10.1016/j.cej.2025.168284",
+      "scope": "Separate evidence for DMD-addressed PEDOT photoelectrochemistry; not a constitutive calibration for this Au-wire cell."
+    },
+    {
+      "source_id": "nist-si-constants",
+      "url": "https://physics.nist.gov/cuu/Constants/",
+      "scope": "Exact SI constants used only for photon-energy and thermal-voltage descriptors."
+    }
+  ]
+}

@@ -1,0 +1,770 @@
+{
+  "candidate_id": "earth-pedot-si-translation",
+  "claim_boundary": "This translation supplies SI ranges and algebraic descriptors only. It is not a kinetic model, wet-lab instruction, or physical validation.",
+  "constitutive_blockers": [
+    {
+      "blocker_id": "drop-domain-geometry",
+      "blocks": [
+        "3-D mesh",
+        "volume-to-concentration field mapping",
+        "optical path length"
+      ],
+      "missing": [
+        "drop height field",
+        "contact angle",
+        "free-surface shape",
+        "wire elevation above substrate"
+      ],
+      "reason": "A scalar droplet volume does not determine a spatial domain."
+    },
+    {
+      "blocker_id": "species-transport",
+      "blocks": [
+        "Nernst-Planck transport",
+        "concentration polarization",
+        "electromigration groups"
+      ],
+      "missing": [
+        "EDOT diffusivity",
+        "BQ diffusivity",
+        "HQ diffusivity",
+        "PSS diffusivity",
+        "counter-ion diffusivities",
+        "species charges",
+        "ionic mobilities",
+        "transference numbers",
+        "activity coefficients"
+      ],
+      "reason": "No exact-stack transport coefficients or thermodynamic factors are present in the calibration evidence."
+    },
+    {
+      "blocker_id": "electrolyte-electrical",
+      "blocks": [
+        "potential distribution in the liquid",
+        "RC time scale",
+        "omega-tau dimensionless group",
+        "local overpotential"
+      ],
+      "missing": [
+        "electrolyte conductivity as a function of composition and temperature",
+        "relative permittivity",
+        "double-layer capacitance",
+        "electrode-electrolyte contact impedance"
+      ],
+      "reason": "Applied terminal voltage alone does not determine the local electrochemical field."
+    },
+    {
+      "blocker_id": "redox-kinetics",
+      "blocks": [
+        "Faradaic source terms",
+        "growth rate",
+        "bubble-onset prediction",
+        "Damkohler numbers"
+      ],
+      "missing": [
+        "EDOT oxidation equilibrium potential for the exact reference convention",
+        "BQ reduction equilibrium potential",
+        "exchange current densities",
+        "charge-transfer coefficients",
+        "reaction orders",
+        "Butler-Volmer or alternative rate law",
+        "water-electrolysis kinetic parameters"
+      ],
+      "reason": "The published threshold and waveform are observations, not a constitutive kinetic law."
+    },
+    {
+      "blocker_id": "polymerization-yield",
+      "blocks": [
+        "charge-to-volume conversion",
+        "reservoir depletion",
+        "mass-conserving phase growth"
+      ],
+      "missing": [
+        "Faradaic efficiency",
+        "EDOT-to-PEDOT mass yield",
+        "dopant uptake",
+        "BQ-to-HQ stoichiometric yield",
+        "PEDOT wet density",
+        "swelling ratio"
+      ],
+      "reason": "The monomer reservoir is bounded, but conversion from charge or moles to wet dendrite volume is unknown."
+    },
+    {
+      "blocker_id": "phase-field-free-energy",
+      "blocks": [
+        "Allen-Cahn or Cahn-Hilliard growth",
+        "branch selection",
+        "tip splitting",
+        "morphology time scale"
+      ],
+      "missing": [
+        "bulk free-energy density",
+        "gradient-energy coefficient",
+        "interfacial energy",
+        "interface mobility",
+        "anisotropy function and strength",
+        "nucleation barrier",
+        "nucleation-site density and distribution"
+      ],
+      "reason": "No phase-field coefficients have been calibrated for this wet PEDOT dendrite system."
+    },
+    {
+      "blocker_id": "pedot-state-conductivity",
+      "blocks": [
+        "predictive current density",
+        "Joule heating",
+        "conductivity evolution during growth"
+      ],
+      "missing": [
+        "conductivity versus PSS doping",
+        "conductivity versus hydration",
+        "conductivity versus oxidation state",
+        "conductivity versus temperature",
+        "contact resistance",
+        "branch-thickness distribution"
+      ],
+      "reason": "The available effective-conductivity range is image-model dependent and suitable only for a sensitivity sweep."
+    },
+    {
+      "blocker_id": "dissolution-and-aging",
+      "blocks": [
+        "pruning",
+        "reversible remodeling",
+        "long-term retention"
+      ],
+      "missing": [
+        "PEDOT over-oxidation kinetics",
+        "dissolution kinetics",
+        "dedoping kinetics",
+        "drying and rehydration behavior"
+      ],
+      "reason": "The first experiment establishes growth and readout, not a calibrated removal law."
+    },
+    {
+      "blocker_id": "thermal-properties",
+      "blocks": [
+        "temperature rise",
+        "thermal stress",
+        "Joule-damage prediction",
+        "thermal dimensionless groups"
+      ],
+      "missing": [
+        "thermal conductivity of electrolyte and wet PEDOT",
+        "mass density of every phase",
+        "specific heat of every phase",
+        "reaction enthalpy",
+        "electrode thermal contact",
+        "convective coefficient",
+        "evaporative mass and heat transfer",
+        "surface emissivity"
+      ],
+      "reason": "Voltage and current ceilings bound electrical energy but do not determine temperature."
+    },
+    {
+      "blocker_id": "optical-constitutive",
+      "blocks": [
+        "absorbed optical dose",
+        "optical source term",
+        "light-guided reaction rate",
+        "direct photon-steering claim"
+      ],
+      "missing": [
+        "complex refractive index of every phase",
+        "absorption coefficient",
+        "scattering coefficient",
+        "boundary reflectance",
+        "DMD point-spread function at the sample",
+        "photochemical quantum yield",
+        "photoelectrochemical coupling coefficient"
+      ],
+      "reason": "Wavelength and incident irradiance determine photon delivery, not absorption or chemical action."
+    },
+    {
+      "blocker_id": "mechanochemical-coupling",
+      "blocks": [
+        "fracture",
+        "delamination",
+        "stress-directed growth",
+        "mechanical pruning"
+      ],
+      "missing": [
+        "elastic moduli",
+        "Poisson ratios",
+        "viscoelastic law",
+        "growth stress",
+        "adhesion energy",
+        "stress-chemical-potential coupling"
+      ],
+      "reason": "The Earth proof contains no calibrated mechanical constitutive data."
+    },
+    {
+      "blocker_id": "stochastic-law",
+      "blocks": [
+        "physical ensemble calibration",
+        "predictive branch-probability claims"
+      ],
+      "missing": [
+        "nucleation noise amplitude",
+        "spatial correlation length",
+        "batch-to-batch parameter distribution",
+        "initial-defect distribution"
+      ],
+      "reason": "Simulation seeds cannot be equated to physical variance until wet-cell ensembles are measured."
+    }
+  ],
+  "derived_si": {
+    "edot_amount_from_concentration_and_volume": {
+      "formula": "c_EDOT V_drop",
+      "range": {
+        "maximum": 2.1525000000000002e-07,
+        "minimum": 1.8525000000000002e-07
+      },
+      "selected": 2e-07,
+      "unit": "mol"
+    },
+    "electrical_energy_ceiling": {
+      "formula": "V_peak I_compliance t_max",
+      "interpretation": "Conservative terminal-energy ceiling, not heat deposited in the dendrite.",
+      "range": {
+        "maximum": 3.0,
+        "minimum": 0.0
+      },
+      "selected": 2.950763625156,
+      "unit": "J"
+    },
+    "electrical_power_ceiling": {
+      "formula": "V_peak I_compliance",
+      "interpretation": "Compliance ceiling, not predicted dissipation.",
+      "range": {
+        "maximum": 0.01,
+        "minimum": 0.0
+      },
+      "selected": 0.00983587875052,
+      "unit": "W"
+    },
+    "incident_optical_energy_to_timeout": {
+      "formula": "I_opt w_opt L_gap t_max",
+      "interpretation": "Incident energy only; absorbed and photochemical doses are blocked.",
+      "range": {
+        "maximum": 0.0004125,
+        "minimum": 0.0
+      },
+      "selected": 0.0002201995223991045,
+      "unit": "J"
+    },
+    "incident_optical_power": {
+      "formula": "I_opt w_opt L_gap",
+      "interpretation": "Incident power only.",
+      "range": {
+        "maximum": 1.375e-06,
+        "minimum": 0.0
+      },
+      "selected": 7.33998407997015e-07,
+      "unit": "W"
+    },
+    "incident_photon_fluence_to_timeout": {
+      "formula": "I_opt t_max / E_photon",
+      "range": {
+        "maximum": 6.871569114695798e+22,
+        "minimum": 0.0
+      },
+      "selected": 4.037990604272285e+22,
+      "unit": "photon m^-2"
+    },
+    "incident_photon_flux": {
+      "formula": "I_opt / E_photon",
+      "range": {
+        "maximum": 2.2905230382319328e+20,
+        "minimum": 0.0
+      },
+      "selected": 1.3459968680907619e+20,
+      "unit": "photon m^-2 s^-1"
+    },
+    "negative_phase_duration": {
+      "formula": "(1 - D) / f",
+      "range": {
+        "maximum": 0.05500000000000001,
+        "minimum": 0.00140625
+      },
+      "selected": 0.0016169134146677303,
+      "unit": "s"
+    },
+    "nominal_uniform_gap_field": {
+      "formula": "V_peak / L_gap",
+      "interpretation": "Terminal-voltage geometry descriptor only; local overpotential is blocked by electrolyte and interface constitutive data.",
+      "range": {
+        "maximum": 21739.13043478261,
+        "minimum": 14000.0
+      },
+      "selected": 21178.651839930786,
+      "unit": "V m^-1"
+    },
+    "photon_energy": {
+      "formula": "h c / lambda",
+      "range": {
+        "maximum": 4.463923274491974e-19,
+        "minimum": 4.365815070656986e-19
+      },
+      "selected": 4.446386563736371e-19,
+      "unit": "J photon^-1"
+    },
+    "positive_phase_duration": {
+      "formula": "D / f",
+      "range": {
+        "maximum": 0.05500000000000001,
+        "minimum": 0.00140625
+      },
+      "selected": 0.0017383966760968655,
+      "unit": "s"
+    },
+    "projected_gap_corridor_area": {
+      "formula": "w_opt L_gap",
+      "interpretation": "Rectangular incident footprint assumption across the electrode gap; absorption is not inferred.",
+      "range": {
+        "maximum": 1.3749999999999999e-08,
+        "minimum": 1.0349999999999998e-08
+      },
+      "selected": 1.2264330673080636e-08,
+      "unit": "m^2"
+    },
+    "threshold_read_current": {
+      "formula": "V_read G_bridge_min",
+      "range": {
+        "maximum": 0.0001,
+        "minimum": 0.0
+      },
+      "selected": 5e-06,
+      "unit": "A"
+    },
+    "voltage_peak": {
+      "formula": "Vpp / 2",
+      "range": {
+        "maximum": 5.0,
+        "minimum": 3.5
+      },
+      "selected": 4.91793937526,
+      "unit": "V"
+    },
+    "waveform_period": {
+      "formula": "1 / f",
+      "range": {
+        "maximum": 0.1,
+        "minimum": 0.003125
+      },
+      "selected": 0.0033553100907645957,
+      "unit": "s"
+    }
+  },
+  "dimensionless_groups": {
+    "active_length_to_gap": {
+      "formula": "L_active / L_gap",
+      "range": {
+        "maximum": 2.391304347826087,
+        "minimum": 1.7999999999999998
+      },
+      "selected": 2.2574768975574724,
+      "unit": "1"
+    },
+    "conditional_voltage_to_polymerization_threshold": {
+      "formula": "V_peak / V_threshold_nominal",
+      "range": {
+        "maximum": 5.555555555555555,
+        "minimum": 3.888888888888889
+      },
+      "range_basis": "Numerator range divided by the published nominal threshold.",
+      "selected": 5.464377083622222,
+      "uncertainty_blocker": "The threshold source does not report a calibrated interval; this group is conditional, not predictive.",
+      "unit": "1"
+    },
+    "gap_to_wire_diameter": {
+      "formula": "L_gap / d_wire",
+      "range": {
+        "maximum": 10.000000000000002,
+        "minimum": 9.2
+      },
+      "selected": 9.28848429528,
+      "unit": "1"
+    },
+    "incident_optical_to_electrical_energy_ceiling": {
+      "formula": "E_opt_incident / E_electrical_ceiling",
+      "interpretation": "Selected-setting bookkeeping ratio only; neither numerator absorption nor denominator heat deposition is known.",
+      "range": {
+        "maximum": null,
+        "minimum": null
+      },
+      "range_blocker": "The compliance and timeout allowable ranges include zero, so a finite ratio interval cannot be propagated without inventing a positive lower bound.",
+      "selected": 7.462458887653634e-05,
+      "unit": "1"
+    },
+    "optical_corridor_to_gap": {
+      "formula": "w_opt / L_gap",
+      "range": {
+        "maximum": 0.2391304347826087,
+        "minimum": 0.18
+      },
+      "selected": 0.227443815302087,
+      "unit": "1"
+    },
+    "reservoir_amount_consistency": {
+      "formula": "c_EDOT V_drop / n_EDOT_manifest",
+      "range": {
+        "maximum": 1.1328947368421054,
+        "minimum": 0.8821428571428572
+      },
+      "selected": 1.0,
+      "unit": "1"
+    },
+    "threshold_read_current_to_growth_compliance": {
+      "formula": "V_read G_min / I_compliance",
+      "range": {
+        "maximum": null,
+        "minimum": null
+      },
+      "range_blocker": "The current-compliance allowable range includes zero, so a finite ratio interval cannot be propagated without inventing a positive lower bound.",
+      "selected": 0.0025,
+      "unit": "1"
+    },
+    "voltage_to_thermal_potential": {
+      "formula": "e V_peak / (k_B T)",
+      "interpretation": "Uses one elementary charge as a scale; it is not a local electrochemical overpotential.",
+      "range": {
+        "maximum": 198.0293194803768,
+        "minimum": 136.7535805569875
+      },
+      "selected": 194.20597149251583,
+      "unit": "1"
+    },
+    "waveform_duty_fraction": {
+      "formula": "D",
+      "range": {
+        "maximum": 0.55,
+        "minimum": 0.45
+      },
+      "selected": 0.518103134754,
+      "unit": "1"
+    }
+  },
+  "moose_admission": {
+    "can_enter_now": [
+      "numeric_parameters.admission_metrics.minimum_bridge_conductance",
+      "numeric_parameters.chemistry.benzoquinone_concentration",
+      "numeric_parameters.chemistry.edot_concentration",
+      "numeric_parameters.chemistry.edot_reservoir_amount",
+      "numeric_parameters.chemistry.napss_concentration",
+      "numeric_parameters.environment.temperature",
+      "numeric_parameters.geometry.active_wire_length",
+      "numeric_parameters.geometry.electrode_gap",
+      "numeric_parameters.geometry.gold_wire_diameter",
+      "numeric_parameters.growth_drive.growth_current_compliance",
+      "numeric_parameters.growth_drive.growth_duty_fraction",
+      "numeric_parameters.growth_drive.growth_frequency",
+      "numeric_parameters.growth_drive.growth_timeout",
+      "numeric_parameters.growth_drive.growth_voltage_peak_to_peak",
+      "numeric_parameters.optical_interface.projected_corridor_width",
+      "numeric_parameters.optical_interface.projection_wavelength",
+      "numeric_parameters.readout.read_current_compliance",
+      "numeric_parameters.readout.read_duration",
+      "numeric_parameters.readout.read_voltage"
+    ],
+    "cannot_enter_without_constitutive_data": [
+      "drop-domain-geometry",
+      "species-transport",
+      "electrolyte-electrical",
+      "redox-kinetics",
+      "polymerization-yield",
+      "phase-field-free-energy",
+      "pedot-state-conductivity",
+      "dissolution-and-aging",
+      "thermal-properties",
+      "optical-constitutive",
+      "mechanochemical-coupling",
+      "stochastic-law"
+    ],
+    "conditional_screening_or_metadata": [
+      "numeric_parameters.admission_metrics.minimum_effective_conductivity",
+      "numeric_parameters.chemistry.edot_reservoir_mass_upper_bound",
+      "numeric_parameters.chemistry.electrolyte_volume",
+      "numeric_parameters.environment.absolute_pressure",
+      "numeric_parameters.optical_interface.projected_irradiance"
+    ]
+  },
+  "parameter_deck": "lab/candidates/earth-pedot-simulation/parameter-deck.json",
+  "parameter_deck_sha256": "ab7ad7de9b78e18d7b467163dd5bfa32b59d440c0f27fb2e6930743a51cb1f8e",
+  "seed": 319,
+  "source_draw": "lab/candidates/earth-pedot-simulation/seed-319-draw.json",
+  "source_draw_sha256": "4d8d6a20a28393658b1accc18bc8e6f93c7fd110261c9e570077a524ed29436f",
+  "source_manifest": "lab/candidates/material-manifests/earth-pedot.json",
+  "source_manifest_sha256": "9a713a6233bc44f73747abba1c38fccd97520be560f04b520a5c758f432ba31b",
+  "translated_inputs_si": {
+    "numeric_parameters.admission_metrics.minimum_bridge_conductance": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 0.001,
+      "minimum": 5e-05,
+      "moose_role": "postprocessor_threshold",
+      "selected": 5e-05,
+      "source_unit": "S",
+      "status": "proposed",
+      "unit": "S"
+    },
+    "numeric_parameters.admission_metrics.minimum_effective_conductivity": {
+      "admission": "screening-only",
+      "admission_reason": "The range may be swept for sensitivity but cannot be asserted as the exact wet dendrite constitutive conductivity.",
+      "disposition": "fixed-proposed-control",
+      "maximum": 140.0,
+      "minimum": 10.0,
+      "moose_role": "screening_material_range",
+      "selected": 10.0,
+      "source_unit": "S m^-1",
+      "status": "proposed",
+      "unit": "S m^-1"
+    },
+    "numeric_parameters.chemistry.benzoquinone_concentration": {
+      "admission": "ready",
+      "disposition": "fixed-established",
+      "maximum": 10.5,
+      "minimum": 9.5,
+      "moose_role": "initial_condition",
+      "selected": 10.0,
+      "source_unit": "mol m^-3",
+      "status": "established",
+      "unit": "mol m^-3"
+    },
+    "numeric_parameters.chemistry.edot_concentration": {
+      "admission": "ready",
+      "disposition": "fixed-established",
+      "maximum": 10.5,
+      "minimum": 9.5,
+      "moose_role": "initial_condition",
+      "selected": 10.0,
+      "source_unit": "mol m^-3",
+      "status": "established",
+      "unit": "mol m^-3"
+    },
+    "numeric_parameters.chemistry.edot_reservoir_amount": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 2.1e-07,
+      "minimum": 1.9e-07,
+      "moose_role": "global_mass_constraint",
+      "selected": 2e-07,
+      "source_unit": "mol",
+      "status": "proposed",
+      "unit": "mol"
+    },
+    "numeric_parameters.chemistry.edot_reservoir_mass_upper_bound": {
+      "admission": "conditional",
+      "admission_reason": "It is a monomer upper bound, not a PEDOT deposited-mass law.",
+      "disposition": "fixed-proposed-control",
+      "maximum": 3.0000000000000004e-08,
+      "minimum": 2.7e-08,
+      "moose_role": "global_mass_constraint",
+      "selected": 2.84e-08,
+      "source_unit": "ug",
+      "status": "proposed",
+      "unit": "kg"
+    },
+    "numeric_parameters.chemistry.electrolyte_volume": {
+      "admission": "conditional",
+      "admission_reason": "The volume is valid, but a spatial field requires the missing drop shape and height.",
+      "disposition": "fixed-established",
+      "maximum": 2.05e-08,
+      "minimum": 1.9500000000000003e-08,
+      "moose_role": "global_initial_inventory",
+      "selected": 2e-08,
+      "source_unit": "uL",
+      "status": "established",
+      "unit": "m^3"
+    },
+    "numeric_parameters.chemistry.napss_concentration": {
+      "admission": "ready",
+      "disposition": "fixed-established",
+      "maximum": 1.05,
+      "minimum": 0.95,
+      "moose_role": "initial_condition",
+      "selected": 1.0,
+      "source_unit": "mol m^-3",
+      "status": "established",
+      "unit": "mol m^-3"
+    },
+    "numeric_parameters.environment.absolute_pressure": {
+      "admission": "metadata-only",
+      "admission_reason": "Pressure does not become a transport coefficient without a constitutive evaporation or gas model.",
+      "disposition": "sampled-proposed",
+      "maximum": 106000.0,
+      "minimum": 96000.0,
+      "moose_role": "run_metadata",
+      "selected": 102246.492495,
+      "source_unit": "Pa",
+      "status": "proposed",
+      "unit": "Pa"
+    },
+    "numeric_parameters.environment.temperature": {
+      "admission": "ready",
+      "disposition": "sampled-proposed",
+      "maximum": 297.0,
+      "minimum": 293.0,
+      "moose_role": "initial_temperature",
+      "selected": 293.864890777,
+      "source_unit": "K",
+      "status": "proposed",
+      "unit": "K"
+    },
+    "numeric_parameters.geometry.active_wire_length": {
+      "admission": "ready",
+      "disposition": "sampled-proposed",
+      "maximum": 0.0005499999999999999,
+      "minimum": 0.00045,
+      "moose_role": "mesh_geometry",
+      "selected": 0.000524213467748,
+      "source_unit": "um",
+      "status": "proposed",
+      "unit": "m"
+    },
+    "numeric_parameters.geometry.electrode_gap": {
+      "admission": "ready",
+      "disposition": "sampled-proposed",
+      "maximum": 0.00025,
+      "minimum": 0.00022999999999999998,
+      "moose_role": "mesh_geometry",
+      "selected": 0.000232212107382,
+      "source_unit": "um",
+      "status": "proposed",
+      "unit": "m"
+    },
+    "numeric_parameters.geometry.gold_wire_diameter": {
+      "admission": "ready",
+      "disposition": "fixed-established",
+      "maximum": 2.4999999999999998e-05,
+      "minimum": 2.4999999999999998e-05,
+      "moose_role": "mesh_geometry",
+      "selected": 2.4999999999999998e-05,
+      "source_unit": "um",
+      "status": "established",
+      "unit": "m"
+    },
+    "numeric_parameters.growth_drive.growth_current_compliance": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 0.002,
+      "minimum": 0.0,
+      "moose_role": "external_circuit_hard_limit",
+      "selected": 0.002,
+      "source_unit": "A",
+      "status": "proposed",
+      "unit": "A"
+    },
+    "numeric_parameters.growth_drive.growth_duty_fraction": {
+      "admission": "ready",
+      "disposition": "sampled-proposed",
+      "maximum": 0.55,
+      "minimum": 0.45,
+      "moose_role": "time_function",
+      "selected": 0.518103134754,
+      "source_unit": "fraction",
+      "status": "proposed",
+      "unit": "1"
+    },
+    "numeric_parameters.growth_drive.growth_frequency": {
+      "admission": "ready",
+      "disposition": "sampled-proposed",
+      "maximum": 320.0,
+      "minimum": 10.0,
+      "moose_role": "time_function",
+      "selected": 298.035046821,
+      "source_unit": "Hz",
+      "status": "proposed",
+      "unit": "s^-1"
+    },
+    "numeric_parameters.growth_drive.growth_timeout": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 300.0,
+      "minimum": 0.0,
+      "moose_role": "simulation_end_time_ceiling",
+      "selected": 300.0,
+      "source_unit": "s",
+      "status": "proposed",
+      "unit": "s"
+    },
+    "numeric_parameters.growth_drive.growth_voltage_peak_to_peak": {
+      "admission": "ready",
+      "disposition": "sampled-proposed",
+      "maximum": 10.0,
+      "minimum": 7.0,
+      "moose_role": "time_dependent_dirichlet_boundary",
+      "selected": 9.83587875052,
+      "source_unit": "V",
+      "status": "proposed",
+      "unit": "V"
+    },
+    "numeric_parameters.optical_interface.projected_corridor_width": {
+      "admission": "ready",
+      "disposition": "sampled-proposed",
+      "maximum": 5.4999999999999995e-05,
+      "minimum": 4.4999999999999996e-05,
+      "moose_role": "incident_optical_boundary_geometry",
+      "selected": 5.2815207662299996e-05,
+      "source_unit": "um",
+      "status": "proposed",
+      "unit": "m"
+    },
+    "numeric_parameters.optical_interface.projected_irradiance": {
+      "admission": "conditional",
+      "admission_reason": "Only incident dose is known; absorbed dose and photochemical action remain blocked.",
+      "disposition": "sampled-proposed",
+      "maximum": 100.0,
+      "minimum": 0.0,
+      "moose_role": "incident_optical_boundary",
+      "selected": 59.8482238911,
+      "source_unit": "W m^-2",
+      "status": "proposed",
+      "unit": "W m^-2"
+    },
+    "numeric_parameters.optical_interface.projection_wavelength": {
+      "admission": "ready",
+      "disposition": "sampled-proposed",
+      "maximum": 4.5500000000000004e-07,
+      "minimum": 4.4500000000000003e-07,
+      "moose_role": "incident_optical_boundary",
+      "selected": 4.4675509622800005e-07,
+      "source_unit": "nm",
+      "status": "proposed",
+      "unit": "m"
+    },
+    "numeric_parameters.readout.read_current_compliance": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 0.0002,
+      "minimum": 0.0,
+      "moose_role": "external_circuit_hard_limit",
+      "selected": 0.0002,
+      "source_unit": "A",
+      "status": "proposed",
+      "unit": "A"
+    },
+    "numeric_parameters.readout.read_duration": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 0.2,
+      "minimum": 0.05,
+      "moose_role": "read_time_window",
+      "selected": 0.1,
+      "source_unit": "s",
+      "status": "proposed",
+      "unit": "s"
+    },
+    "numeric_parameters.readout.read_voltage": {
+      "admission": "ready",
+      "disposition": "fixed-proposed-control",
+      "maximum": 0.1,
+      "minimum": 0.0,
+      "moose_role": "read_boundary_condition",
+      "selected": 0.1,
+      "source_unit": "V",
+      "status": "proposed",
+      "unit": "V"
+    }
+  },
+  "translator_version": "1.0.0"
+}

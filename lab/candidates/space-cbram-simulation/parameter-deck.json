@@ -1,0 +1,240 @@
+{
+  "deck_version": "1.0.0",
+  "candidate_id": "space-cbram-si-translation",
+  "regime": "space",
+  "purpose": "Translate an accepted CBRAM screening draw into SI geometry, conductance observables, environmental schedules, radiation tally targets, and explicit mission and constitutive blockers for later MOOSE/OpenMC coupling.",
+  "source_manifest": "lab/candidates/material-manifests/space-cbram.json",
+  "source_calibration": "lab/materials-calibration.md",
+  "observable_rule": "Reversible terminal conductance is primary. Bulk silver conductivity is reference-only and cannot be assigned to a filament until filament length and cross-sectional area are measured.",
+  "input_map": {
+    "numeric_parameters.geometry.cell_width": { "solver_targets": ["moose-conduction", "moose-thermal", "moose-mechanics", "openmc-geometry"], "admission": "ready" },
+    "numeric_parameters.geometry.cell_height": { "solver_targets": ["moose-conduction", "moose-thermal", "moose-mechanics", "openmc-geometry"], "admission": "ready" },
+    "numeric_parameters.geometry.silver_electrode_thickness": { "solver_targets": ["moose-conduction", "moose-thermal", "moose-mechanics", "openmc-geometry"], "admission": "ready" },
+    "numeric_parameters.geometry.solid_electrolyte_thickness": { "solver_targets": ["moose-conduction", "moose-thermal", "moose-mechanics", "openmc-geometry"], "admission": "ready" },
+    "numeric_parameters.geometry.inert_electrode_thickness": { "solver_targets": ["moose-conduction", "moose-thermal", "moose-mechanics", "openmc-geometry"], "admission": "ready" },
+    "numeric_parameters.geometry.passivation_thickness": { "solver_targets": ["moose-thermal", "moose-mechanics", "openmc-geometry"], "admission": "ready" },
+    "numeric_parameters.geometry.array_rows": { "solver_targets": ["mesh-layout", "experiment-control"], "admission": "ready" },
+    "numeric_parameters.geometry.array_columns": { "solver_targets": ["mesh-layout", "experiment-control"], "admission": "ready" },
+
+    "numeric_parameters.reservoir.bulk_silver_density": { "solver_targets": ["moose-thermal", "moose-mechanics", "openmc-material"], "admission": "conditional", "reason": "Bulk reference is usable for an inventory check; the deposited thin-film density still requires metrology before predictive coupling." },
+    "numeric_parameters.reservoir.silver_reservoir_mass_per_cell": { "solver_targets": ["global-mass-constraint"], "admission": "ready" },
+    "numeric_parameters.reservoir.bulk_silver_conductivity_reference": { "solver_targets": ["reference-only"], "admission": "reference-only", "reason": "Filament conductivity remains undefined until filament geometry and state are measured." },
+
+    "numeric_parameters.electrical_drive.read_voltage": { "solver_targets": ["moose-conduction"], "admission": "ready" },
+    "numeric_parameters.electrical_drive.set_sweep_limit": { "solver_targets": ["moose-conduction", "experiment-control"], "admission": "ready" },
+    "numeric_parameters.electrical_drive.reset_sweep_limit": { "solver_targets": ["moose-conduction", "experiment-control"], "admission": "ready" },
+    "numeric_parameters.electrical_drive.absolute_voltage_ceiling": { "solver_targets": ["moose-conduction", "experiment-control"], "admission": "ready" },
+    "numeric_parameters.electrical_drive.compliance_low": { "solver_targets": ["moose-conduction", "external-circuit-limit"], "admission": "ready" },
+    "numeric_parameters.electrical_drive.compliance_mid": { "solver_targets": ["moose-conduction", "external-circuit-limit"], "admission": "ready" },
+    "numeric_parameters.electrical_drive.compliance_high": { "solver_targets": ["moose-conduction", "external-circuit-limit"], "admission": "ready" },
+
+    "numeric_parameters.electrical_admission.nominal_on_conductance": { "solver_targets": ["moose-conduction", "observable", "postprocessor"], "admission": "observable-only", "reason": "Use terminal conductance or resistance; do not infer filament conductivity." },
+    "numeric_parameters.electrical_admission.minimum_on_off_ratio": { "solver_targets": ["postprocessor"], "admission": "ready" },
+    "numeric_parameters.electrical_admission.unbiased_retention_hold": { "solver_targets": ["experiment-control", "postprocessor"], "admission": "ready" },
+
+    "numeric_parameters.vacuum_environment.vacuum_pressure_maximum": { "solver_targets": ["environment-metadata"], "admission": "metadata-only", "reason": "Pressure requires gas composition and outgassing constitutive laws before it can drive a MOOSE field." },
+    "numeric_parameters.vacuum_environment.comparison_temperature": { "solver_targets": ["moose-thermal", "openmc-material-temperature"], "admission": "ready" },
+    "numeric_parameters.vacuum_environment.screen_temperature_minimum": { "solver_targets": ["moose-thermal"], "admission": "screening-only", "reason": "Generic material screen, not mission qualification." },
+    "numeric_parameters.vacuum_environment.screen_temperature_maximum": { "solver_targets": ["moose-thermal"], "admission": "screening-only", "reason": "Generic material screen, not mission qualification." },
+    "numeric_parameters.vacuum_environment.thermal_cycle_count": { "solver_targets": ["moose-thermal", "moose-mechanics", "experiment-control"], "admission": "screening-only" },
+    "numeric_parameters.vacuum_environment.temperature_ramp_rate_maximum": { "solver_targets": ["moose-thermal", "moose-mechanics"], "admission": "screening-only" },
+    "numeric_parameters.vacuum_environment.plateau_dwell": { "solver_targets": ["moose-thermal", "experiment-control"], "admission": "screening-only" },
+
+    "numeric_parameters.vacuum_falsifier.air_cell_count": { "solver_targets": ["experiment-design"], "admission": "metadata-only" },
+    "numeric_parameters.vacuum_falsifier.vacuum_cell_count": { "solver_targets": ["experiment-design"], "admission": "metadata-only" },
+    "numeric_parameters.vacuum_falsifier.set_reset_cycles_per_cell": { "solver_targets": ["experiment-design", "postprocessor"], "admission": "metadata-only" },
+    "numeric_parameters.vacuum_falsifier.maximum_vacuum_cell_failures": { "solver_targets": ["postprocessor"], "admission": "ready" },
+    "numeric_parameters.vacuum_falsifier.maximum_median_fractional_drift": { "solver_targets": ["postprocessor"], "admission": "ready" },
+    "numeric_parameters.vacuum_falsifier.maximum_spontaneous_switch_rate": { "solver_targets": ["postprocessor"], "admission": "ready" },
+
+    "numeric_parameters.optical_interface.fabrication_photodoping_wavelength": { "solver_targets": ["fabrication-metadata"], "admission": "metadata-only", "reason": "No photodoping dose or Ag-profile constitutive law is calibrated." },
+    "numeric_parameters.optical_interface.operational_address_wavelength": { "solver_targets": ["external-controller-metadata"], "admission": "metadata-only", "reason": "The admitted mechanism is optical-to-electrical addressing, not direct filament illumination." },
+
+    "numeric_parameters.radiation_materials_screen.cobalt60_dose_step_1": { "solver_targets": ["openmc-tally-target"], "admission": "screening-only", "reason": "Absorbed dose target in silicon, not a particle source specification." },
+    "numeric_parameters.radiation_materials_screen.cobalt60_dose_step_2": { "solver_targets": ["openmc-tally-target"], "admission": "screening-only", "reason": "Absorbed dose target in silicon, not a particle source specification." },
+    "numeric_parameters.radiation_materials_screen.cobalt60_dose_step_3": { "solver_targets": ["openmc-tally-target"], "admission": "screening-only", "reason": "Absorbed dose target in silicon, not a particle source specification." },
+    "numeric_parameters.radiation_materials_screen.cobalt60_dose_step_4": { "solver_targets": ["openmc-tally-target"], "admission": "screening-only", "reason": "Absorbed dose target in silicon, not a particle source specification." },
+    "numeric_parameters.radiation_materials_screen.maximum_programming_efficacy_fractional_drift": { "solver_targets": ["coupling-postprocessor"], "admission": "screening-only" }
+  },
+  "mission_gate_map": {
+    "required_unset_gates.mission_total_ionizing_dose": { "solver_targets": ["openmc-normalization", "coupling-promotion"] },
+    "required_unset_gates.mission_single_event_let_threshold": { "solver_targets": ["openmc-see-response", "coupling-promotion"] },
+    "required_unset_gates.mission_heavy_ion_fluence": { "solver_targets": ["openmc-source-normalization", "coupling-promotion"] },
+    "required_unset_gates.mission_displacement_damage_fluence": { "solver_targets": ["openmc-damage-response", "coupling-promotion"] },
+    "required_unset_gates.mission_lifetime": { "solver_targets": ["moose-transient", "openmc-normalization", "coupling-promotion"] },
+    "required_unset_gates.mission_shielding_areal_density": { "solver_targets": ["openmc-geometry", "openmc-material", "coupling-promotion"] },
+    "required_unset_gates.mission_operational_temperature_minimum": { "solver_targets": ["moose-thermal", "moose-mechanics", "openmc-material-temperature", "coupling-promotion"] },
+    "required_unset_gates.mission_operational_temperature_maximum": { "solver_targets": ["moose-thermal", "moose-mechanics", "openmc-material-temperature", "coupling-promotion"] }
+  },
+  "reference_quantities": {
+    "avogadro_constant": {
+      "value": 6.02214076e23,
+      "unit": "mol^-1",
+      "status": "established-exact-si",
+      "range": { "minimum": 6.02214076e23, "maximum": 6.02214076e23 },
+      "source": "https://physics.nist.gov/cgi-bin/cuu/Value?na"
+    },
+    "elementary_charge": {
+      "value": 1.602176634e-19,
+      "unit": "C",
+      "status": "established-exact-si",
+      "range": { "minimum": 1.602176634e-19, "maximum": 1.602176634e-19 },
+      "source": "https://physics.nist.gov/cgi-bin/cuu/Value?e"
+    },
+    "boltzmann_constant": {
+      "value": 1.380649e-23,
+      "unit": "J K^-1",
+      "status": "established-exact-si",
+      "range": { "minimum": 1.380649e-23, "maximum": 1.380649e-23 },
+      "source": "https://physics.nist.gov/cgi-bin/cuu/Value?k"
+    },
+    "planck_constant": {
+      "value": 6.62607015e-34,
+      "unit": "J s",
+      "status": "established-exact-si",
+      "range": { "minimum": 6.62607015e-34, "maximum": 6.62607015e-34 },
+      "source": "https://physics.nist.gov/cgi-bin/cuu/Value?h"
+    },
+    "speed_of_light": {
+      "value": 299792458.0,
+      "unit": "m s^-1",
+      "status": "established-exact-si",
+      "range": { "minimum": 299792458.0, "maximum": 299792458.0 },
+      "source": "https://physics.nist.gov/cgi-bin/cuu/Value?c"
+    },
+    "silver_molar_mass": {
+      "value": 0.1078682,
+      "unit": "kg mol^-1",
+      "status": "established-reference",
+      "range": { "minimum": 0.1078682, "maximum": 0.1078682 },
+      "source": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1363.pdf"
+    },
+    "standard_atmosphere": {
+      "value": 101325.0,
+      "unit": "Pa",
+      "status": "established-exact-conventional",
+      "range": { "minimum": 101325.0, "maximum": 101325.0 },
+      "source": "https://www.nist.gov/pml/owm/si-units-pressure"
+    }
+  },
+  "dimensionless_groups": {
+    "cell_lateral_aspect": "L_width / L_height",
+    "electrolyte_to_lateral_scale": "t_electrolyte / sqrt(L_width L_height)",
+    "silver_to_electrolyte_thickness": "t_Ag / t_electrolyte",
+    "passivation_to_electrolyte_thickness": "t_cap / t_electrolyte",
+    "read_to_set_voltage": "V_read / V_set_limit",
+    "set_voltage_to_thermal_potential": "e V_set_limit / (k_B T)",
+    "reservoir_mass_consistency": "rho_Ag L_width L_height t_Ag / m_Ag_manifest",
+    "nominal_read_current_to_high_compliance": "V_read G_on / I_compliance_high",
+    "temperature_screen_span_fraction": "(T_hot - T_cold) / T_compare",
+    "vacuum_to_standard_atmosphere": "p_vacuum_max / p_standard",
+    "radiation_screen_dose_span": "D_screen_max / D_screen_min",
+    "programming_drift_tolerance": "delta_G_program_max / G_program_reference"
+  },
+  "constitutive_blockers": [
+    {
+      "blocker_id": "filament-geometry",
+      "solver_targets": ["moose-conduction", "moose-thermal", "moose-mechanics"],
+      "missing": ["filament length", "filament cross-sectional area", "filament tortuosity", "filament continuity and contact shape"],
+      "reason": "Terminal conductance cannot be converted to filament conductivity or current density without measured geometry."
+    },
+    {
+      "blocker_id": "solid-electrolyte-ion-transport",
+      "solver_targets": ["moose-conduction"],
+      "missing": ["Ag+ diffusivity in photodoped Ge30Se70", "Ag+ mobility", "mobile-ion concentration", "transference number", "temperature dependence", "electric permittivity"],
+      "reason": "Terminal voltage does not determine Ag-ion flux or local field."
+    },
+    {
+      "blocker_id": "interface-redox-kinetics",
+      "solver_targets": ["moose-conduction"],
+      "missing": ["Ag oxidation exchange current", "Ag+ reduction exchange current", "transfer coefficients", "equilibrium potentials", "nucleation barrier", "dissolution law"],
+      "reason": "SET and RESET limits are experimental boundaries, not a reversible filament-growth rate law."
+    },
+    {
+      "blocker_id": "electronic-state-conduction",
+      "solver_targets": ["moose-conduction"],
+      "missing": ["HRS conduction law", "LRS conduction law", "contact resistance", "tunneling gap relation", "temperature dependence", "state-to-state variability"],
+      "reason": "Conductance remains the observable; bulk Ag conductivity cannot replace these laws."
+    },
+    {
+      "blocker_id": "pulse-time-history",
+      "solver_targets": ["moose-conduction", "moose-thermal"],
+      "missing": ["SET pulse duration", "RESET pulse duration", "voltage ramp rate", "inter-pulse dwell", "read cadence"],
+      "reason": "Voltage and compliance alone cannot determine electrical energy, switching kinetics, or Joule dose."
+    },
+    {
+      "blocker_id": "layer-thermal-properties",
+      "solver_targets": ["moose-thermal", "openmc-temperature-feedback"],
+      "missing": ["density of Ge30Se70, inert electrode, cap, and substrate", "specific heat of every layer", "thermal conductivity of every layer", "interface thermal resistance", "emissivity", "package thermal boundary"],
+      "reason": "The thermal schedule is known, but self-heating and layer temperatures are not predictable."
+    },
+    {
+      "blocker_id": "layer-mechanical-properties",
+      "solver_targets": ["moose-mechanics"],
+      "missing": ["elastic moduli", "Poisson ratios", "coefficients of thermal expansion", "residual film stress", "adhesion and fracture energies", "creep or viscoelastic laws"],
+      "reason": "Geometry and temperature cycles do not determine stress, delamination, or cracking."
+    },
+    {
+      "blocker_id": "passivation-vacuum-law",
+      "solver_targets": ["moose-thermal", "moose-mechanics", "environment-model"],
+      "missing": ["cap permeability", "outgassing rates", "trapped gas composition", "vacuum interface heat transfer", "tarnish kinetics at defects"],
+      "reason": "Chamber pressure is metadata until cap and gas transport are calibrated."
+    },
+    {
+      "blocker_id": "optical-to-electrical-transfer",
+      "solver_targets": ["external-controller", "moose-conduction"],
+      "missing": ["photodiode responsivity", "micro-LED efficiency", "optical coupling loss", "driver transfer function", "photodoping dose-to-Ag-profile law"],
+      "reason": "Wavelength identifies the interface but does not determine an electrical SET pulse or Ag distribution."
+    },
+    {
+      "blocker_id": "openmc-material-definitions",
+      "solver_targets": ["openmc-material", "openmc-heating"],
+      "missing": ["measured Ge-Se-Ag atomic composition", "isotopic composition", "density of every non-Ag layer", "selected inert-electrode material", "selected cap material", "substrate and package composition"],
+      "reason": "OpenMC reaction rates and heating tallies require material atom densities; geometry alone is insufficient."
+    },
+    {
+      "blocker_id": "mission-radiation-source",
+      "solver_targets": ["openmc-source", "openmc-normalization"],
+      "missing": ["orbit or trajectory", "particle species", "energy spectra", "angular distributions", "time history", "device-local shielding geometry", "source rate"],
+      "reason": "The cobalt-60 dose points are screening targets, not a mission radiation source."
+    },
+    {
+      "blocker_id": "dose-material-conversion",
+      "solver_targets": ["openmc-heating", "moose-thermal", "coupling-transfer"],
+      "missing": ["silicon-equivalent scoring volume", "device-material heating tallies", "mass normalization", "dose-to-temperature transfer", "dose-to-conductance response"],
+      "reason": "Gy(Si) cannot be assigned as absorbed energy in Ag, Ge-Se, cap, or substrate without transport and mass-specific tallies."
+    },
+    {
+      "blocker_id": "displacement-and-see-response",
+      "solver_targets": ["openmc-damage-response", "openmc-see-response", "coupling-postprocessor"],
+      "missing": ["damage-energy cross sections", "NIEL or DPA response", "sensitive volume", "critical charge or conductance upset rule", "device and peripheral SEE cross sections"],
+      "reason": "TID behavior does not supply displacement-damage or single-event constitutive response."
+    },
+    {
+      "blocker_id": "radiation-programming-coupling",
+      "solver_targets": ["moose-conduction", "openmc-heating", "coupling-transfer"],
+      "missing": ["dose-dependent ion mobility", "dose-dependent interface kinetics", "dose-dependent conductance-update law", "annealing and recovery law"],
+      "reason": "Published programming degradation motivates measurement but does not furnish an exact-stack coupling coefficient."
+    },
+    {
+      "blocker_id": "stochastic-filament-population",
+      "solver_targets": ["moose-conduction", "coupling-ensemble"],
+      "missing": ["nucleation distribution", "cycle-to-cycle variance", "cell-to-cell covariance", "failure-hazard law", "radiation-conditioned variability"],
+      "reason": "A random simulation seed is not a physical filament population until exact-stack ensembles are measured."
+    }
+  ],
+  "sources": [
+    { "source_id": "mahalanabis-incremental-2014", "url": "https://doi.org/10.1016/j.sse.2014.07.002", "scope": "Ag-Ge30Se70 incremental conductance states and terminal observable." },
+    { "source_id": "kamalanathan-low-voltage-2011", "url": "https://doi.org/10.1088/0957-4484/22/25/254017", "scope": "Related sub-volt voltage/current/endurance anchor, not exact-stack qualification." },
+    { "source_id": "taggart-tid-2018", "url": "https://doi.org/10.1109/TNS.2017.2779860", "scope": "Active-program and DC behavior under cobalt-60 exposure; motivates dynamic coupling measurement." },
+    { "source_id": "nasa-nepp-see", "url": "https://nepp.nasa.gov/files/27878/NEPP-CP-2015-Chen-Poster-NSREC-TN24782.pdf", "scope": "Commercial CBRAM standby and peripheral SEE boundary; not exact-stack qualification." },
+    { "source_id": "nasa-gevs", "url": "https://standards.nasa.gov/node/791", "scope": "Thermal-vacuum screening and mission-tailoring boundary." },
+    { "source_id": "nasa-std-7002b", "url": "https://standards.nasa.gov/sites/default/files/standards/NASA/B/1/NASA-STD-7002B-w-Change-1.pdf", "scope": "Mission-derived temperature limits and margins." },
+    { "source_id": "nist-silver", "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/TN/nbstechnicalnote1363.pdf", "scope": "Bulk silver density and molar-mass reference." },
+    { "source_id": "iaea-conductors", "url": "https://www-pub.iaea.org/MTCD/Publications/PDF/TCS-48_web.pdf", "scope": "Bulk silver conductivity reference only." },
+    { "source_id": "openmc-tallies", "url": "https://docs.openmc.org/en/stable/usersguide/tallies.html", "scope": "Heating tally normalization and absorbed dose in silicon require material density, volume, and source normalization." },
+    { "source_id": "openmc-energy-deposition", "url": "https://docs.openmc.org/en/stable/methods/energy_deposition.html", "scope": "OpenMC heating and energy-deposition method boundary." },
+    { "source_id": "moose-heat-transfer", "url": "https://mooseframework.inl.gov/modules/heat_transfer/index.html", "scope": "MOOSE heat-conduction equations require density, heat capacity, conductivity, sources, and boundary conditions." },
+    { "source_id": "cardinal-coupling", "url": "https://mooseframework.inl.gov/cardinal/tutorials/lwr_solid", "scope": "Official example of transferring OpenMC heat sources to MOOSE and temperature feedback to OpenMC." }
+  ]
+}

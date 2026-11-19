@@ -1,0 +1,200 @@
+[
+  {
+    "cost": 1.0,
+    "index": 0,
+    "kind": "ServiceScan",
+    "name": "service_scan",
+    "success_probability": 1.0,
+    "target": [
+      1,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 1,
+    "kind": "OSScan",
+    "name": "os_scan",
+    "success_probability": 1.0,
+    "target": [
+      1,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 2,
+    "kind": "SubnetScan",
+    "name": "subnet_scan",
+    "success_probability": 1.0,
+    "target": [
+      1,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 3,
+    "kind": "ProcessScan",
+    "name": "process_scan",
+    "success_probability": 1.0,
+    "target": [
+      1,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 4,
+    "kind": "Exploit",
+    "name": "toy_entry",
+    "success_probability": 0.8,
+    "target": [
+      1,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 5,
+    "kind": "PrivilegeEscalation",
+    "name": "toy_elevate",
+    "success_probability": 1.0,
+    "target": [
+      1,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 6,
+    "kind": "ServiceScan",
+    "name": "service_scan",
+    "success_probability": 1.0,
+    "target": [
+      2,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 7,
+    "kind": "OSScan",
+    "name": "os_scan",
+    "success_probability": 1.0,
+    "target": [
+      2,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 8,
+    "kind": "SubnetScan",
+    "name": "subnet_scan",
+    "success_probability": 1.0,
+    "target": [
+      2,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 9,
+    "kind": "ProcessScan",
+    "name": "process_scan",
+    "success_probability": 1.0,
+    "target": [
+      2,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 10,
+    "kind": "Exploit",
+    "name": "toy_entry",
+    "success_probability": 0.8,
+    "target": [
+      2,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 11,
+    "kind": "PrivilegeEscalation",
+    "name": "toy_elevate",
+    "success_probability": 1.0,
+    "target": [
+      2,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 12,
+    "kind": "ServiceScan",
+    "name": "service_scan",
+    "success_probability": 1.0,
+    "target": [
+      3,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 13,
+    "kind": "OSScan",
+    "name": "os_scan",
+    "success_probability": 1.0,
+    "target": [
+      3,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 14,
+    "kind": "SubnetScan",
+    "name": "subnet_scan",
+    "success_probability": 1.0,
+    "target": [
+      3,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 15,
+    "kind": "ProcessScan",
+    "name": "process_scan",
+    "success_probability": 1.0,
+    "target": [
+      3,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 16,
+    "kind": "Exploit",
+    "name": "toy_entry",
+    "success_probability": 0.8,
+    "target": [
+      3,
+      0
+    ]
+  },
+  {
+    "cost": 1.0,
+    "index": 17,
+    "kind": "PrivilegeEscalation",
+    "name": "toy_elevate",
+    "success_probability": 1.0,
+    "target": [
+      3,
+      0
+    ]
+  }
+]
