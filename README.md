@@ -96,6 +96,14 @@ comparators and used slightly more material. The reversal pilot exposed the
 next design requirement: renew exploration when observed consequences change
 rather than preserving an action after its efficacy changes.
 
+A checkpointed reduced screen then exercised that renewal machinery across
+1,728,000 choices: 120 actions for each of 120 substrate seeds in 120 admitted
+Earth/space environment draws. It completed 14,400 trajectories, triggered
+39,575 balanced renewals, and preserved a finite reinforcement ledger through
+every choice. This run establishes execution, contingency, conservation, and
+resume behavior at scale; it is a screening instrument rather than a material-
+performance comparison.
+
 A separate `192 × 128 × 9` finite-volume candidate solves
 `div(sigma grad(V)) = 0` throughout a true volume and permits six-face material
 growth. Starting from the exact two-dimensional adaptive skeleton on the middle
