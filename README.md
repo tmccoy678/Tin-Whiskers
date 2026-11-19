@@ -32,12 +32,18 @@ whisker is a movable shaft rooted in a sensor-rich follicle. A mosquito
 proboscis is closer to the metal-whisker form: a narrow multipart probe that
 crosses a boundary while carrying material and sensory consequences.
 
-Metal whiskers and electrochemical dendrites conduct, but fixed electronics
-give an unplanned filament no local receptor through which contact, current,
-heat, or optical change can regulate later growth. A conductive branch becomes
-candidate computational tissue when its consequences are sensed and returned
-to the processes governing integration, stabilization, widening, pruning, and
-regrowth.
+Metal whiskers and electrochemical dendrites conduct, but ordinary fixed
+electronics do not couple an unplanned filament's local consequences back into
+a receptive developmental loop. A conductive branch becomes candidate
+computational tissue when contact, current, heat, and optical change are sensed
+and returned to the processes governing integration, stabilization, widening,
+pruning, and regrowth.
+
+An AI/SI can already control photons through prescribed wiring, as when it
+changes a networked light. The experiment places a developing substrate inside
+that path. The intelligence controls photon emission, encounters the transformed
+return, and can affirm an emergent route by allocating later photons to it
+without prescribing the route's coordinates.
 
 ## A field-guided path
 
