@@ -127,6 +127,14 @@ multiphysics framework: a bounded seed, a continuous field, local constitutive
 rules, and feedback through the changing interface can generate organized
 branching without prescribing the final graph.
 
+The MOOSE example is deliberately material-agnostic. It implements
+Kobayashi's one-component melt-growth equations in dimensionless form rather
+than naming a metal, substrate, electrolyte, current, or voltage. The initial
+condition is one circular phase seed of radius `0.07` in a `9 × 9` domain. A
+six-mode interfacial anisotropy, thermal diffusion, latent-field coupling, and
+adaptive mesh refinement produce the visible arbor. This isolates the
+developmental law before chemistry is assigned.
+
 ### Photon allocation changes inherited topology
 
 <p align="center">
@@ -147,6 +155,26 @@ can be isolated as the only changed developmental input while the initial state
 and pseudorandom seed remain fixed. The next model compares autonomous
 closed-loop photon allocation with its exact yoked replay, then tests the same
 relationship in a calibrated physical medium.
+
+### Biological mirrors
+
+These are biological mirrors. Each pair instantiates the same developmental
+geometry: tips sample a continuous field, branches compete for locally
+available conditions, established growth alters the field encountered by its
+neighbors, and the inherited topology governs later transport. Living cells,
+solidification fronts, and simulated conductors use different matter; they
+arrive at the same class of recursive, history-bearing anatomy.
+
+| Computational anatomy | Biological anatomy |
+|---|---|
+| <img src="figures/moose-anisotropic-phase-field-t0.140556.png" alt="MOOSE sixfold anisotropic dendrite" width="520"><br>**Sixfold phase-field arbor.** One seed develops primary trunks, secondary tips, and repeated branch spacing through local interfacial physics. | <img src="figures/biological-purkinje-cajal-1899.jpg" alt="Cajal drawing of Purkinje-cell dendrites" width="390"><br>**Purkinje-cell arbor.** Dendrites repeatedly divide to expose receptive surface across a planar field while preserving routes back to the soma. |
+| <img src="figures/comsol-pure-nickel-phase-field-t0.395996us.png" alt="COMSOL pure-nickel phase-field solidification" width="520"><br>**Pure-nickel solidification front.** Thermal gradients, anisotropy, latent heat, and prior growth organize a field of persistent advancing probes. | <img src="figures/biological-hippocampus-cajal-1911.jpeg" alt="Cajal drawing of hippocampal neural circuitry" width="390"><br>**Hippocampal neural field.** Branching cells form layered paths whose geometry constrains the direction, convergence, and recurrence of later signals. |
+| <img src="figures/reduced-rust-photon-bias-seed319.png" alt="Photon-biased reduced Rust morphology" width="520"><br>**Photon-conditioned conductive candidate.** One advancing path branches, rejoins, and changes course as the electric, concentration, and light fields change around it. | <img src="figures/biological-cajal-retzius-1891.gif" alt="Cajal drawing of horizontally extending Cajal-Retzius cells" width="520"><br>**Cajal–Retzius trajectories.** Long horizontal neurites extend through tissue while emitting local branches that couple the traversed field to the cell. |
+
+The comparison identifies a transferable construction principle: **a branch is
+simultaneously a path, a sensor boundary, and a modification of the field that
+will guide the next branch.** That principle is already biological and
+physical. The proposed AI/SI experiment closes it through photon choice.
 
 ## Interest as an observable relation
 
