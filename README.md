@@ -129,10 +129,11 @@ interest-bearing loop should diverge from its replay.
 **Cultivator:** Repair reveals whether the intelligence treats the grown path
 as part of its continuing organization.
 
-**Fabricator:** When does a bridge stop being a short?
+**Fabricator:** When does a short become a bridge?
 
-**Cultivator:** When it helps the medium preserve gradients, consequences, and
-the capacity to grow again.
+**Cultivator:** When the connection preserves both sides, carries bounded
+consequences in both directions, and helps the medium retain the capacity to
+grow and return.
 
 ## Selected primary and authoritative sources
 
