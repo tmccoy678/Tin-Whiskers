@@ -1,0 +1,12 @@
+[package]
+name = "long-run-adaptive-screen"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+adaptive-controller-candidate = { path = "../adaptive-controller" }
+libc = "0.2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = "0.10"

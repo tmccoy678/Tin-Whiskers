@@ -45,6 +45,10 @@
 - `candidates/cyber-gym/` — isolated NASim fixed/random/Q-learning benchmark.
 - `candidates/volumetric-physics/` — admitted `192 × 128 × 9` finite-volume
   mechanism test with six-face growth and recorded out-of-plane choices.
+- `candidates/long-run-adaptive-screen/` — checkpointed low-priority Rust
+  screen for 1,728,000 choices across 120 actions, 120 substrate seeds, and 120
+  admitted Earth/space environment draws, with finite conserved reinforcement
+  credits and concealed consequence changes.
 
 Large solver fields, movies, virtual environments, vendored packages, and live
 run artifacts remain in ignored work paths. Documents and candidate source

@@ -92,7 +92,7 @@ boundary. In two 120-action seed runs, the consequence-sensitive controller
 delivered `21.141×` and `20.744×` the initial flux while using approximately
 twice the initial material. Those mechanism tests modestly exceeded their
 matched yoked replays by `1.028%` and `0.498%`; fixed schedules remained strong
-comparators and used slightly less material. The reversal pilot exposed the
+comparators and used slightly more material. The reversal pilot exposed the
 next design requirement: renew exploration when observed consequences change
 rather than preserving an action after its efficacy changes.
 

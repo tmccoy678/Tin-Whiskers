@@ -24,11 +24,13 @@ The repository separates three evidence levels:
 | PyVista | `0.49.2` |
 | NumPy | `2.5.5` |
 | Pillow | `13.0.0` |
+| ParaView | `6.2.1` Kitware arm64, DMG SHA-256 `14ab14fb68adab31677c21c008a2d987145093b001ac2424c7a025dc6d765b57` |
 
-Cardinal, NekRS, OpenMC, Pronghorn, and SAM were not installed for these runs.
-They remain optional MOOSE-family backends for later volumetric CFD, radiation,
-porous transport, and system-scale transient studies. No result in this
-repository implies that one of those applications was used.
+Cardinal, NekRS, OpenMC, Pronghorn, and SAM were explored in the ignored local
+backend work area after the core runs. No admitted result in this repository
+uses or implies one of those applications. They remain optional MOOSE-family
+backends for later volumetric CFD, radiation, porous transport, and system-scale
+transient studies.
 
 MOOSE installation follows the official [prebuilt binary
 instructions](https://mooseframework.inl.gov/getting_started/installation/moose_conda_binary.html).
@@ -67,6 +69,26 @@ Set `FULL=1` to repeat the paired-seed and transection bootstraps. Heavy Exodus,
 frame, and solver-log outputs are ignored and regenerate under
 `simulation/output/`; committed TSV and Markdown files contain the compact raw
 results and decision rules.
+
+## Admitted candidate checks
+
+These focused commands reproduce the newer evidence boundaries without running
+the full bootstrap suite:
+
+```sh
+(cd lab/candidates/adaptive-controller && cargo test)
+(cd lab/candidates/long-run-adaptive-screen && cargo test)
+lab/candidates/interactive-3d/verify.sh
+lab/candidates/interactive-3d/timeline/verify-cut-repair.sh
+lab/candidates/volumetric-physics/verify-output.sh
+```
+
+The interactive cut–repair timeline is regenerated from ignored MOOSE states
+with `timeline/build_timeline.py`; its verifier requires 37 exact hashes,
+disconnection at epoch 17, first connection at epoch 18, and snap-to-state
+playback. The volumetric verifier reads the committed VTK through ParaView's
+VTK stack and requires the `192 × 128 × 9` volume, 7,019 occupied voxels, 214
+out-of-plane growth choices, and nonzero current and Joule fields.
 
 ## Inputs that define each result
 
